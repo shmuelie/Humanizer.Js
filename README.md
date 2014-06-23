@@ -17,3 +17,7 @@ THe following classes have been implemented:
 * Casing Extensions
 * StringHumanizerExtensions
 * InflectorExtentions
+* NumberToWordsExtension
+* NumberToOrdinalWordsExtension
+* NumberToTimeSpanExtensions
+* RomanNumeralExtensions
