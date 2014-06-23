@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humanizer.Js", "Humanizer.Js\Humanizer.Js.csproj", "{2F848A20-40DB-4F7C-9D79-C447C5A6E372}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humanizer.Js", "Humanizer.Js.csproj", "{2F848A20-40DB-4F7C-9D79-C447C5A6E372}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
