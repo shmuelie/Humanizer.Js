@@ -264,7 +264,7 @@
 
     function humanize(input)
     {
-        if (input = input.toUpperCase())
+        if (input === input.toUpperCase())
         {
             return input;
         }
