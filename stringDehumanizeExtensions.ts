@@ -1,9 +1,14 @@
-﻿module Humanizer
+﻿interface String
+{
+    dehumanize: () => string;
+}
+
+module Humanizer
 {
     /**
      * Dehumanizes a string; e.g. 'some string', 'Some String', 'Some string' -> 'SomeString'
      */
-    String.prototype.dehumanize = function ()
+    String.prototype.dehumanize = function (): string
     {
         /// <summary>
         ///     Dehumanizes a string; e.g. 'some string', 'Some String', 'Some string' -> 'SomeString'
