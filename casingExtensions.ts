@@ -1,7 +1,12 @@
-﻿module Humanizer
+﻿interface String
+{
+    applyCasing: (casing: Humanizer.LetterCasing) => string;
+}
+
+module Humanizer
 {
     /** Changes the casing of the provided input */
-    String.prototype.applyCasing = function (casing: Humanizer.LetterCasing)
+    String.prototype.applyCasing = function (casing: Humanizer.LetterCasing): string
     {
         /// <summary>
         ///     Changes the casing of the provided input
