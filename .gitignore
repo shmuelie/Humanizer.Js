@@ -174,3 +174,5 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 Properties/
+*.csproj
+*.sln
