@@ -1,4 +1,13 @@
-﻿module Humanizer
+﻿interface String
+{
+    ordinalize: () => string;
+}
+interface Number
+{
+    ordinalize: () => string;
+}
+
+module Humanizer
 {
     function ordinalize(num: number, numberString: string): string
     {
@@ -23,22 +32,22 @@
     }
 
     //** Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th. */
-    String.prototype.ordinalize = function ()
+    String.prototype.ordinalize = function (): string
     {
         /// <summary>
         ///     Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
         /// </summary>
 
-        ordinalize(Number(this), this);
+        return  ordinalize(Number(this), this);
     };
 
     /** Turns a number into an ordinal number used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th. */
-    Number.prototype.ordinalize = function ()
+    Number.prototype.ordinalize = function (): string
     {
         /// <summary>
         ///     Turns a number into an ordinal number used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
         /// </summary>
 
-        ordinalize(this, this.toString());
+        return ordinalize(this, this.toString());
     };
 } 
