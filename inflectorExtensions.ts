@@ -1,4 +1,16 @@
-﻿module Humanizer
+﻿interface String
+{
+    pluralize: (plurality: Humanizer.Plurality) => string;
+    singularize: (plurality: Humanizer.Plurality) => string;
+    titleize: () => string;
+    pascalize: () => string;
+    camelize: () => string;
+    underscore: () => string;
+    dasherize: () => string;
+    hyphenate: () => string;
+}
+
+module Humanizer
 {
     /**
      * Provides hint for Humanizer as to whether a word is singular, plural or with unknown plurality
@@ -149,7 +161,7 @@
      * Pluralizes the provided input considering irregular words
      * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Singular] Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
      */
-    String.prototype.pluralize = function (plurality: Humanizer.Plurality = Humanizer.Plurality.Singular)
+    String.prototype.pluralize = function (plurality: Humanizer.Plurality = Humanizer.Plurality.Singular): string
     {
         /// <signature>
         ///     <summary>
@@ -190,7 +202,7 @@
      * Singularizes the provided input considering irregular words.
      * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Plural] Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
      */
-    String.prototype.singularize = function (plurality: Humanizer.Plurality = Humanizer.Plurality.Plural)
+    String.prototype.singularize = function (plurality: Humanizer.Plurality = Humanizer.Plurality.Plural): string
     {
         /// <signature>
         ///     <summary>
@@ -232,7 +244,7 @@
     /**
      * Humanizes the input with Title casing
      */
-    String.prototype.Titleize = function ()
+    String.prototype.titleize = function (): string
     {
         /// <summary>
         ///     Humanizes the input with Title casing
@@ -244,7 +256,7 @@
     /**
      * By default, pascalize converts strings to UpperCamelCase also removing underscores
      */
-    String.prototype.pascalize = function ()
+    String.prototype.pascalize = function (): string
     {
         /// <summary>
         ///     By default, pascalize converts strings to UpperCamelCase also removing underscores
@@ -265,7 +277,7 @@
     /**
      * Same as Pascalize except that the first character is lower case
      */
-    String.prototype.camelize = function ()
+    String.prototype.camelize = function (): string
     {
         /// <summary>
         ///     Same as Pascalize except that the first character is lower case
@@ -278,7 +290,7 @@
     /**
      * Separates the input words with underscore
      */
-    String.prototype.underscore = function ()
+    String.prototype.underscore = function (): string
     {
         /// <summary>
         ///     Separates the input words with underscore
@@ -290,7 +302,7 @@
     /**
      * Replaces underscores with dashes in the string
      */
-    String.prototype.dasherize = function ()
+    String.prototype.dasherize = function (): string
     {
         /// <summary>
         ///     Replaces underscores with dashes in the string
@@ -302,7 +314,7 @@
     /**
      * Replaces underscores with hyphens in the string
      */
-    String.prototype.hyphenate = function ()
+    String.prototype.hyphenate = function (): string
     {
         /// <summary>
         ///     Replaces underscores with hyphens in the string

@@ -212,7 +212,7 @@
     /**
     * Humanizes the input with Title casing
     */
-    String.prototype.Titleize = function () {
+    String.prototype.titleize = function () {
         /// <summary>
         ///     Humanizes the input with Title casing
         /// </summary>
