@@ -1,4 +1,9 @@
-﻿module Humanizer
+﻿interface Number
+{
+    toWords: () => string;
+}
+
+module Humanizer
 {
     function toEnglishWords(num: number): string
     {
@@ -203,7 +208,7 @@
     /**
      * 3501.ToWords() -> "three thousand five hundred and one"
      */
-    Number.prototype.toWords = function ()
+    Number.prototype.toWords = function (): string
     {
         /// <summary>
         ///     3501.ToWords() -> "three thousand five hundred and one"
