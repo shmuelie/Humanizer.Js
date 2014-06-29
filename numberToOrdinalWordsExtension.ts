@@ -1,4 +1,9 @@
-﻿module Humanizer
+﻿interface Number
+{
+    toOrdinalWords: () => string;
+}
+
+module Humanizer
 {
     function exceptionNumberToWords(num: number): string
     {
@@ -45,7 +50,7 @@
     /**
      * 1.ToOrdinalWords() -> "first"
      */
-    Number.prototype.toOrdinalWords = function ()
+    Number.prototype.toOrdinalWords = function (): string
     {
         /// <summary>
         ///     1.ToOrdinalWords() -> "first"
