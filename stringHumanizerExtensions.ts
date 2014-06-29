@@ -1,4 +1,9 @@
-﻿module Humanizer
+﻿interface String
+{
+    humanize: (casing?: Humanizer.LetterCasing) => string;
+}
+
+module Humanizer
 {
     function fromUnderscoreDashSeparatedWords(input: string): string
     {
@@ -39,7 +44,7 @@
      * Humanizes the input string
      * @param {Humanizer.LetterCasing} [casing] The desired casing for the output
      */
-    String.prototype.humanize = function (casing?: Humanizer.LetterCasing)
+    String.prototype.humanize = function (casing?: Humanizer.LetterCasing): string
     {
         /// <signature>
         ///     <summary>
