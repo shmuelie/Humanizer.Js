@@ -2,25 +2,8 @@ Humanizer.Js
 ============
 
 Humanizer meets all your JavaScript needs for manipulating and displaying strings, dates, times, numbers and quantities
+This is a port of the popular [Humanizer](http://humanizr.net/) library for JavaScript. For the most part you can just follow the documentation for Humanizer with little to no issue. See below for big differences.
 
-##Implemented
-The following classes have been implemented:
-
-* OnNoMatch
-* OrdinalizeExtensions
-* LetterCasing
-* ToTitleCase
-* ToLowerCase
-* ToUpperCase
-* ToSentenceCase
-* To
-* Casing Extensions
-* StringHumanizerExtensions
-* InflectorExtentions
-* NumberToWordsExtension
-* NumberToOrdinalWordsExtension
-* NumberToTimeSpanExtensions
-* RomanNumeralExtensions
 
 ##Notes
 
@@ -28,4 +11,4 @@ The following classes have been implemented:
 
 ##Road Map
 
-Besides implementing all the classes in Humanizer.C# the code will be split in to manageable files per class (as recomended in https://github.com/SamuelEnglard/Humanizer.Js/issues/2).
+At this time most of Humanizer has been converted to JavaScript. The only parts that remain are relient on localization, which will be a pain to implement. I might do it but not anytime soon.
