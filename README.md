@@ -28,4 +28,4 @@ The following classes have been implemented:
 
 ##Road Map
 
-Besides implementing all the classes in Humanizer.C# the code will be split in to manageable files per class (as recomended in https://github.com/SamuelEnglard/Humanizer.Js/issues/2) and the VS folder hierarchy will be removed and simplified down (as recomended in https://github.com/SamuelEnglard/Humanizer.Js/issues/1)
+Besides implementing all the classes in Humanizer.C# the code will be split in to manageable files per class (as recomended in https://github.com/SamuelEnglard/Humanizer.Js/issues/2).
