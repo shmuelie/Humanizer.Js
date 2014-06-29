@@ -1,4 +1,13 @@
-﻿module Humanizer
+﻿interface String
+{
+    fromRoman: () => number;
+}
+interface Number
+{
+    toRoman: () => string;
+}
+
+module Humanizer
 {
     var numberOfRomanNumeralMaps: number = 13;
     var romanNumberals = {
@@ -23,7 +32,7 @@
      * Converts Roman numbers into integer
      * @returns {Number} Human-readable number
      */
-    String.prototype.fromRoman = function ()
+    String.prototype.fromRoman = function (): number
     {
         /// <summary>
         ///     Converts Roman numbers into integer
@@ -41,7 +50,7 @@
         }
 
         var total: number = 0;
-        var i: numberi = length;
+        var i: number = length;
 
         while (i > 0)
         {
@@ -67,7 +76,7 @@
      * Converts the input to Roman number
      * @returns {String} Roman number
      */
-    Number.prototype.toRoman = function ()
+    Number.prototype.toRoman = function (): string
     {
         /// <summary>
         ///     Converts the input to Roman number
