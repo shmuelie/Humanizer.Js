@@ -10,6 +10,6 @@
          * @param {Humanizer.TruncateFrom} truncateFrom The enum value used to determine from where to truncate the string
          * @returns {String} The truncated string
          */
-        truncate: (value: string, length: number, truncationString: string, truncateFrom: TruncateFrom) => string;
+        truncate(value: string, length: number, truncationString: string, truncateFrom?: TruncateFrom): string;
     }
 }

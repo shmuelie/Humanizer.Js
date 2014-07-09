@@ -1,6 +1,6 @@
 ﻿module Humanizer
 {
-    export class FixedLengthTruncator implements Humanizer.ITruncator
+    export class FixedLengthTruncator implements ITruncator
     {
         truncate(value: string, length: number, truncationString: string, truncateFrom: TruncateFrom = TruncateFrom.Right): string
         {
