@@ -33,7 +33,7 @@ module Humanizer
         CouldBeEither
     }
 
-    class InflectorExtensions_Rule
+    class InflectorExtensionsRule
     {
         private regex: RegExp;
         private replacement: string;
@@ -53,8 +53,8 @@ module Humanizer
         }
     }
 
-    var plurals: InflectorExtensions_Rule[] = [];
-    var singulars: InflectorExtensions_Rule[] = [];
+    var plurals: InflectorExtensionsRule[] = [];
+    var singulars: InflectorExtensionsRule[] = [];
     var uncountables: string[] = [];
 
     function addUncountable(word: string): void
@@ -64,12 +64,12 @@ module Humanizer
 
     function addSingular(rule: string, replacement: string): void
     {
-        singulars.push(new InflectorExtensions_Rule(rule, replacement));
+        singulars.push(new InflectorExtensionsRule(rule, replacement));
     }
 
     function addPlural(rule: string, replacement: string): void
     {
-        plurals.push(new InflectorExtensions_Rule(rule, replacement));
+        plurals.push(new InflectorExtensionsRule(rule, replacement));
     }
 
     function addIrregluar(singular: string, plural: string): void
@@ -140,7 +140,7 @@ module Humanizer
     addUncountable("deer");
     addUncountable("aircraft");
 
-    function applyRules(rules: Array<InflectorExtensions_Rule>, word: string): string
+    function applyRules(rules: Array<InflectorExtensionsRule>, word: string): string
     {
         if (word === null)
         {

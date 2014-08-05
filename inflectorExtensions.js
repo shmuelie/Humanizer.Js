@@ -23,18 +23,18 @@
     })(Humanizer.Plurality || (Humanizer.Plurality = {}));
     var Plurality = Humanizer.Plurality;
 
-    var InflectorExtensions_Rule = (function () {
-        function InflectorExtensions_Rule(pattern, replacement) {
+    var InflectorExtensionsRule = (function () {
+        function InflectorExtensionsRule(pattern, replacement) {
             this.regex = new RegExp(pattern, "i");
             this.replacement = replacement;
         }
-        InflectorExtensions_Rule.prototype.apply = function (word) {
+        InflectorExtensionsRule.prototype.apply = function (word) {
             if (!this.regex.test(word)) {
                 return null;
             }
             return word.replace(this.regex, this.replacement);
         };
-        return InflectorExtensions_Rule;
+        return InflectorExtensionsRule;
     })();
 
     var plurals = [];
@@ -46,11 +46,11 @@
     }
 
     function addSingular(rule, replacement) {
-        singulars.push(new InflectorExtensions_Rule(rule, replacement));
+        singulars.push(new InflectorExtensionsRule(rule, replacement));
     }
 
     function addPlural(rule, replacement) {
-        plurals.push(new InflectorExtensions_Rule(rule, replacement));
+        plurals.push(new InflectorExtensionsRule(rule, replacement));
     }
 
     function addIrregluar(singular, plural) {
