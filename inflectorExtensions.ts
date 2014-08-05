@@ -229,7 +229,7 @@ module Humanizer
             return this;
         }
 
-        var result: string = applyRules(singulars, this)
+        var result: string = applyRules(singulars, this);
 
         if (plurality === Humanizer.Plurality.Plural)
         {
@@ -303,7 +303,7 @@ module Humanizer
         /// </summary>
 
         return this.replace(/([A-Z]+)([A-Z][a-z])/, "$1_$2").replace(/([a-z\d])([A-Z])/, "$1_$2").replace(/[-\s]/, "_").toLowerCase();
-    }
+    };
 
     /**
      * Replaces underscores with dashes in the string
@@ -315,7 +315,7 @@ module Humanizer
         /// </summary>
 
         return this.replace("_", "-");
-    }
+    };
 
     /**
      * Replaces underscores with hyphens in the string
@@ -327,5 +327,5 @@ module Humanizer
         /// </summary>
 
         return this.dasherize();
-    }
+    };
 } 
