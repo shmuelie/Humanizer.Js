@@ -1,6 +1,8 @@
 ﻿var Humanizer;
 (function (Humanizer) {
-    /** Changes the casing of the provided input */
+    /**
+    * Changes the casing of the provided input
+    */
     String.prototype.applyCasing = function (casing) {
         switch (casing) {
             case 0 /* Title */:

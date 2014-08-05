@@ -1,5 +1,7 @@
 ﻿var Humanizer;
 (function (Humanizer) {
+    "use strict";
+
     /**
     * Considers input as bits
     */

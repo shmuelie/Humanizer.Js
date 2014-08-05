@@ -22,6 +22,8 @@
 
 module Humanizer.Bytes
 {
+    "use strict";
+
     function isDigit(str: string): boolean
     {
         return (/[0-9]/).test(str.charAt(0));
@@ -242,8 +244,8 @@ module Humanizer.Bytes
             }
 
             str = str.trim();
-            var num;
-            var found = false;
+            var num: number;
+            var found: boolean = false;
             for (num = 0; num < str.length; num++)
             {
                 if (!(isDigit(str.charAt(num)) || (str.charAt(num) === ".")))
@@ -278,7 +280,7 @@ module Humanizer.Bytes
                 case ByteSize.ByteSymbol:
                     if (sizePart === ByteSize.BitSymbol)
                     {
-                        if ($number % 1 != 0)
+                        if ($number % 1 !== 0)
                         {
                             return null;
                         }

@@ -10,6 +10,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     /**
      * Considers input as bits
      */

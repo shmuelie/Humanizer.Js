@@ -18,6 +18,8 @@ var Humanizer;
     //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     //THE SOFTWARE.
     (function (Bytes) {
+        "use strict";
+
         function isDigit(str) {
             return (/[0-9]/).test(str.charAt(0));
         }
@@ -202,7 +204,7 @@ var Humanizer;
                 switch (sizePart.toUpperCase()) {
                     case ByteSize.ByteSymbol:
                         if (sizePart === ByteSize.BitSymbol) {
-                            if ($number % 1 != 0) {
+                            if ($number % 1 !== 0) {
                                 return null;
                             }
                             return ByteSize.fromBits($number);
