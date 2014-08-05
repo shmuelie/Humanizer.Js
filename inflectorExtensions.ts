@@ -19,11 +19,17 @@ module Humanizer
      */
     export enum Plurality
     {
-        /** The word is singular */
+        /** 
+         * The word is singular 
+         */
         Singular,
-        /** The word is plural */
+        /** 
+         * The word is plural 
+         */
         Plural,
-        /** I am unsure of the plurality */
+        /** 
+         * I am unsure of the plurality 
+         */
         CouldBeEither
     }
 

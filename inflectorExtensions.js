@@ -6,13 +6,19 @@
     * @readonly
     */
     (function (Plurality) {
-        /** The word is singular */
+        /**
+        * The word is singular
+        */
         Plurality[Plurality["Singular"] = 0] = "Singular";
 
-        /** The word is plural */
+        /**
+        * The word is plural
+        */
         Plurality[Plurality["Plural"] = 1] = "Plural";
 
-        /** I am unsure of the plurality */
+        /**
+        * I am unsure of the plurality
+        */
         Plurality[Plurality["CouldBeEither"] = 2] = "CouldBeEither";
     })(Humanizer.Plurality || (Humanizer.Plurality = {}));
     var Plurality = Humanizer.Plurality;
