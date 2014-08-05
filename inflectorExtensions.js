@@ -1,5 +1,7 @@
 ﻿var Humanizer;
 (function (Humanizer) {
+    "use strict";
+
     /**
     * Provides hint for Humanizer as to whether a word is singular, plural or with unknown plurality
     * @enum
