@@ -1,6 +1,8 @@
 ﻿module Humanizer
 {
-    var someTime = {
+    "use strict";
+
+    var someTime: Object = {
         1: {},
         2: {},
         3: {},
@@ -30,89 +32,89 @@
         var month: string = "month" + plural;
         var year: string = "year" + plural;
 
-        someTime[i][second] = (function (j)
+        someTime[i][second] = (function (j: number): () => Date
         {
-            var fn: () => Date = function ()
+            var fn: () => Date = function (): Date
             {
                 return new Date((new Date()).getTime() + j * MILLIS_PER_SECOND);
             };
             return fn;
         } (i));
-        someTime[i][second + "From"] = (function (j)
+        someTime[i][second + "From"] = (function (j: number): (date: Date) => Date
         {
-            var fn: (date: Date) => Date = function (date: Date)
+            var fn: (date: Date) => Date = function (date: Date): Date
             {
                 return new Date(date.getTime() + j * MILLIS_PER_SECOND);
             };
             return fn;
         } (i));
-        someTime[i][minute] = (function (j)
+        someTime[i][minute] = (function (j: number): () => Date
         {
-            var fn: () => Date = function ()
+            var fn: () => Date = function (): Date
             {
                 return new Date((new Date()).getTime() + j * MILLIS_PER_MINUTE);
             };
             return fn;
         } (i));
-        someTime[i][minute + "From"] = (function (j)
+        someTime[i][minute + "From"] = (function (j: number): (date: Date) => Date
         {
-            var fn: (date: Date) => Date = function (date: Date)
+            var fn: (date: Date) => Date = function (date: Date): Date
             {
                 return new Date(date.getTime() + j * MILLIS_PER_MINUTE);
             };
             return fn;
         } (i));
-        someTime[i][hour] = (function (j)
+        someTime[i][hour] = (function (j: number): () => Date
         {
-            var fn: () => Date = function ()
+            var fn: () => Date = function (): Date
             {
                 return new Date((new Date()).getTime() + j * MILLIS_PER_HOUR);
             };
             return fn;
         } (i));
-        someTime[i][hour + "From"] = (function (j)
+        someTime[i][hour + "From"] = (function (j: number): (date: Date) => Date
         {
-            var fn: (date: Date) => Date = function (date: Date)
+            var fn: (date: Date) => Date = function (date: Date): Date
             {
                 return new Date(date.getTime() + j * MILLIS_PER_HOUR);
             };
             return fn;
         } (i));
-        someTime[i][day] = (function (j)
+        someTime[i][day] = (function (j: number): () => Date
         {
-            var fn: () => Date = function ()
+            var fn: () => Date = function (): Date
             {
                 return new Date((new Date()).getTime() + j * MILLIS_PER_DAY);
             };
             return fn;
         } (i));
-        someTime[i][day + "From"] = (function (j)
+        someTime[i][day + "From"] = (function (j: number): (date: Date) => Date
         {
-            var fn: (date: Date) => Date = function (date: Date)
+            var fn: (date: Date) => Date = function (date: Date): Date
             {
                 return new Date(date.getTime() + j * MILLIS_PER_DAY);
             };
             return fn;
         } (i));
-        someTime[i][week] = (function (j)
+        someTime[i][week] = (function (j: number): () => Date
         {
-            var fn: () => Date = function ()
+            var fn: () => Date = function (): Date
             {
                 return new Date((new Date()).getTime() + j * MILLIS_PER_WEEK);
             };
             return fn;
         } (i));
-        someTime[i][week + "From"] = (function (j)
+        someTime[i][week + "From"] = (function (j: number): (date: Date) => Date
         {
-            var fn: (date: Date) => Date = function (date: Date)
+            var fn: (date: Date) => Date = function (date: Date): Date
             {
                 return new Date(date.getTime() + j * MILLIS_PER_WEEK);
             };
             return fn;
         } (i));
-        someTime[i][month] = (function (j)
+        someTime[i][month] = (function (j: number): () => Date
         {
-            var fn: () => Date = function ()
+            var fn: () => Date = function (): Date
             {
                 var now: Date = new Date();
                 now.setMonth(now.getMonth() + j);
@@ -120,30 +122,31 @@
             };
             return fn;
         } (i));
-        someTime[i][month + "From"] = (function (j)
+        someTime[i][month + "From"] = (function (j: number): (date: Date) => Date
         {
-            var fn: (date: Date) => Date = function (date: Date)
+            var fn: (date: Date) => Date = function (date: Date): Date
             {
-                var newDate = new Date(date.getTime());
+                var newDate: Date = new Date(date.getTime());
                 newDate.setMonth(date.getMonth() + j);
                 return newDate;
             };
+            return fn;
         } (i));
-        someTime[i][year] = (function (j)
+        someTime[i][year] = (function (j: number): () => Date
         {
-            var fn: () => Date = function ()
+            var fn: () => Date = function (): Date
             {
-                var now = new Date();
+                var now: Date = new Date();
                 now.setFullYear(now.getFullYear() + j);
                 return now;
             };
             return fn;
         } (i));
-        someTime[i][year + "From"] = (function (j)
+        someTime[i][year + "From"] = (function (j: number): (date:Date) => Date
         {
-            var fn: (date: Date) => Date = function (date: Date)
+            var fn: (date: Date) => Date = function (date: Date): Date
             {
-                var newDate = new Date(date.getTime());
+                var newDate: Date = new Date(date.getTime());
                 newDate.setFullYear(newDate.getFullYear() + j);
                 return newDate;
             };
@@ -162,7 +165,7 @@
         static seven = someTime[7];
         static eight = someTime[8];
         static nine = someTime[9];
-        static ten = someTime[10]
+        static ten = someTime[10];
 
         static theYear(year: number): Date
         {

@@ -1,5 +1,7 @@
 ﻿var Humanizer;
 (function (Humanizer) {
+    "use strict";
+
     var someTime = {
         1: {},
         2: {},
@@ -103,6 +105,7 @@
                 newDate.setMonth(date.getMonth() + j);
                 return newDate;
             };
+            return fn;
         }(i));
         someTime[i][year] = (function (j) {
             var fn = function () {
