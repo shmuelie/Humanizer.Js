@@ -245,7 +245,7 @@ module Humanizer.Bytes
             /// </param>
 
             return new Humanizer.Bytes.ByteRate(this, internval);
-        } 
+        }
 
         static parse(str: string): ByteSize
         {
