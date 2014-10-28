@@ -20,6 +20,6 @@ module Humanizer
         {
             titlizedWords[i] = titlizedWords[i].humanize(Humanizer.LetterCasing.Title);
         }
-        return titlizedWords.join("");
+        return titlizedWords.join("").replace(" ", "");
     };
 } 

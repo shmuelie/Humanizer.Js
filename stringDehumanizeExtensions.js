@@ -12,7 +12,7 @@
         for (var i = 0; i < length; i++) {
             titlizedWords[i] = titlizedWords[i].humanize(0 /* Title */);
         }
-        return titlizedWords.join("");
+        return titlizedWords.join("").replace(" ", "");
     };
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=stringDehumanizeExtensions.js.map
