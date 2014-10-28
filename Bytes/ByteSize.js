@@ -170,6 +170,16 @@ var Humanizer;
                 return ByteSize.fromBits(this.bits - other.bits);
             };
 
+            ByteSize.prototype.per = function (internval) {
+                /// <summary>
+                ///     Turns a quantity of bytes in a given interval into a rate that can be manipulated
+                /// </summary>
+                /// <param name="internval" type="number" integer="true">
+                ///     Interval to create rate for
+                /// </param>
+                return new Humanizer.Bytes.ByteRate(this, internval);
+            };
+
             ByteSize.parse = function (str) {
                 if (!str) {
                     throw new Error("'str' cannot be undefined, null, or empty");
