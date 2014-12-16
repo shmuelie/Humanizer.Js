@@ -374,6 +374,111 @@ var Humanizer;
 })(Humanizer || (Humanizer = {}));
 var Humanizer;
 (function (Humanizer) {
+    (function (Configuration) {
+        (function (Configurator) {
+            var formatter = new Configuration.FormatterRegistry();
+
+            function getFormatter(culture) {
+                return formatter.resolveForCulture(culture);
+            }
+            Configurator.getFormatter = getFormatter;
+        })(Configuration.Configurator || (Configuration.Configurator = {}));
+        var Configurator = Configuration.Configurator;
+    })(Humanizer.Configuration || (Humanizer.Configuration = {}));
+    var Configuration = Humanizer.Configuration;
+})(Humanizer || (Humanizer = {}));
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var Humanizer;
+(function (Humanizer) {
+    (function (Configuration) {
+        var FormatterRegistry = (function (_super) {
+            __extends(FormatterRegistry, _super);
+            function FormatterRegistry() {
+                var _this = this;
+                _super.call(this, new Humanizer.Localisation.Formatter.DefaultFormatter("en-US"));
+                this.registerDefaultFormatter = function (culture) {
+                    _this.register(culture, new Humanizer.Localisation.Formatter.DefaultFormatter(culture));
+                };
+                this.registerDefaultFormatter("bg");
+                this.registerDefaultFormatter("pt-Bthis.r");
+                this.registerDefaultFormatter("sv");
+                this.registerDefaultFormatter("tr");
+                this.registerDefaultFormatter("vi");
+                this.registerDefaultFormatter("en-US");
+                this.registerDefaultFormatter("af");
+                this.registerDefaultFormatter("da");
+                this.registerDefaultFormatter("de");
+                this.registerDefaultFormatter("el");
+                this.registerDefaultFormatter("es");
+                this.registerDefaultFormatter("fa");
+                this.registerDefaultFormatter("fi-FI");
+                this.registerDefaultFormatter("fr");
+                this.registerDefaultFormatter("fr-BE");
+                this.registerDefaultFormatter("hu");
+                this.registerDefaultFormatter("id");
+                this.registerDefaultFormatter("ja");
+                this.registerDefaultFormatter("nb");
+                this.registerDefaultFormatter("nb-NO");
+                this.registerDefaultFormatter("nl");
+                this.registerDefaultFormatter("bn-BD");
+                this.registerDefaultFormatter("it");
+                this.registerDefaultFormatter("uz-Latn-UZ");
+                this.registerDefaultFormatter("uz-Cyrl-UZ");
+            }
+            return FormatterRegistry;
+        })(Configuration.LocaliserRegistry);
+        Configuration.FormatterRegistry = FormatterRegistry;
+    })(Humanizer.Configuration || (Humanizer.Configuration = {}));
+    var Configuration = Humanizer.Configuration;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (Configuration) {
+        var LocaliserRegistry = (function () {
+            function LocaliserRegistry(_default) {
+                var _this = this;
+                this.findLocaliser = function (culture) {
+                    var localiser = _this.localizer[culture];
+                    if (localiser !== undefined) {
+                        return localiser;
+                    }
+                    return _this.defaultLocalizer;
+                };
+                this.localizer = {};
+                this.defaultLocalizer = function (culture) {
+                    return _default;
+                };
+            }
+            LocaliserRegistry.prototype.resolveForCulture = function (culture) {
+                if (typeof culture === "undefined") { culture = Humanizer.Resources.getCurrentCulture(); }
+                return this.findLocaliser(culture)(culture);
+            };
+
+            LocaliserRegistry.prototype.register = function () {
+                var culture = arguments[0];
+                if (typeof arguments[1] === "function") {
+                    var func = arguments[1];
+                    this.localizer[culture] = func;
+                } else {
+                    var localiser = arguments[1];
+                    this.localizer[culture] = function (c) {
+                        return localiser;
+                    };
+                }
+            };
+            return LocaliserRegistry;
+        })();
+        Configuration.LocaliserRegistry = LocaliserRegistry;
+    })(Humanizer.Configuration || (Humanizer.Configuration = {}));
+    var Configuration = Humanizer.Configuration;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
     "use strict";
 
     var someTime = {
@@ -990,6 +1095,144 @@ var Humanizer;
 var Humanizer;
 (function (Humanizer) {
     (function (Localisation) {
+        (function (Formatter) {
+            "use strict";
+
+            function format(resourceKey, culture, num) {
+                var str = Humanizer.Resources.getResource(culture)[resourceKey];
+                if (num === undefined) {
+                    return str;
+                } else {
+                    return Humanizer.Resources.format(str, num);
+                }
+            }
+
+            function getResourceForDate(unit, timeUnitTense, count, culture) {
+                var resourceKey = Localisation.ResourceKeys.DateHumanize.GetResourceKey(unit, timeUnitTense, count);
+                return count === 1 ? format(resourceKey, culture) : format(resourceKey, culture, count);
+            }
+
+            function getResourceForTime(unit, count, culture) {
+                var resourceKey = Localisation.ResourceKeys.TimeHumanize.GetResourceKey(unit, count);
+                return count === 1 ? format(resourceKey, culture) : format(resourceKey, culture, count);
+            }
+
+            var DefaultFormatter = (function () {
+                function DefaultFormatter(culture) {
+                    this.culture = culture;
+                }
+                DefaultFormatter.prototype.DateHumanize_Now = function () {
+                    return getResourceForDate(0 /* Millisecond */, 1 /* Past */, 0, this.culture);
+                };
+
+                DefaultFormatter.prototype.DateHumanize = function (timeunit, timeUnitTense, unit) {
+                    return getResourceForDate(timeunit, timeUnitTense, unit, this.culture);
+                };
+
+                DefaultFormatter.prototype.TimeHumanizer_Zero = function () {
+                    return getResourceForTime(0 /* Millisecond */, 0, this.culture);
+                };
+
+                DefaultFormatter.prototype.TimeHumanize = function (timeunit, unit) {
+                    return getResourceForTime(timeunit, unit, this.culture);
+                };
+                return DefaultFormatter;
+            })();
+            Formatter.DefaultFormatter = DefaultFormatter;
+        })(Localisation.Formatter || (Localisation.Formatter = {}));
+        var Formatter = Localisation.Formatter;
+    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
+    var Localisation = Humanizer.Localisation;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (Localisation) {
+        (function (ResourceKeys) {
+            var DateHumanize = (function () {
+                function DateHumanize() {
+                }
+                DateHumanize.Now = "DateHumanize_Now";
+                DateHumanize.DateTimeFormat = "DateHumanize_{0}{1}{2}";
+                DateHumanize.Ago = "Ago";
+                DateHumanize.FromNow = "FromNow";
+                DateHumanize.GetResourceKey = function (timeUnit, timeUnitTense, count) {
+                    if (typeof count === "undefined") { count = 1; }
+                    ResourceKeys.ValidateRange(count);
+
+                    if (count === 1) {
+                        return DateHumanize.Now;
+                    }
+
+                    var singularity = count == 1 ? ResourceKeys.Single : ResourceKeys.Multiple;
+                    var tense = timeUnitTense == 0 /* Future */ ? DateHumanize.FromNow : DateHumanize.Ago;
+                    var unit = timeUnit.toString().toQuantity(count, 0 /* None */);
+                    return Humanizer.Resources.format(DateHumanize.DateTimeFormat, singularity, unit, tense);
+                };
+                return DateHumanize;
+            })();
+            ResourceKeys.DateHumanize = DateHumanize;
+        })(Localisation.ResourceKeys || (Localisation.ResourceKeys = {}));
+        var ResourceKeys = Localisation.ResourceKeys;
+    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
+    var Localisation = Humanizer.Localisation;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (Localisation) {
+        (function (ResourceKeys) {
+            var TimeHumanize = (function () {
+                function TimeHumanize() {
+                }
+                TimeHumanize.TimeFormat = "TimeHumanize_{0}{1}{2}";
+                TimeHumanize.Zero = "TimeHumanize_Zero";
+                TimeHumanize.GetResourceKey = function (unit, count) {
+                    if (typeof count === "undefined") { count = 1; }
+                    ResourceKeys.ValidateRange(count);
+
+                    if (count === 0) {
+                        return TimeHumanize.Zero;
+                    }
+
+                    return Humanizer.Resources.format(TimeHumanize.TimeFormat, count === 1 ? ResourceKeys.Single : ResourceKeys.Multiple, Localisation.TimeUnit[unit], count === 1 ? "" : "s");
+                };
+                return TimeHumanize;
+            })();
+            ResourceKeys.TimeHumanize = TimeHumanize;
+        })(Localisation.ResourceKeys || (Localisation.ResourceKeys = {}));
+        var ResourceKeys = Localisation.ResourceKeys;
+    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
+    var Localisation = Humanizer.Localisation;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (Localisation) {
+        (function (ResourceKeys) {
+            ResourceKeys.Single = "Single";
+            ResourceKeys.Multiple = "Multiple";
+            ResourceKeys.ValidateRange = function (count) {
+                if (count < 0) {
+                    throw new RangeError();
+                }
+            };
+        })(Localisation.ResourceKeys || (Localisation.ResourceKeys = {}));
+        var ResourceKeys = Localisation.ResourceKeys;
+    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
+    var Localisation = Humanizer.Localisation;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (Localisation) {
+        (function (Tense) {
+            Tense[Tense["Future"] = 0] = "Future";
+            Tense[Tense["Past"] = 1] = "Past";
+        })(Localisation.Tense || (Localisation.Tense = {}));
+        var Tense = Localisation.Tense;
+    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
+    var Localisation = Humanizer.Localisation;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (Localisation) {
         /**
         * Units of time.
         * @enum
@@ -1103,6 +1346,85 @@ var Humanizer;
     Number.prototype.milliseconds = function () {
         return this;
     };
+
+    Number.prototype.time = function (percision, countEmptyUnits, culture) {
+        if (typeof percision === "undefined") { percision = 1; }
+        if (typeof countEmptyUnits === "undefined") { countEmptyUnits = false; }
+        if (typeof culture === "undefined") { culture = Humanizer.Resources.getCurrentCulture(); }
+        var timeParts = parts(this, culture);
+        var i = 0;
+        if (!countEmptyUnits) {
+            while (i < timeParts.length) {
+                if (timeParts[i] === null) {
+                    timeParts.splice(i, 1);
+                } else {
+                    i++;
+                }
+            }
+        }
+        if (percision < timeParts.length) {
+            timeParts.splice(percision, timeParts.length - percision);
+        }
+        if (countEmptyUnits) {
+            i = 0;
+            while (i < timeParts.length) {
+                if (timeParts[i] === null) {
+                    timeParts.splice(i, 1);
+                } else {
+                    i++;
+                }
+            }
+        }
+        return timeParts.join(", ");
+    };
+
+    function parts(timespan, culture) {
+        var days = timespan / MILLIS_PER_DAY;
+        var weeks = Math.floor(days / 7);
+        var daysInWeek = days % 7;
+        timespan = timespan - ((weeks * 7 + daysInWeek) * MILLIS_PER_DAY);
+        var hours = Math.floor(timespan / MILLIS_PER_HOUR);
+        timespan = timespan - (hours * MILLIS_PER_HOUR);
+        var minutes = Math.floor(timespan / MILLIS_PER_MINUTE);
+        timespan = timespan - (minutes * MILLIS_PER_MINUTE);
+        var seconds = Math.floor(timespan / MILLIS_PER_SECOND);
+        var milliseconds = timespan - (seconds * MILLIS_PER_SECOND);
+
+        var outputWeeks = weeks > 0;
+        var outputDays = outputWeeks || daysInWeek > 0;
+        var outputHours = outputDays || hours > 0;
+        var outputMinutes = outputHours || minutes > 0;
+        var outputSeconds = outputMinutes || seconds > 0;
+        var outputMilliseconds = outputSeconds || milliseconds > 0;
+
+        var result;
+        var formatter = Humanizer.Configuration.Configurator.getFormatter(culture);
+        if (outputWeeks) {
+            result.push(part(formatter, 5 /* Week */, weeks));
+        }
+        if (outputDays) {
+            result.push(part(formatter, 4 /* Day */, days));
+        }
+        if (outputHours) {
+            result.push(part(formatter, 3 /* Hour */, hours));
+        }
+        if (outputMinutes) {
+            result.push(part(formatter, 2 /* Minute */, minutes));
+        }
+        if (outputSeconds) {
+            result.push(part(formatter, 1 /* Second */, seconds));
+        }
+        if (outputMilliseconds) {
+            result.push(part(formatter, 0 /* Millisecond */, milliseconds));
+        } else {
+            result.push(formatter.TimeHumanizer_Zero());
+        }
+        return result;
+    }
+
+    function part(formatter, timeUnit, unit) {
+        return unit !== 0 ? formatter.TimeHumanize(timeUnit, unit) : null;
+    }
 })(Humanizer || (Humanizer = {}));
 var Humanizer;
 (function (Humanizer) {
@@ -1327,6 +1649,86 @@ var Humanizer;
 })(Humanizer || (Humanizer = {}));
 var Humanizer;
 (function (Humanizer) {
+    (function (Resources) {
+        Humanizer.Resources["en-US"] = {
+            DateHumanize_MultipleDaysAgo: "{0} days ago",
+            DateHumanize_MultipleDaysFromNow: "{0} days from now",
+            DateHumanize_MultipleHoursAgo: "{0} hours ago",
+            DateHumanize_MultipleHoursFromNow: "{0} hours from now",
+            DateHumanize_MultipleMinutesAgo: "{0} minutes ago",
+            DateHumanize_MultipleMinutesFromNow: "{0} minutes from now",
+            DateHumanize_MultipleMonthsAgo: "{0} months ago",
+            DateHumanize_MultipleMonthsFromNow: "{0} months from now",
+            DateHumanize_MultipleSecondsAgo: "{0} seconds ago",
+            DateHumanize_MultipleSecondsFromNow: "{0} seconds from now",
+            DateHumanize_MultipleYearsAgo: "{0} years ago",
+            DateHumanize_MultipleYearsFromNow: "{0} years from now",
+            DateHumanize_Now: "now",
+            DateHumanize_SingleDayAgo: "yesterday",
+            DateHumanize_SingleDayFromNow: "tomorrow",
+            DateHumanize_SingleHourAgo: "an hour ago",
+            DateHumanize_SingleHourFromNow: "an hour from now",
+            DateHumanize_SingleMinuteAgo: "a minute ago",
+            DateHumanize_SingleMinuteFromNow: "a minute from now",
+            DateHumanize_SingleMonthAgo: "one month ago",
+            DateHumanize_SingleMonthFromNow: "one month from now",
+            DateHumanize_SingleSecondAgo: "one second ago",
+            DateHumanize_SingleSecondFromNow: "one second from now",
+            DateHumanize_SingleYearAgo: "one year ago",
+            DateHumanize_SingleYearFromNow: "one year from now",
+            TimeHumanize_MultipleDays: "{0} days",
+            TimeHumanize_MultipleHours: "{0} hours",
+            TimeHumanize_MultipleMilliseconds: "{0} milliseconds",
+            TimeHumanize_MultipleMinutes: "{0} minutes",
+            TimeHumanize_MultipleSeconds: "{0} seconds",
+            TimeHumanize_MultipleWeeks: "{0} weeks",
+            TimeHumanize_SingleDay: "1 day",
+            TimeHumanize_SingleHour: "1 hour",
+            TimeHumanize_SingleMillisecond: "1 millisecond",
+            TimeHumanize_SingleMinute: "1 minute",
+            TimeHumanize_SingleSecond: "1 second",
+            TimeHumanize_SingleWeek: "1 week",
+            TimeHumanize_Zero: "no time"
+        };
+    })(Humanizer.Resources || (Humanizer.Resources = {}));
+    var Resources = Humanizer.Resources;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (Resources) {
+        "use strict";
+
+        function getCurrentCulture() {
+            return navigator.language || navigator.userLanguage || "en-US";
+        }
+        Resources.getCurrentCulture = getCurrentCulture;
+
+        function getResource(culture) {
+            var r = Humanizer.Resources[culture];
+            if (r !== null) {
+                return r;
+            }
+            return Humanizer.Resources["en-US"];
+        }
+        Resources.getResource = getResource;
+
+        function format(str) {
+            var obj = [];
+            for (var _i = 0; _i < (arguments.length - 1); _i++) {
+                obj[_i] = arguments[_i + 1];
+            }
+            var worker = str;
+            for (var i = 0; i < obj.length; i++) {
+                worker = worker.replace("{" + i + "}", obj[i].toString());
+            }
+            return worker;
+        }
+        Resources.format = format;
+    })(Humanizer.Resources || (Humanizer.Resources = {}));
+    var Resources = Humanizer.Resources;
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
     var numberOfRomanNumeralMaps = 13;
     var romanNumberals = {
         "M": 1000,
@@ -1487,6 +1889,33 @@ var Humanizer;
             return humanize(this).applyCasing(casing);
         } else {
             return humanize(this);
+        }
+    };
+})(Humanizer || (Humanizer = {}));
+var Humanizer;
+(function (Humanizer) {
+    (function (ShowQuantityAs) {
+        ShowQuantityAs[ShowQuantityAs["None"] = 0] = "None";
+        ShowQuantityAs[ShowQuantityAs["Numeric"] = 1] = "Numeric";
+        ShowQuantityAs[ShowQuantityAs["Words"] = 2] = "Words";
+    })(Humanizer.ShowQuantityAs || (Humanizer.ShowQuantityAs = {}));
+    var ShowQuantityAs = Humanizer.ShowQuantityAs;
+
+    String.prototype.toQuantity = function (quantity, showQuantityAs) {
+        if (typeof showQuantityAs === "undefined") { showQuantityAs = 0 /* None */; }
+        var transformedInput = quantity === 1 ? this.singularize(2 /* CouldBeEither */) : this.pluralize(2 /* CouldBeEither */);
+
+        if (showQuantityAs === 0 /* None */) {
+            return transformedInput;
+        }
+
+        switch (showQuantityAs) {
+            case 0 /* None */:
+                return transformedInput;
+            case 1 /* Numeric */:
+                return quantity.toString() + transformedInput;
+            case 2 /* Words */:
+                return quantity.toWords() + transformedInput;
         }
     };
 })(Humanizer || (Humanizer = {}));
