@@ -99,11 +99,14 @@ module Humanizer
 
         for (var key in romanNumberals)
         {
-            var value: number = romanNumberals[key];
-            while (input / value > 0)
+            if (Object.prototype.hasOwnProperty.call(romanNumberals, romanNumberals))
             {
-                sb.push(key);
-                input -= value;
+                var value: number = romanNumberals[key];
+                while (input / value > 0)
+                {
+                    sb.push(key);
+                    input -= value;
+                }
             }
         }
 

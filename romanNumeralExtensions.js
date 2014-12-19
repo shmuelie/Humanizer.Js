@@ -68,10 +68,12 @@ var Humanizer;
         var sb = [];
         var input = this;
         for (var key in romanNumberals) {
-            var value = romanNumberals[key];
-            while (input / value > 0) {
-                sb.push(key);
-                input -= value;
+            if (Object.prototype.hasOwnProperty.call(romanNumberals, romanNumberals)) {
+                var value = romanNumberals[key];
+                while (input / value > 0) {
+                    sb.push(key);
+                    input -= value;
+                }
             }
         }
         return sb.join("");
