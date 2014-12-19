@@ -32,9 +32,9 @@
             this.registerDefaultFormatter("uz-Cyrl-UZ");
         }
 
-        private registerDefaultFormatter: (culture: string) => void = (culture: string): void =>
+        private registerDefaultFormatter(culture: string): void
         {
             this.register(culture, new Humanizer.Localisation.Formatter.DefaultFormatter(culture));
-        };
+        }
     }
 } 

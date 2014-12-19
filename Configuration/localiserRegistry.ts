@@ -36,7 +36,7 @@
             }
         }
         
-        private findLocaliser: (culture: string) => (culture: string) => T = (culture: string): (culture: string) => T =>
+        private findLocaliser(culture: string): (culture: string) => T
         {
             var localiser: (culture: string) => T = this.localizer[culture];
             if (localiser !== undefined)
@@ -46,4 +46,4 @@
             return this.defaultLocalizer;
         }   
     }
-} 
+}

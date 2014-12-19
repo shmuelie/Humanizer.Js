@@ -1,4 +1,4 @@
-﻿var __extends = this.__extends || function (d, b) {
+var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -6,15 +6,12 @@
 };
 var Humanizer;
 (function (Humanizer) {
+    var Configuration;
     (function (Configuration) {
         var FormatterRegistry = (function (_super) {
             __extends(FormatterRegistry, _super);
             function FormatterRegistry() {
-                var _this = this;
                 _super.call(this, new Humanizer.Localisation.Formatter.DefaultFormatter("en-US"));
-                this.registerDefaultFormatter = function (culture) {
-                    _this.register(culture, new Humanizer.Localisation.Formatter.DefaultFormatter(culture));
-                };
                 this.registerDefaultFormatter("bg");
                 this.registerDefaultFormatter("pt-Bthis.r");
                 this.registerDefaultFormatter("sv");
@@ -41,10 +38,12 @@ var Humanizer;
                 this.registerDefaultFormatter("uz-Latn-UZ");
                 this.registerDefaultFormatter("uz-Cyrl-UZ");
             }
+            FormatterRegistry.prototype.registerDefaultFormatter = function (culture) {
+                this.register(culture, new Humanizer.Localisation.Formatter.DefaultFormatter(culture));
+            };
             return FormatterRegistry;
         })(Configuration.LocaliserRegistry);
         Configuration.FormatterRegistry = FormatterRegistry;
-    })(Humanizer.Configuration || (Humanizer.Configuration = {}));
-    var Configuration = Humanizer.Configuration;
+    })(Configuration = Humanizer.Configuration || (Humanizer.Configuration = {}));
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=FormatterRegistry.js.map
