@@ -15,8 +15,8 @@
                 return DateHumanize.Now;
             }
 
-            var singularity: string = count == 1 ? Single : Multiple;
-            var tense: string = timeUnitTense == Tense.Future ? DateHumanize.FromNow : DateHumanize.Ago;
+            var singularity: string = count === 1 ? Single : Multiple;
+            var tense: string = timeUnitTense === Tense.Future ? DateHumanize.FromNow : DateHumanize.Ago;
             var unit: string = timeUnit.toString().toQuantity(count, Humanizer.ShowQuantityAs.None);
             return Humanizer.Resources.format(DateHumanize.DateTimeFormat, singularity, unit, tense);
         }

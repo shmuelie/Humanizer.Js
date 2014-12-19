@@ -115,7 +115,7 @@ module Humanizer
             {
                 if (tens < 20)
                 {
-                    if ((tens == 2) && (hundreds == 0) && (groupLevel > 0))
+                    if ((tens === 2) && (hundreds === 0) && (groupLevel > 0))
                     {
                         if ((num === 2000) || (num === 2000000) || (num === 2000000000))
                         {
@@ -176,7 +176,7 @@ module Humanizer
                         result = "و " + result;
                     }
 
-                    if (groupNumber != 2)
+                    if (groupNumber !== 2)
                     {
                         if (groupNumber % 100 !== 1)
                         {

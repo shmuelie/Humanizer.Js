@@ -10,7 +10,7 @@
                 return null;
             }
 
-            if (value.length == 0)
+            if (value.length === 0)
             {
                 return value;
             }

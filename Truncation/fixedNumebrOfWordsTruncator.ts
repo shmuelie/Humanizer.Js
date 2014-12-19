@@ -46,7 +46,7 @@
 
                 lastCharactersWasWhiteSpace = true;
 
-                if (numberOfWordsProcessed == length)
+                if (numberOfWordsProcessed === length)
                 {
                     return truncationString + value.substr(i + 1).trim();
                 }
