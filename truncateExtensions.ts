@@ -14,7 +14,7 @@ module Humanizer
     export enum TruncateFrom
     {
         /** Truncate letters from the left (start) of the string */
-        Left, 
+        Left,
         /** Truncate letters from the right (end) of the string */
         Right
     }

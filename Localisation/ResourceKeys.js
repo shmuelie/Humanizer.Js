@@ -1,6 +1,8 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    var Localisation;
     (function (Localisation) {
+        var ResourceKeys;
         (function (ResourceKeys) {
             ResourceKeys.Single = "Single";
             ResourceKeys.Multiple = "Multiple";
@@ -9,9 +11,7 @@
                     throw new RangeError();
                 }
             };
-        })(Localisation.ResourceKeys || (Localisation.ResourceKeys = {}));
-        var ResourceKeys = Localisation.ResourceKeys;
-    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
-    var Localisation = Humanizer.Localisation;
+        })(ResourceKeys = Localisation.ResourceKeys || (Localisation.ResourceKeys = {}));
+    })(Localisation = Humanizer.Localisation || (Humanizer.Localisation = {}));
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=ResourceKeys.js.map

@@ -70,7 +70,7 @@ module Humanizer
         }
 
         return total;
-    }
+    };
 
     /**
      * Converts the input to Roman number
@@ -108,5 +108,5 @@ module Humanizer
         }
 
         return sb.join("");
-    }
+    };
 } 

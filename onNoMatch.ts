@@ -5,11 +5,11 @@
      * @readononly
      * @enum
      */
-    export enum OnNoMatch 
+    export enum OnNoMatch
     {
         //** This is the default behavior which throws a NoMatchFoundException */
         ThrowsException,
         /** If set to ReturnsNull the method returns null instead of throwing an exception */
         ReturnsNull
-    } 
+    }
 }

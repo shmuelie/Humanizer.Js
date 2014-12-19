@@ -8,5 +8,5 @@
         {
             throw new RangeError();
         }
-    }
+    };
 } 

@@ -1,5 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    var Resources;
     (function (Resources) {
         Humanizer.Resources["en-US"] = {
             DateHumanize_MultipleDaysAgo: "{0} days ago",
@@ -41,7 +42,6 @@
             TimeHumanize_SingleWeek: "1 week",
             TimeHumanize_Zero: "no time"
         };
-    })(Humanizer.Resources || (Humanizer.Resources = {}));
-    var Resources = Humanizer.Resources;
+    })(Resources = Humanizer.Resources || (Humanizer.Resources = {}));
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=en-US.js.map

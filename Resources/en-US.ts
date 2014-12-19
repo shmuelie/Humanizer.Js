@@ -38,6 +38,6 @@
         TimeHumanize_SingleMinute: "1 minute",
         TimeHumanize_SingleSecond: "1 second",
         TimeHumanize_SingleWeek: "1 week",
-        TimeHumanize_Zero: "no time"        
+        TimeHumanize_Zero: "no time"
     };
 }

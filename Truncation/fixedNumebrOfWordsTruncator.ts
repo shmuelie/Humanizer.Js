@@ -74,7 +74,7 @@
 
             var numberOfWords: number = 0;
             var words: string[] = value.split(whiteSpaceTest);
-            
+
             for (var i: number = 0; i < words.length; i++)
             {
                 if (!empty.test(words[i]))
@@ -90,5 +90,5 @@
 
             return truncateFrom === TruncateFrom.Right ? truncateFromRight(value, length, truncationString) : truncateFromLeft(value, length, truncationString);
         }
-    }    
+    }
 } 
