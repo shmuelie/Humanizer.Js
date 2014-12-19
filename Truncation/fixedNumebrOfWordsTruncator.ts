@@ -1,5 +1,7 @@
 ﻿module Humanizer
 {
+    "use strict";
+
     var whiteSpaceTest = /\s/;
     var empty = /^\s*$/;
 

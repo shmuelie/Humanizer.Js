@@ -1,5 +1,7 @@
 ﻿module Humanizer
 {
+    "use strict";
+
     /**
      * Dictating what should be done when a match is not found - currently used only for DehumanizeTo
      * @readononly

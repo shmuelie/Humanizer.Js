@@ -4,6 +4,7 @@ var Humanizer;
     (function (Localisation) {
         var ResourceKeys;
         (function (ResourceKeys) {
+            "use strict";
             var DateHumanize = (function () {
                 function DateHumanize() {
                 }

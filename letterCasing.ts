@@ -1,5 +1,7 @@
 ﻿module Humanizer
 {
+    "use strict";
+
     /**
      * @enum
      * @readonly

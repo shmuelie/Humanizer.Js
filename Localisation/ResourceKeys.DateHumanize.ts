@@ -1,5 +1,7 @@
 ﻿module Humanizer.Localisation.ResourceKeys
 {
+    "use strict";
+
     export class DateHumanize
     {
         static Now: string = "DateHumanize_Now";

@@ -1,13 +1,14 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    "use strict";
     /** Transforms a string using the provided transformers. Transformations are applied in the provided order. */
     String.prototype.transform = function () {
         /// <summary>
         ///     Transforms a string using the provided transformers. Transformations are applied in the provided order.
         /// </summary>
         var transformers = [];
-        for (var _i = 0; _i < (arguments.length - 0); _i++) {
-            transformers[_i] = arguments[_i + 0];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            transformers[_i - 0] = arguments[_i];
         }
         var str = this;
         var length = transformers.length;
@@ -16,7 +17,6 @@
         }
         return str;
     };
-
     var To = (function () {
         function To() {
         }

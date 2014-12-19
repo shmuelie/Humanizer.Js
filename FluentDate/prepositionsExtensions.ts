@@ -8,6 +8,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     Date.prototype.at = function (hour: number, min: number = 0, second: number = 0, millisecond: number = 0): Date
     {
         return new Date(this.getFullYear(), this.getMonth(), this.getDate(), hour, min, second, millisecond);

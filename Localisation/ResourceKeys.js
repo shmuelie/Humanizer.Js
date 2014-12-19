@@ -4,6 +4,7 @@ var Humanizer;
     (function (Localisation) {
         var ResourceKeys;
         (function (ResourceKeys) {
+            "use strict";
             ResourceKeys.Single = "Single";
             ResourceKeys.Multiple = "Multiple";
             ResourceKeys.ValidateRange = function (count) {

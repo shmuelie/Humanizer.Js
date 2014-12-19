@@ -1,1 +1,1 @@
-﻿//# sourceMappingURL=iStringTransformer.js.map
+//# sourceMappingURL=iStringTransformer.js.map

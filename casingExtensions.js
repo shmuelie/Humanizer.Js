@@ -1,9 +1,13 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    "use strict";
     /**
-    * Changes the casing of the provided input
-    */
+     * Changes the casing of the provided input
+     */
     String.prototype.applyCasing = function (casing) {
+        /// <summary>
+        ///     Changes the casing of the provided input
+        /// </summary>
         switch (casing) {
             case 0 /* Title */:
                 return this.transform(Humanizer.To.TitleCase);

@@ -5,6 +5,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     function toEnglishWords(num: number): string
     {
         if (num === 0)

@@ -1,5 +1,7 @@
 ﻿module Humanizer
 {
+    "use strict";
+
     export class ToSentenceCase implements Humanizer.IStringTransformer
     {
         transform(input: string): string

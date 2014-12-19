@@ -2,6 +2,7 @@ var Humanizer;
 (function (Humanizer) {
     var Resources;
     (function (Resources) {
+        "use strict";
         Humanizer.Resources["en-US"] = {
             DateHumanize_MultipleDaysAgo: "{0} days ago",
             DateHumanize_MultipleDaysFromNow: "{0} days from now",

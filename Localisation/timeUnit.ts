@@ -1,5 +1,7 @@
 ﻿module Humanizer.Localisation
 {
+    "use strict";
+
     /**
      * Units of time.
      * @enum

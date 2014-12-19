@@ -1,5 +1,7 @@
 ﻿module Humanizer.Resources
 {
+    "use strict";
+
     Humanizer.Resources["en-US"] = <Resource>{
         DateHumanize_MultipleDaysAgo: "{0} days ago",
         DateHumanize_MultipleDaysFromNow: "{0} days from now",

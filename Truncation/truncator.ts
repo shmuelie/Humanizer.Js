@@ -1,5 +1,7 @@
 ﻿module Humanizer
 {
+    "use strict";
+
     export class Truncator
     {
         static FixedLength: ITruncator = new FixedLengthTruncator();

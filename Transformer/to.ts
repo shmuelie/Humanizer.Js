@@ -5,6 +5,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     /** Transforms a string using the provided transformers. Transformations are applied in the provided order. */
     String.prototype.transform = function (...transformers: IStringTransformer[])
     {

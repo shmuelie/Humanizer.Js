@@ -1,5 +1,7 @@
 ﻿module Humanizer.Configuration
 {
+    "use strict";
+
     export class LocaliserRegistry<T>
     {
         private localizer: Object;

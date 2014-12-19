@@ -9,6 +9,8 @@ interface Number
 
 module Humanizer
 {
+    "use strict";
+
     var numberOfRomanNumeralMaps: number = 13;
     var romanNumberals = {
         "M": 1000,

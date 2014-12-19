@@ -8,6 +8,7 @@ var Humanizer;
 (function (Humanizer) {
     var Configuration;
     (function (Configuration) {
+        "use strict";
         var FormatterRegistry = (function (_super) {
             __extends(FormatterRegistry, _super);
             function FormatterRegistry() {

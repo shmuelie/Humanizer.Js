@@ -5,6 +5,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     function fromUnderscoreDashSeparatedWords(input: string): string
     {
         return input.split(/[_-]/g, Number.MAX_VALUE).join(" ");

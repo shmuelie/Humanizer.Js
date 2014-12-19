@@ -1,5 +1,6 @@
 var Humanizer;
 (function (Humanizer) {
+    "use strict";
     function toEnglishWords(num) {
         if (num === 0) {
             return "zero";

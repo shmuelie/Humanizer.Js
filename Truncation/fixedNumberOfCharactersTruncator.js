@@ -1,5 +1,6 @@
 var Humanizer;
 (function (Humanizer) {
+    "use strict";
     var charRegex = /[A-Za-z0-9]/;
     var FixedNumberOfCharactersTruncator = (function () {
         function FixedNumberOfCharactersTruncator() {

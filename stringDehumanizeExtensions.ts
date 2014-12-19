@@ -5,6 +5,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     /**
      * Dehumanizes a string; e.g. 'some string', 'Some String', 'Some string' -> 'SomeString'
      */

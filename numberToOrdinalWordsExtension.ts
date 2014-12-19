@@ -5,6 +5,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     function exceptionNumberToWords(num: number): string
     {
         var exceptions = {

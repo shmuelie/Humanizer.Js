@@ -5,6 +5,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     /** 
      * Changes the casing of the provided input 
      */

@@ -1,5 +1,7 @@
 ﻿module Humanizer.Configuration
 {
+    "use strict";
+
     export class FormatterRegistry extends LocaliserRegistry<Humanizer.Localisation.Formatter.IFormatter>
     {
         constructor()

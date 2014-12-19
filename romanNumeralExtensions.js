@@ -1,5 +1,6 @@
 var Humanizer;
 (function (Humanizer) {
+    "use strict";
     var numberOfRomanNumeralMaps = 13;
     var romanNumberals = {
         "M": 1000,

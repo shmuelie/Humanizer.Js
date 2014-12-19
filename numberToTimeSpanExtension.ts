@@ -11,6 +11,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     var MILLIS_PER_SECOND: number = 1000;
     var MILLIS_PER_MINUTE: number = MILLIS_PER_SECOND * 60;
     var MILLIS_PER_HOUR: number = MILLIS_PER_MINUTE * 60;

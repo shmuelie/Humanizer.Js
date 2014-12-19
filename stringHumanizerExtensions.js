@@ -1,9 +1,9 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    "use strict";
     function fromUnderscoreDashSeparatedWords(input) {
         return input.split(/[_-]/g, Number.MAX_VALUE).join(" ");
     }
-
     function fromPascalCase(input) {
         var pascalCaseRegex = /(?:([A-Z][a-z]+)(?=[A-Z]))|(?:([a-z]+)(?=[A-Z]))|(?:(\d+))|(?:([A-Z][a-z]+))|([A-Z]+)/g;
         var matches = input.match(pascalCaseRegex) || [];
@@ -16,23 +16,19 @@
         result = result.charAt(0).toUpperCase() + result.substr(1);
         return result.replace(" i ", " I ");
     }
-
     function humanize(input) {
         if (input === input.toUpperCase()) {
             return input;
         }
-
         if ((input.indexOf("_") !== -1) || (input.indexOf("-") !== -1)) {
             return fromUnderscoreDashSeparatedWords(input);
         }
-
         return fromPascalCase(input);
     }
-
     /**
-    * Humanizes the input string
-    * @param {Humanizer.LetterCasing} [casing] The desired casing for the output
-    */
+     * Humanizes the input string
+     * @param {Humanizer.LetterCasing} [casing] The desired casing for the output
+     */
     String.prototype.humanize = function (casing) {
         /// <signature>
         ///     <summary>
@@ -49,7 +45,8 @@
         /// </signature>
         if ((casing !== null) && (casing !== undefined)) {
             return humanize(this).applyCasing(casing);
-        } else {
+        }
+        else {
             return humanize(this);
         }
     };

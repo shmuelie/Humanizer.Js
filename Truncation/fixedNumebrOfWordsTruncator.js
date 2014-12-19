@@ -1,5 +1,6 @@
 var Humanizer;
 (function (Humanizer) {
+    "use strict";
     var whiteSpaceTest = /\s/;
     var empty = /^\s*$/;
     function truncateFromRight(value, length, truncationString) {

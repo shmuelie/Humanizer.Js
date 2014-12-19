@@ -1,5 +1,7 @@
 ﻿module Humanizer.Localisation.ResourceKeys
 {
+    "use strict";
+
     export class TimeHumanize
     {
         static TimeFormat: string = "TimeHumanize_{0}{1}{2}";

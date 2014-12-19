@@ -2,6 +2,7 @@ var Humanizer;
 (function (Humanizer) {
     var Configuration;
     (function (Configuration) {
+        "use strict";
         var LocaliserRegistry = (function () {
             function LocaliserRegistry(_default) {
                 this.localizer = {};

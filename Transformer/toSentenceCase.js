@@ -1,5 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    "use strict";
     var ToSentenceCase = (function () {
         function ToSentenceCase() {
         }

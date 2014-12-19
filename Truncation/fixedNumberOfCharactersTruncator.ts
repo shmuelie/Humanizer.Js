@@ -1,5 +1,7 @@
 ﻿module Humanizer
 {
+    "use strict";
+
     var charRegex = /[A-Za-z0-9]/;
     export class FixedNumberOfCharactersTruncator implements ITruncator
     {

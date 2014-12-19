@@ -1,5 +1,6 @@
 var Humanizer;
 (function (Humanizer) {
+    "use strict";
     /**
      * Truncation location for humanizer
      * @enum

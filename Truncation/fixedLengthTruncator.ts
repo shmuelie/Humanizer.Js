@@ -1,5 +1,7 @@
 ﻿module Humanizer
 {
+    "use strict";
+
     export class FixedLengthTruncator implements ITruncator
     {
         truncate(value: string, length: number, truncationString: string, truncateFrom: TruncateFrom = TruncateFrom.Right): string

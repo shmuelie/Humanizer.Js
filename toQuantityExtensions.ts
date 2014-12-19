@@ -5,6 +5,8 @@
 
 module Humanizer
 {
+    "use strict";
+
     export enum ShowQuantityAs
     {
         None,

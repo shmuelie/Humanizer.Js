@@ -9,6 +9,8 @@ interface Number
 
 module Humanizer
 {
+    "use strict";
+
     function ordinalize(num: number, numberString: string): string
     {
         var nMod100: number = num % 100;
