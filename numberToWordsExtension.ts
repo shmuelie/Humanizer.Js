@@ -36,7 +36,7 @@ module Humanizer
         if ((num / 1000) > 0)
         {
             parts.push(Math.floor(num / 1000).toWords() + " thousand");
-            num %= 1000
+            num %= 1000;
         }
 
         if ((num / 100) > 0)

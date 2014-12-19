@@ -35,8 +35,9 @@ var Humanizer;
                     return truncationString + value.substr(i + 1).trim();
                 }
             }
-            else
+            else {
                 lastCharactersWasWhiteSpace = false;
+            }
         }
         return truncationString + value;
     }

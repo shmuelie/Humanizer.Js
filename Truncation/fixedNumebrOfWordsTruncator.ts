@@ -54,7 +54,9 @@
                 }
             }
             else
+            {
                 lastCharactersWasWhiteSpace = false;
+            }
 
         }
         return truncationString + value;
