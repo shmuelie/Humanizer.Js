@@ -1,7 +1,6 @@
 var Humanizer;
 (function (Humanizer) {
     "use strict";
-    var numberOfRomanNumeralMaps = 13;
     var romanNumberals = {
         "M": 1000,
         "CM": 900,
@@ -62,7 +61,6 @@ var Humanizer;
         /// </returns>
         var minValue = 1;
         var maxValue = 3999;
-        var mazRomanNumeralLength = 15;
         if ((this < minValue) || (this > maxValue)) {
             throw new Error("Out of range");
         }

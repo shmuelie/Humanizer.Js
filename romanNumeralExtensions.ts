@@ -11,7 +11,6 @@ module Humanizer
 {
     "use strict";
 
-    var numberOfRomanNumeralMaps: number = 13;
     var romanNumberals = {
         "M": 1000,
         "CM": 900,
@@ -89,7 +88,6 @@ module Humanizer
 
         var minValue: number = 1;
         var maxValue: number = 3999;
-        var mazRomanNumeralLength: number = 15;
 
         if ((this < minValue) || (this > maxValue))
         {
