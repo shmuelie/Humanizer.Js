@@ -52,7 +52,7 @@
     export function getResource(culture: string): Resource
     {
         var r: Resource = <Resource>Humanizer.Resources[culture];
-        if (r !== null)
+        if (r !== undefined)
         {
             return r;
         }
