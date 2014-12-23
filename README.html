@@ -1,14 +1,39 @@
-<h1>Humanizer.Js</h1>
+﻿<h1>Humanizer.Js</h1>
 
-<p>Humanizer meets all your JavaScript needs for manipulating and displaying strings, dates, times, numbers and quantities
-This is a port of the popular <a href="http://humanizr.net/">Humanizer</a> library for JavaScript. For the most part you can just follow the documentation for Humanizer with little to no issue. See below for big differences.</p>
+<p>Humanizer meets all your JavaScript needs for manipulating and displaying 
+strings, dates, times, numbers and quantities. This is a port of the popular 
+<a href="https://github.com/MehdiK/Humanizer">Humanizer</a> library to JavaScript. For the 
+most part you can just follow the documentation for Humanizer with little to no 
+issue. See below for big differences.</p>
 
-<h2>Notes</h2>
+<h2>Differences From Humanizer</h2>
 
 <ol>
-<li>NumberToTimeSpan really just comverts the given amount of time to the number of milliseconds in that timeframe. This is done since there is no TimeSpan object and milliseconds is the base unit of time in JavaScript. The name has been left for compatability with Humanizer.C#</li>
+<li>Name casing has been changed for JavaScript so all functions and properties 
+start with lower case now, so instead of 
+<code>"Sentence casing".Transform(To.LowerCase)</code> you use 
+<code>"Sentence casing".transform(Humanizer.To.LowerCase)</code>.</li>
+<li>There isn't a TimeSpan equivalent in JavaScript so all action from or to 
+TimeSpans now use Numbers in milliseconds instead. So instead of 
+<code>TimeSpan.FromDays(16).Humanize()</code> you use <code>16.days().time()</code>. Both will 
+return "2 weeks".</li>
+<li>I am sadly behind the changes to Humanizer so at times what I have will be 
+the old way of doing something so you might have to look at older version of 
+the documentation to understand things.</li>
 </ol>
 
 <h2>Road Map</h2>
 
-<p>At this time most of Humanizer has been converted to JavaScript. The only parts that remain are relient on localization, which will be a pain to implement. I might do it but not anytime soon.</p>
+<p>I have two primary tasks currently with Humanizer.Js</p>
+
+<ol>
+<li>Implement features not that are in Humanizer.</li>
+<li>Update Implemented features to match updates to Humanizer.</li>
+</ol>
+
+<p>Currently it's just me working on this while I wait for code to compile at work. 
+As such I'm only going so fast. I'm currently focusing on number 2 so that the 
+documentation from Humanizer can be used. To save myself time I currently am 
+only implementing default and/or English for code that is localisable. The 
+ablity to add other languages is, but for the sake of getting more of the API 
+done I'm only doing this.</p>
