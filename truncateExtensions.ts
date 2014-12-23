@@ -1,7 +1,7 @@
 ﻿interface String
 {
-    truncate(length: number, truncator?: Humanizer.ITruncator, from?: Humanizer.TruncateFrom);
-    truncateWith(length: number, truncationString: string, truncator?: Humanizer.ITruncator, from?: Humanizer.TruncateFrom);
+    truncate(length: number, truncator?: Humanizer.ITruncator, from?: Humanizer.TruncateFrom): string;
+    truncateWith(length: number, truncationString: string, truncator?: Humanizer.ITruncator, from?: Humanizer.TruncateFrom): string;
 }
 
 module Humanizer

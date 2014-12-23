@@ -44,6 +44,13 @@
         TimeHumanize_Zero: string;
     }
 
+    interface ResourceDictionary
+    {
+        [culture: string]: Resource;
+    }
+
+    export var _cultures: ResourceDictionary = {};
+
     export function getCurrentCulture(): string
     {
         return navigator.language || navigator.userLanguage || "en-US";
@@ -51,12 +58,12 @@
 
     export function getResource(culture: string): Resource
     {
-        var r: Resource = <Resource>Humanizer.Resources[culture];
+        var r: Resource = <Resource>Humanizer.Resources._cultures[culture];
         if (r !== undefined)
         {
             return r;
         }
-        return <Resource>Humanizer.Resources["en-US"];
+        return <Resource>Humanizer.Resources._cultures["en-US"];
     }
 
     export function format(str: string, ...obj: Object[]): string

@@ -2,9 +2,14 @@
 {
     "use strict";
 
+    interface LocalizerDictionary<T>
+    {
+        [key: string]: (culture: string) => T;
+    }
+
     export class LocaliserRegistry<T>
     {
-        private localizer: Object;
+        private localizer: LocalizerDictionary<T>;
         private defaultLocalizer: (culture: string) => T;
 
         constructor(_default: T)
@@ -21,9 +26,9 @@
             return this.findLocaliser(culture)(culture);
         }
 
-        register(culture: string, localiser: T)
-        register(culture: string, func: (c: string) => T)
-        register()
+        register(culture: string, localiser: T): void
+        register(culture: string, func: (c: string) => T): void
+        register(): void
         {
             var culture: string = arguments[0];
             if (typeof arguments[1] === "function")

@@ -4,7 +4,7 @@
 
     function format(resourceKey: string, culture: string, num?: number): string
     {
-        var str: string = Resources.getResource(culture)[resourceKey];
+        var str: string = (<any>Resources.getResource(culture))[resourceKey];
         if (num === undefined)
         {
             return str;

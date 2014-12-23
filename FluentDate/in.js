@@ -1,7 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     var someTime = {
         1: {},
         2: {},
@@ -14,13 +13,11 @@
         9: {},
         10: {}
     };
-
     var MILLIS_PER_SECOND = 1000;
     var MILLIS_PER_MINUTE = MILLIS_PER_SECOND * 60;
     var MILLIS_PER_HOUR = MILLIS_PER_MINUTE * 60;
     var MILLIS_PER_DAY = MILLIS_PER_HOUR * 24;
     var MILLIS_PER_WEEK = MILLIS_PER_DAY * 7;
-
     for (var i = 1; i <= 10; i++) {
         var plural = i > 1 ? "s" : "";
         var second = "second" + plural;
@@ -30,7 +27,6 @@
         var week = "week" + plural;
         var month = "month" + plural;
         var year = "year" + plural;
-
         someTime[i][second] = (function (j) {
             var fn = function () {
                 return new Date((new Date()).getTime() + j * MILLIS_PER_SECOND);
@@ -124,127 +120,114 @@
             return fn;
         }(i));
     }
-
     var In = (function () {
         function In() {
         }
         In.theYear = function (year) {
             return new Date(year, 0, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of January of the current year
-        */
+         * Returns the 1st of January of the current year
+         */
         In.january = function () {
             /// <summary>
             ///     Returns the 1st of January of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 0, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of February of the current year
-        */
+         * Returns the 1st of February of the current year
+         */
         In.february = function () {
             /// <summary>
             ///     Returns the 1st of February of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 1, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of March of the current year
-        */
+         * Returns the 1st of March of the current year
+         */
         In.march = function () {
             /// <summary>
             ///     Returns the 1st of March of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 2, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of April of the current year
-        */
+         * Returns the 1st of April of the current year
+         */
         In.april = function () {
             /// <summary>
             ///     Returns the 1st of April of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 3, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of May of the current year
-        */
+         * Returns the 1st of May of the current year
+         */
         In.may = function () {
             /// <summary>
             ///     Returns the 1st of May of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 4, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of June of the current year
-        */
+         * Returns the 1st of June of the current year
+         */
         In.june = function () {
             /// <summary>
             ///     Returns the 1st of June of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 5, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of July of the current year
-        */
+         * Returns the 1st of July of the current year
+         */
         In.july = function () {
             /// <summary>
             ///     Returns the 1st of July of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 6, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of August of the current year
-        */
+         * Returns the 1st of August of the current year
+         */
         In.august = function () {
             /// <summary>
             ///     Returns the 1st of August of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 7, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of September of the current year
-        */
+         * Returns the 1st of September of the current year
+         */
         In.september = function () {
             /// <summary>
             ///     Returns the 1st of September of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 8, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of October of the current year
-        */
+         * Returns the 1st of October of the current year
+         */
         In.october = function () {
             /// <summary>
             ///     Returns the 1st of October of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 9, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of November of the current year
-        */
+         * Returns the 1st of November of the current year
+         */
         In.november = function () {
             /// <summary>
             ///     Returns the 1st of November of the current year
             /// </summary>
             return new Date((new Date()).getFullYear(), 10, 1, 0, 0, 0, 0);
         };
-
         /**
-        * Returns the 1st of December of the current year
-        */
+         * Returns the 1st of December of the current year
+         */
         In.december = function () {
             /// <summary>
             ///     Returns the 1st of December of the current year

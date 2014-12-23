@@ -2,7 +2,17 @@
 {
     "use strict";
 
-    var someTime: Object = {
+    interface SomeTimeDictionary
+    {
+        [key: number]: TimeDictionary
+    }
+
+    interface TimeDictionary
+    {
+        [key: string]: Function;
+    }
+
+    var someTime: SomeTimeDictionary = {
         1: {},
         2: {},
         3: {},

@@ -3,16 +3,17 @@ var Humanizer;
     var Resources;
     (function (Resources) {
         "use strict";
+        Resources._cultures = {};
         function getCurrentCulture() {
             return navigator.language || navigator.userLanguage || "en-US";
         }
         Resources.getCurrentCulture = getCurrentCulture;
         function getResource(culture) {
-            var r = Humanizer.Resources[culture];
+            var r = Humanizer.Resources._cultures[culture];
             if (r !== undefined) {
                 return r;
             }
-            return Humanizer.Resources["en-US"];
+            return Humanizer.Resources._cultures["en-US"];
         }
         Resources.getResource = getResource;
         function format(str) {

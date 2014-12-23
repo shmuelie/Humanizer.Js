@@ -7,9 +7,14 @@ module Humanizer
 {
     "use strict";
 
+    interface ExceptionsDictionary
+    {
+        [num: number]: string;
+    }
+
     function exceptionNumberToWords(num: number): string
     {
-        var exceptions = {
+        var exceptions: ExceptionsDictionary = {
             1: "first",
             2: "second",
             3: "third",

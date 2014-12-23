@@ -11,7 +11,12 @@ module Humanizer
 {
     "use strict";
 
-    var romanNumberals = {
+    interface RomanNumberalsDictionary
+    {
+        [letter: string]: number;
+    }
+
+    var romanNumberals: RomanNumberalsDictionary = {
         "M": 1000,
         "CM": 900,
         "D": 500,
