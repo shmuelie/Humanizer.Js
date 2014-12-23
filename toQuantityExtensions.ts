@@ -1,6 +1,6 @@
 ﻿interface String
 {
-    toQuantity: (quantity: number, showQuantityAs?: Humanizer.ShowQuantityAs) => string;
+    toQuantity(quantity: number, showQuantityAs?: Humanizer.ShowQuantityAs): string;
 }
 
 module Humanizer

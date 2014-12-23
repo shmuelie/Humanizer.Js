@@ -1,6 +1,6 @@
 ﻿interface String
 {
-    applyCasing: (casing: Humanizer.LetterCasing) => string;
+    applyCasing(casing: Humanizer.LetterCasing): string;
 }
 
 module Humanizer

@@ -1,11 +1,11 @@
 ﻿interface Number
 {
-    bits: () => Humanizer.Bytes.ByteSize;
-    bytes: () => Humanizer.Bytes.ByteSize;
-    kilobytes: () => Humanizer.Bytes.ByteSize;
-    megabytes: () => Humanizer.Bytes.ByteSize;
-    gigabytes: () => Humanizer.Bytes.ByteSize;
-    terabytes: () => Humanizer.Bytes.ByteSize;
+    bits(): Humanizer.Bytes.ByteSize;
+    bytes(): Humanizer.Bytes.ByteSize;
+    kilobytes(): Humanizer.Bytes.ByteSize;
+    megabytes(): Humanizer.Bytes.ByteSize;
+    gigabytes(): Humanizer.Bytes.ByteSize;
+    terabytes(): Humanizer.Bytes.ByteSize;
 }
 
 module Humanizer

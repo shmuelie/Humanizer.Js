@@ -1,6 +1,6 @@
 ﻿interface String
 {
-    dehumanize: () => string;
+    dehumanize(): string;
 }
 
 module Humanizer

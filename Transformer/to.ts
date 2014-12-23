@@ -1,6 +1,6 @@
 ﻿interface String
 {
-    transform: (...transformers: Humanizer.IStringTransformer[]) => string;
+    transform(...transformers: Humanizer.IStringTransformer[]): string;
 }
 
 module Humanizer

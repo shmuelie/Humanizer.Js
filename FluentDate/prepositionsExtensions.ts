@@ -1,9 +1,9 @@
 ﻿interface Date
 {
-    at: (hour: number, min: number, second: number, millisecond: number) => Date;
-    atMidnight: () => Date;
-    atNoon: () => Date;
-    in: (year: number) => Date;
+    at(hour: number, min: number, second: number, millisecond: number): Date;
+    atMidnight(): Date;
+    atNoon(): Date;
+    in(year: number): Date;
 }
 
 module Humanizer

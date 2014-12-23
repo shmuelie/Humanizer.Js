@@ -1,6 +1,6 @@
 ﻿interface Number
 {
-    toOrdinalWords: () => string;
+    toOrdinalWords(): string;
 }
 
 module Humanizer

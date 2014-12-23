@@ -1,10 +1,10 @@
 ﻿interface String
 {
-    ordinalize: () => string;
+    ordinalize(): string;
 }
 interface Number
 {
-    ordinalize: () => string;
+    ordinalize(): string;
 }
 
 module Humanizer

@@ -1,30 +1,26 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     /**
-    * Provides hint for Humanizer as to whether a word is singular, plural or with unknown plurality
-    * @enum
-    * @readonly
-    */
+     * Provides hint for Humanizer as to whether a word is singular, plural or with unknown plurality
+     * @enum
+     * @readonly
+     */
     (function (Plurality) {
         /**
-        * The word is singular
-        */
+         * The word is singular
+         */
         Plurality[Plurality["Singular"] = 0] = "Singular";
-
         /**
-        * The word is plural
-        */
+         * The word is plural
+         */
         Plurality[Plurality["Plural"] = 1] = "Plural";
-
         /**
-        * I am unsure of the plurality
-        */
+         * I am unsure of the plurality
+         */
         Plurality[Plurality["CouldBeEither"] = 2] = "CouldBeEither";
     })(Humanizer.Plurality || (Humanizer.Plurality = {}));
     var Plurality = Humanizer.Plurality;
-
     var InflectorExtensionsRule = (function () {
         function InflectorExtensionsRule(pattern, replacement) {
             this.regex = new RegExp(pattern, "i");
@@ -38,28 +34,22 @@
         };
         return InflectorExtensionsRule;
     })();
-
     var plurals = [];
     var singulars = [];
     var uncountables = [];
-
     function addUncountable(word) {
         uncountables.push(word);
     }
-
     function addSingular(rule, replacement) {
         singulars.push(new InflectorExtensionsRule(rule, replacement));
     }
-
     function addPlural(rule, replacement) {
         plurals.push(new InflectorExtensionsRule(rule, replacement));
     }
-
     function addIrregluar(singular, plural) {
         addPlural("(" + singular.charAt(0) + ")" + singular.substr(1) + "$", "\\1" + plural.substr(1));
         addSingular("(" + plural.charAt(0) + ")" + plural.substr(1) + "$", "\\1" + singular.substr(1));
     }
-
     addPlural("$", "s");
     addPlural("s$", "s");
     addPlural("(ax|test)is$", "\\1es");
@@ -77,7 +67,6 @@
     addPlural("([m|l])ouse$", "\\1ice");
     addPlural("^(ox)$", "\\1en");
     addPlural("(quiz)$", "\\1zes");
-
     addSingular("s$", "");
     addSingular("(n)ews$", "\\1ews");
     addSingular("([ti])a$", "\\1um");
@@ -102,7 +91,6 @@
     addSingular("(vert|ind)ices$", "\\1ex");
     addSingular("(matr)ices$", "\\1ix");
     addSingular("(quiz)zes$", "\\1");
-
     addIrregluar("person", "people");
     addIrregluar("man", "men");
     addIrregluar("child", "children");
@@ -110,7 +98,6 @@
     addIrregluar("move", "moves");
     addIrregluar("goose", "geese");
     addIrregluar("alumna", "alumnae");
-
     addUncountable("equipment");
     addUncountable("information");
     addUncountable("rice");
@@ -121,14 +108,11 @@
     addUncountable("sheep");
     addUncountable("deer");
     addUncountable("aircraft");
-
     function applyRules(rules, word) {
         if (word === null) {
             return null;
         }
-
         var result = word;
-
         if (uncountables.indexOf(word.toLowerCase()) === -1) {
             for (var i = rules.length - 1; i >= 0; i--) {
                 result = rules[i].apply(word);
@@ -137,14 +121,12 @@
                 }
             }
         }
-
         return result;
     }
-
     /**
-    * Pluralizes the provided input considering irregular words
-    * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Singular] Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
-    */
+     * Pluralizes the provided input considering irregular words
+     * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Singular] Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
+     */
     String.prototype.pluralize = function (plurality) {
         /// <signature>
         ///     <summary>
@@ -159,17 +141,14 @@
         ///         Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
         ///     </param>
         /// </signature>
-        if (typeof plurality === "undefined") { plurality = 0 /* Singular */; }
+        if (plurality === void 0) { plurality = 0 /* Singular */; }
         if (plurality === 1 /* Plural */) {
             return this;
         }
-
         var result = applyRules(plurals, this);
-
         if (plurality === 0 /* Singular */) {
             return result;
         }
-
         var asSingular = applyRules(singulars, this);
         var asSingularAsPlural = applyRules(plurals, asSingular);
         if ((asSingular !== null) && (asSingular !== this) && (asSingular + "s" !== this) && (asSingularAsPlural !== this) && (result !== this)) {
@@ -177,11 +156,10 @@
         }
         return result;
     };
-
     /**
-    * Singularizes the provided input considering irregular words.
-    * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Plural] Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
-    */
+     * Singularizes the provided input considering irregular words.
+     * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Plural] Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
+     */
     String.prototype.singularize = function (plurality) {
         /// <signature>
         ///     <summary>
@@ -196,40 +174,34 @@
         ///         Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
         ///     </param>
         /// </signature>
-        if (typeof plurality === "undefined") { plurality = 1 /* Plural */; }
+        if (plurality === void 0) { plurality = 1 /* Plural */; }
         if (plurality === 0 /* Singular */) {
             return this;
         }
-
         var result = applyRules(singulars, this);
-
         if (plurality === 1 /* Plural */) {
             return result;
         }
-
         // the Plurality is unknown so we should check all possibilities
         var asPlural = applyRules(plurals, this);
         var asPluralAsSingular = applyRules(singulars, asPlural);
         if ((asPlural !== this) && (this + "s" !== asPlural) && (asPluralAsSingular === this) && (result !== this)) {
             return this;
         }
-
         return result || this;
     };
-
     /**
-    * Humanizes the input with Title casing
-    */
+     * Humanizes the input with Title casing
+     */
     String.prototype.titleize = function () {
         /// <summary>
         ///     Humanizes the input with Title casing
         /// </summary>
         return this.humanize(0 /* Title */);
     };
-
     /**
-    * By default, pascalize converts strings to UpperCamelCase also removing underscores
-    */
+     * By default, pascalize converts strings to UpperCamelCase also removing underscores
+     */
     String.prototype.pascalize = function () {
         /// <summary>
         ///     By default, pascalize converts strings to UpperCamelCase also removing underscores
@@ -244,10 +216,9 @@
         }
         return result.join("");
     };
-
     /**
-    * Same as Pascalize except that the first character is lower case
-    */
+     * Same as Pascalize except that the first character is lower case
+     */
     String.prototype.camelize = function () {
         /// <summary>
         ///     Same as Pascalize except that the first character is lower case
@@ -255,30 +226,27 @@
         var word = this.pascalize();
         return word.charAt(0).toLowerCase() + word.substr(1);
     };
-
     /**
-    * Separates the input words with underscore
-    */
+     * Separates the input words with underscore
+     */
     String.prototype.underscore = function () {
         /// <summary>
         ///     Separates the input words with underscore
         /// </summary>
         return this.replace(/([A-Z]+)([A-Z][a-z])/, "$1_$2").replace(/([a-z\d])([A-Z])/, "$1_$2").replace(/[-\s]/, "_").toLowerCase();
     };
-
     /**
-    * Replaces underscores with dashes in the string
-    */
+     * Replaces underscores with dashes in the string
+     */
     String.prototype.dasherize = function () {
         /// <summary>
         ///     Replaces underscores with dashes in the string
         /// </summary>
         return this.replace("_", "-");
     };
-
     /**
-    * Replaces underscores with hyphens in the string
-    */
+     * Replaces underscores with hyphens in the string
+     */
     String.prototype.hyphenate = function () {
         /// <summary>
         ///     Replaces underscores with hyphens in the string

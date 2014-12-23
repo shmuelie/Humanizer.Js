@@ -1,10 +1,10 @@
 ﻿interface String
 {
-    fromRoman: () => number;
+    fromRoman(): number;
 }
 interface Number
 {
-    toRoman: () => string;
+    toRoman(): string;
 }
 
 module Humanizer

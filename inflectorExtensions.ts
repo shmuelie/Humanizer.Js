@@ -1,13 +1,13 @@
 ﻿interface String
 {
-    pluralize: (plurality: Humanizer.Plurality) => string;
-    singularize: (plurality: Humanizer.Plurality) => string;
-    titleize: () => string;
-    pascalize: () => string;
-    camelize: () => string;
-    underscore: () => string;
-    dasherize: () => string;
-    hyphenate: () => string;
+    pluralize(plurality: Humanizer.Plurality): string;
+    singularize(plurality: Humanizer.Plurality): string;
+    titleize(): string;
+    pascalize(): string;
+    camelize(): string;
+    underscore(): string;
+    dasherize(): string;
+    hyphenate(): string;
 }
 
 module Humanizer
