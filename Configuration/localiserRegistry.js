@@ -1,8 +1,8 @@
-var Humanizer;
+﻿var Humanizer;
 (function (Humanizer) {
-    var Configuration;
     (function (Configuration) {
         "use strict";
+
         var LocaliserRegistry = (function () {
             function LocaliserRegistry(_default) {
                 this.localizer = {};
@@ -11,22 +11,23 @@ var Humanizer;
                 };
             }
             LocaliserRegistry.prototype.resolveForCulture = function (culture) {
-                if (culture === void 0) { culture = Humanizer.Resources.getCurrentCulture(); }
+                if (typeof culture === "undefined") { culture = Humanizer.Resources.getCurrentCulture(); }
                 return this.findLocaliser(culture)(culture);
             };
+
             LocaliserRegistry.prototype.register = function () {
                 var culture = arguments[0];
                 if (typeof arguments[1] === "function") {
                     var func = arguments[1];
                     this.localizer[culture] = func;
-                }
-                else {
+                } else {
                     var localiser = arguments[1];
                     this.localizer[culture] = function (c) {
                         return localiser;
                     };
                 }
             };
+
             LocaliserRegistry.prototype.findLocaliser = function (culture) {
                 var localiser = this.localizer[culture];
                 if (localiser !== undefined) {
@@ -37,6 +38,7 @@ var Humanizer;
             return LocaliserRegistry;
         })();
         Configuration.LocaliserRegistry = LocaliserRegistry;
-    })(Configuration = Humanizer.Configuration || (Humanizer.Configuration = {}));
+    })(Humanizer.Configuration || (Humanizer.Configuration = {}));
+    var Configuration = Humanizer.Configuration;
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=localiserRegistry.js.map

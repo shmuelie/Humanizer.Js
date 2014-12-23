@@ -1,6 +1,7 @@
-var Humanizer;
+﻿var Humanizer;
 (function (Humanizer) {
     "use strict";
+
     var Truncator = (function () {
         function Truncator() {
         }

@@ -1,6 +1,7 @@
-var Humanizer;
+﻿var Humanizer;
 (function (Humanizer) {
     "use strict";
+
     function exceptionNumberToWords(num) {
         var exceptions = {
             1: "first",
@@ -17,32 +18,40 @@ var Humanizer;
         }
         return null;
     }
+
     function removeOnePrefix(towords) {
         if (towords.indexOf("one") === 0) {
             towords = towords.substr(4);
         }
         return towords;
     }
+
     function normalNumberToWords(num) {
         var towords = num.toWords().replace("-", " ");
+
         towords = removeOnePrefix(towords);
+
         if (towords.lastIndexOf("y") === towords.length - 1) {
             towords = towords.substr(0, towords.length - 1) + "ie";
         }
+
         return towords + "th";
     }
+
     /**
-     * 1.ToOrdinalWords() -> "first"
-     */
+    * 1.ToOrdinalWords() -> "first"
+    */
     Number.prototype.toOrdinalWords = function () {
         /// <summary>
         ///     1.ToOrdinalWords() -> "first"
         /// </summary>
         var towords;
+
         var ex = exceptionNumberToWords(this);
         if (ex !== null) {
             return ex;
         }
+
         if (this > 20) {
             var exceptionPart = exceptionNumberToWords(this % 10);
             if (exceptionPart !== null) {
@@ -51,6 +60,7 @@ var Humanizer;
                 return towords + " " + exceptionPart;
             }
         }
+
         return normalNumberToWords(this);
     };
 })(Humanizer || (Humanizer = {}));

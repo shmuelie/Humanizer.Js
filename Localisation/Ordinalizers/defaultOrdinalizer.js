@@ -1,10 +1,9 @@
-var Humanizer;
+﻿var Humanizer;
 (function (Humanizer) {
-    var Localisation;
     (function (Localisation) {
-        var Ordinalizers;
         (function (Ordinalizers) {
             "use strict";
+
             var DefaultOrdinalizer = (function () {
                 function DefaultOrdinalizer() {
                 }
@@ -14,7 +13,9 @@ var Humanizer;
                 return DefaultOrdinalizer;
             })();
             Ordinalizers.DefaultOrdinalizer = DefaultOrdinalizer;
-        })(Ordinalizers = Localisation.Ordinalizers || (Localisation.Ordinalizers = {}));
-    })(Localisation = Humanizer.Localisation || (Humanizer.Localisation = {}));
+        })(Localisation.Ordinalizers || (Localisation.Ordinalizers = {}));
+        var Ordinalizers = Localisation.Ordinalizers;
+    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
+    var Localisation = Humanizer.Localisation;
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=defaultOrdinalizer.js.map

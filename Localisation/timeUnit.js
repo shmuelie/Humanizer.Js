@@ -1,13 +1,13 @@
-var Humanizer;
+﻿var Humanizer;
 (function (Humanizer) {
-    var Localisation;
     (function (Localisation) {
         "use strict";
+
         /**
-         * Units of time.
-         * @enum
-         * @readonly
-         */
+        * Units of time.
+        * @enum
+        * @readonly
+        */
         (function (TimeUnit) {
             TimeUnit[TimeUnit["Millisecond"] = 0] = "Millisecond";
             TimeUnit[TimeUnit["Second"] = 1] = "Second";
@@ -19,6 +19,7 @@ var Humanizer;
             TimeUnit[TimeUnit["Year"] = 7] = "Year";
         })(Localisation.TimeUnit || (Localisation.TimeUnit = {}));
         var TimeUnit = Localisation.TimeUnit;
-    })(Localisation = Humanizer.Localisation || (Humanizer.Localisation = {}));
+    })(Humanizer.Localisation || (Humanizer.Localisation = {}));
+    var Localisation = Humanizer.Localisation;
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=timeUnit.js.map

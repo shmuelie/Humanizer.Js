@@ -1,6 +1,7 @@
-var Humanizer;
+﻿var Humanizer;
 (function (Humanizer) {
     "use strict";
+
     var ToUpperCase = (function () {
         function ToUpperCase() {
         }
