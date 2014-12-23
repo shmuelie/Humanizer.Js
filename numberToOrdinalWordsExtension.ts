@@ -50,12 +50,12 @@ module Humanizer
     }
 
     /**
-     * 1.ToOrdinalWords() -> "first"
+     * 1.toOrdinalWords() -> "first"
      */
     Number.prototype.toOrdinalWords = function (): string
     {
         /// <summary>
-        ///     1.ToOrdinalWords() -> "first"
+        ///     1.toOrdinalWords() -> "first"
         /// </summary>
 
         var towords: string;
