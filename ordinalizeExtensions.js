@@ -1,35 +1,49 @@
 var Humanizer;
 (function (Humanizer) {
     "use strict";
-    function ordinalize(num, numberString) {
-        var nMod100 = num % 100;
-        if (nMod100 >= 11 && nMod100 <= 13) {
-            return numberString + "th";
+    /** Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th. */
+    String.prototype.ordinalize = function (gender) {
+        /// <signature>
+        ///     <summary>
+        ///         Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
+        ///     </summary>
+        /// </signature>
+        /// <signature>
+        ///     <summary>
+        ///         Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
+        ///     </summary>
+        ///     <param name="gender" type="Humanizer.GrammaticalGender">
+        ///         The grammatical gender to use for output words
+        ///     </param>
+        /// </signature>
+        if (gender === undefined) {
+            return Humanizer.Configuration.Configurator.getOrdinalizer().convert(parseInt(this, 10), this);
         }
-        switch (num % 10) {
-            case 1:
-                return numberString + "st";
-            case 2:
-                return numberString + "nd";
-            case 3:
-                return numberString + "rd";
-            default:
-                return numberString + "th";
+        else {
+            return Humanizer.Configuration.Configurator.getOrdinalizer().convert(parseInt(this, 10), this, gender);
         }
-    }
-    //** Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th. */
-    String.prototype.ordinalize = function () {
-        /// <summary>
-        ///     Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
-        /// </summary>
-        return ordinalize(Number(this), this);
     };
     /** Turns a number into an ordinal number used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th. */
-    Number.prototype.ordinalize = function () {
-        /// <summary>
-        ///     Turns a number into an ordinal number used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
-        /// </summary>
-        return ordinalize(this, this.toString());
+    Number.prototype.ordinalize = function (gender) {
+        /// <signature>
+        ///     <summary>
+        ///         Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
+        ///     </summary>
+        /// </signature>
+        /// <signature>
+        ///     <summary>
+        ///         Turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
+        ///     </summary>
+        ///     <param name="gender" type="Humanizer.GrammaticalGender">
+        ///         The grammatical gender to use for output words
+        ///     </param>
+        /// </signature>
+        if (gender === undefined) {
+            return Humanizer.Configuration.Configurator.getOrdinalizer().convert(this, this.toString());
+        }
+        else {
+            return Humanizer.Configuration.Configurator.getOrdinalizer().convert(this, this.String(), gender);
+        }
     };
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=ordinalizeExtensions.js.map
