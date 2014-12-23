@@ -1,6 +1,6 @@
 ﻿interface Number
 {
-    toWords: () => string;
+    toWords(): string;
 }
 
 module Humanizer

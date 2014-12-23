@@ -1,12 +1,12 @@
 ﻿interface Number
 {
-    days: () => number;
-    weeks: () => number;
-    hours: () => number;
-    minutes: () => number;
-    seconds: () => number;
-    milliseconds: () => number;
-    time: (percision?: number, countEmptyUnits?: boolean) => string;
+    days(): number;
+    weeks(): number;
+    hours(): number;
+    minutes(): number;
+    seconds(): number;
+    milliseconds(): number;
+    time(percision?: number, countEmptyUnits?: boolean): string;
 }
 
 module Humanizer
