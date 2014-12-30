@@ -44,7 +44,7 @@
         TimeHumanize_Zero: string;
     }
 
-    interface ResourceDictionary
+    export interface ResourceDictionary
     {
         [culture: string]: Resource;
     }
