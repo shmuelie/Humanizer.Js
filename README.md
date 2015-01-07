@@ -26,7 +26,7 @@ issue. See below for big differences.
 
 I have two primary tasks currently with Humanizer.Js
 
-1. Implement features not that are in Humanizer.
+1. Implement features not implemented that are in Humanizer.
 2. Update Implemented features to match updates to Humanizer.
 
 Currently it's just me working on this while I wait for code to compile at work. 
