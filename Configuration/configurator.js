@@ -7,6 +7,7 @@
             var formatter = new Configuration.FormatterRegistry();
             var ordinalizers = new Configuration.OrdinalizerRegistry();
             var collections = new Configuration.CollectionFormatterRegistry();
+            var numberToWords = new Configuration.NumberToWordsConverterRegistry();
 
             function getFormatter(culture) {
                 return formatter.resolveForCulture(culture);
@@ -22,6 +23,11 @@
                 return collections.resolveForCulture(Humanizer.Resources.getCurrentCulture());
             }
             Configurator.getCollectionFormatters = getCollectionFormatters;
+
+            function getNumberToWordsConverter() {
+                return numberToWords.resolveForCulture(Humanizer.Resources.getCurrentCulture());
+            }
+            Configurator.getNumberToWordsConverter = getNumberToWordsConverter;
         })(Configuration.Configurator || (Configuration.Configurator = {}));
         var Configurator = Configuration.Configurator;
     })(Humanizer.Configuration || (Humanizer.Configuration = {}));
