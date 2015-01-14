@@ -50,6 +50,12 @@
             {
                 return localiser;
             }
+            culture = culture.substr(0, 2);
+            localiser = this.localizer[culture];
+            if (localiser !== undefined)
+            {
+                return localiser;
+            }
             return this.defaultLocalizer;
         }
     }

@@ -12,7 +12,6 @@ var Humanizer;
             function CollectionFormatterRegistry() {
                 _super.call(this, new Humanizer.Localisation.CollectionFormatters.DefaultCollectionFormatter());
                 this.register("en", new Humanizer.Localisation.CollectionFormatters.EnglishCollectionFormatter());
-                this.register("en-US", new Humanizer.Localisation.CollectionFormatters.EnglishCollectionFormatter());
             }
             return CollectionFormatterRegistry;
         })(Configuration.LocaliserRegistry);

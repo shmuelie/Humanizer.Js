@@ -12,7 +12,6 @@ var Humanizer;
             function NumberToWordsConverterRegistry() {
                 _super.call(this, new Humanizer.Localisation.NumberToWords.DefaultNumberToWordsConverter());
                 this.register("en", new Humanizer.Localisation.NumberToWords.EnglishNumberToWordsConverter());
-                this.register("en-US", new Humanizer.Localisation.NumberToWords.EnglishNumberToWordsConverter());
                 this.register("ar", new Humanizer.Localisation.NumberToWords.ArabicNumberToWordsConverter());
             }
             return NumberToWordsConverterRegistry;

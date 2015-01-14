@@ -6,7 +6,6 @@
         {
             super(new Humanizer.Localisation.CollectionFormatters.DefaultCollectionFormatter());
             this.register("en", new Humanizer.Localisation.CollectionFormatters.EnglishCollectionFormatter());
-            this.register("en-US", new Humanizer.Localisation.CollectionFormatters.EnglishCollectionFormatter());
         }
     }
 } 

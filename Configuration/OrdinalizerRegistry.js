@@ -12,7 +12,6 @@ var Humanizer;
             function OrdinalizerRegistry() {
                 _super.call(this, new Humanizer.Localisation.Ordinalizers.DefaultOrdinalizer());
                 this.register("en", new Humanizer.Localisation.Ordinalizers.EnglishOrdinalizer());
-                this.register("en-US", new Humanizer.Localisation.Ordinalizers.EnglishOrdinalizer());
             }
             return OrdinalizerRegistry;
         })(Configuration.LocaliserRegistry);

@@ -6,7 +6,6 @@
         {
             super(new Localisation.NumberToWords.DefaultNumberToWordsConverter());
             this.register("en", new Localisation.NumberToWords.EnglishNumberToWordsConverter());
-            this.register("en-US", new Localisation.NumberToWords.EnglishNumberToWordsConverter());
             this.register("ar", new Localisation.NumberToWords.ArabicNumberToWordsConverter());
         }
     }
