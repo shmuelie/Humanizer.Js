@@ -26,4 +26,6 @@
     {
         return numberToWords.resolveForCulture(Resources.getCurrentCulture());
     }
+
+    export var dateHumanizeStrategy: DateHumanizeStrategy.IDateHumanizeStrategy = new DateHumanizeStrategy.DefaultDateHumanizeStrategy();
 } 

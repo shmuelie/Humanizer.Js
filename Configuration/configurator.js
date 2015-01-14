@@ -28,6 +28,8 @@
                 return numberToWords.resolveForCulture(Humanizer.Resources.getCurrentCulture());
             }
             Configurator.getNumberToWordsConverter = getNumberToWordsConverter;
+
+            Configurator.dateHumanizeStrategy = new Humanizer.DateHumanizeStrategy.DefaultDateHumanizeStrategy();
         })(Configuration.Configurator || (Configuration.Configurator = {}));
         var Configurator = Configuration.Configurator;
     })(Humanizer.Configuration || (Humanizer.Configuration = {}));
