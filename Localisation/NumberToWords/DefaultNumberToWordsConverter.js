@@ -8,6 +8,8 @@ var Humanizer;
 (function (Humanizer) {
     (function (Localisation) {
         (function (NumberToWords) {
+            "use strict";
+
             var DefaultNumberToWordsConverter = (function (_super) {
                 __extends(DefaultNumberToWordsConverter, _super);
                 function DefaultNumberToWordsConverter() {
