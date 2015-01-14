@@ -2,18 +2,7 @@
 (function (Humanizer) {
     "use strict";
 
-    var someTime = {
-        1: {},
-        2: {},
-        3: {},
-        4: {},
-        5: {},
-        6: {},
-        7: {},
-        8: {},
-        9: {},
-        10: {}
-    };
+    var someTime = {};
 
     var MILLIS_PER_SECOND = 1000;
     var MILLIS_PER_MINUTE = MILLIS_PER_SECOND * 60;
@@ -30,6 +19,8 @@
         var week = "week" + plural;
         var month = "month" + plural;
         var year = "year" + plural;
+
+        someTime[i] = {};
 
         someTime[i][second] = (function (j) {
             var fn = function () {

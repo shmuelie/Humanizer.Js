@@ -2,28 +2,43 @@
 {
     "use strict";
 
-    interface SomeTimeDictionary
+    export interface InUnit
     {
-        [key: number]: TimeDictionary
+        second(): Date;
+        secondFrom(date: Date): Date;
+        minute(): Date;
+        minuteFrom(date: Date): Date;
+        hour(): Date;
+        hourFrom(date: Date): Date;
+        day(): Date;
+        dayFrom(date: Date): Date;
+        week(): Date;
+        weekFrom(date: Date): Date;
+        month(): Date;
+        monthFrom(date: Date): Date;
+        year(): Date;
+        yearFrom(date: Date): Date;
     }
 
-    interface TimeDictionary
+    export interface InUnits
     {
-        [key: string]: Function;
+        seconds(): Date;
+        secondsFrom(date: Date): Date;
+        minutes(): Date;
+        minutesFrom(date: Date): Date;
+        hours(): Date;
+        hoursFrom(date: Date): Date;
+        days(): Date;
+        daysFrom(date: Date): Date;
+        weeks(): Date;
+        weeksFrom(date: Date): Date;
+        months(): Date;
+        monthsFrom(date: Date): Date;
+        years(): Date;
+        yearsFrom(date: Date): Date;
     }
 
-    var someTime: SomeTimeDictionary = {
-        1: {},
-        2: {},
-        3: {},
-        4: {},
-        5: {},
-        6: {},
-        7: {},
-        8: {},
-        9: {},
-        10: {}
-    };
+    var someTime: any = {};
 
     var MILLIS_PER_SECOND: number = 1000;
     var MILLIS_PER_MINUTE: number = MILLIS_PER_SECOND * 60;
@@ -41,6 +56,8 @@
         var week: string = "week" + plural;
         var month: string = "month" + plural;
         var year: string = "year" + plural;
+
+        someTime[i] = {};
 
         someTime[i][second] = (function (j: number): () => Date
         {
@@ -166,16 +183,16 @@
 
     export class In
     {
-        static one = someTime[1];
-        static two = someTime[2];
-        static three = someTime[3];
-        static four = someTime[4];
-        static five = someTime[5];
-        static six = someTime[6];
-        static seven = someTime[7];
-        static eight = someTime[8];
-        static nine = someTime[9];
-        static ten = someTime[10];
+        static one: InUnit = someTime[1];
+        static two: InUnits = someTime[2];
+        static three: InUnits = someTime[3];
+        static four: InUnits = someTime[4];
+        static five: InUnits = someTime[5];
+        static six: InUnits = someTime[6];
+        static seven: InUnits = someTime[7];
+        static eight: InUnits = someTime[8];
+        static nine: InUnits = someTime[9];
+        static ten: InUnits = someTime[10];
 
         static theYear(year: number): Date
         {
