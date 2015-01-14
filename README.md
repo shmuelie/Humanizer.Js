@@ -16,7 +16,7 @@ issue. See below for big differences.
    `"Sentence casing".transform(Humanizer.To.LowerCase)`.
 2. There isn't a TimeSpan equivalent in JavaScript so all action from or to 
    TimeSpans now use Numbers in milliseconds instead. So instead of 
-   `TimeSpan.FromDays(16).Humanize()` you use `16.days().time()`. Both will 
+   `TimeSpan.FromDays(16).Humanize()` you use `(16).days().time()`. Both will 
    return "2 weeks".
 3. I am sadly behind the changes to Humanizer so at times what I have will be 
    the old way of doing something so you might have to look at older version of 
@@ -33,5 +33,5 @@ Currently it's just me working on this while I wait for code to compile at work.
 As such I'm only going so fast. I'm currently focusing on number 2 so that the 
 documentation from Humanizer can be used. To save myself time I currently am 
 only implementing default and/or English for code that is localisable. The 
-ablity to add other languages is, but for the sake of getting more of the API 
-done I'm only doing this.
+ablity to add other languages is there, but for the sake of getting more of the 
+API done I'm only doing this.
