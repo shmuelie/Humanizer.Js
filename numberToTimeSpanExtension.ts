@@ -99,7 +99,7 @@ module Humanizer
         var minutes: number = Math.floor(timespan / MILLIS_PER_MINUTE);
         timespan = timespan - (minutes * MILLIS_PER_MINUTE);
         var seconds: number = Math.floor(timespan / MILLIS_PER_SECOND);
-        var milliseconds = timespan - (seconds * MILLIS_PER_SECOND);
+        var milliseconds: number = timespan - (seconds * MILLIS_PER_SECOND);
 
         var outputWeeks: boolean = weeks > 0;
         var outputDays: boolean = outputWeeks || daysInWeek > 0;
