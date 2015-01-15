@@ -182,7 +182,7 @@ module Humanizer.Bytes
             return this.bits === other.bits;
         }
 
-        compareT(other: ByteSize): number
+        compareTo(other: ByteSize): number
         {
             if (this.bits - other.bits < 0)
             {

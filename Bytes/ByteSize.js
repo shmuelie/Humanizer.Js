@@ -128,7 +128,7 @@ var Humanizer;
                 return this.bits === other.bits;
             };
 
-            ByteSize.prototype.compareT = function (other) {
+            ByteSize.prototype.compareTo = function (other) {
                 if (this.bits - other.bits < 0) {
                     return -1;
                 }
