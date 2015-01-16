@@ -1,7 +1,9 @@
 ﻿interface String
 {
     pluralize(plurality: Humanizer.Plurality): string;
+    pluralize(isKnownToBeSingular?: boolean): string;
     singularize(plurality: Humanizer.Plurality): string;
+    singularize(isKnownToBePlural?: boolean): string;
     titleize(): string;
     pascalize(): string;
     camelize(): string;
@@ -165,89 +167,69 @@ module Humanizer
 
         return result;
     }
-    /**
-     * Pluralizes the provided input considering irregular words
-     * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Singular] Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
-     */
-    String.prototype.pluralize = function (plurality: Humanizer.Plurality = Humanizer.Plurality.Singular): string
+
+    class Inflector
     {
-        /// <signature>
-        ///     <summary>
-        ///         Pluralizes the provided input considering irregular words
-        ///     </summary>
-        /// </signature>
-        /// <signature>
-        ///     <summary>
-        ///         Pluralizes the provided input considering irregular words
-        ///     </summary>
-        ///     <param name="plurality" type="Humanizer.Plurality">
-        ///         Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
-        ///     </param>
-        /// </signature>
-
-        if (plurality === Humanizer.Plurality.Plural)
+        pluralize(plurality: Humanizer.Plurality): string
+        pluralize(isKnownToBeSingular: boolean): string
+        pluralize(x: any = true): string
         {
-            return this;
-        }
+            var $this: string = <string>this;
 
-        var result: string = applyRules(plurals, this);
+            if (x === Humanizer.Plurality.Plural)
+            {
+                return $this;    
+            }
 
-        if (plurality === Humanizer.Plurality.Singular)
-        {
+            var result: string = applyRules(plurals, $this);
+
+            if (x === Humanizer.Plurality.Singular || x === true)
+            {
+                return result;
+            }
+
+            var asSingular: string = applyRules(singulars, $this);
+            var asSingularAsPlural: string = applyRules(plurals, asSingular);
+            if ((asSingular !== null) && (asSingular !== $this) && (asSingular + "s" !== $this) && (asSingularAsPlural !== $this) && (result !== $this))
+            {
+                return $this;
+            }
             return result;
         }
 
-        var asSingular: string = applyRules(singulars, this);
-        var asSingularAsPlural: string = applyRules(plurals, asSingular);
-        if ((asSingular !== null) && (asSingular !== this) && (asSingular + "s" !== this) && (asSingularAsPlural !== this) && (result !== this))
+        singularize(plurality: Humanizer.Plurality): string
+        singularize(isKnownToBePlural: boolean): string
+        singularize(x: any = true): string
         {
-            return this;
+            var $this: string = <string>this;
+
+            if (x === Humanizer.Plurality.Singular)
+            {
+                return $this;
+            }
+
+            var result: string = applyRules(singulars, $this);
+
+            if (x === Humanizer.Plurality.Plural || x === true)
+            {
+                return result;
+            }
+
+            // the Plurality is unknown so we should check all possibilities
+            var asPlural: string = applyRules(plurals, $this);
+            var asPluralAsSingular: string = applyRules(singulars, asPlural);
+            if ((asPlural !== $this) && ($this + "s" !== asPlural) && (asPluralAsSingular === $this) && (result !== $this))
+            {
+                return $this;
+            }
+
+            return result || $this;
         }
-        return result;
-    };
+    }
 
-    /**
-     * Singularizes the provided input considering irregular words.
-     * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Plural] Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
-     */
-    String.prototype.singularize = function (plurality: Humanizer.Plurality = Humanizer.Plurality.Plural): string
-    {
-        /// <signature>
-        ///     <summary>
-        ///         Singularizes the provided input considering irregular words.
-        ///     </summary>
-        /// </signature>
-        /// <signature>
-        ///     <summary>
-        ///         Singularizes the provided input considering irregular words
-        ///     </summary>
-        ///     <param name="plurality" type="Humanizer.Plurality">
-        ///         Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
-        ///     </param>
-        /// </signature>
+    String.prototype.pluralize = Inflector.prototype.pluralize;
 
-        if (plurality === Humanizer.Plurality.Singular)
-        {
-            return this;
-        }
-
-        var result: string = applyRules(singulars, this);
-
-        if (plurality === Humanizer.Plurality.Plural)
-        {
-            return result;
-        }
-
-        // the Plurality is unknown so we should check all possibilities
-        var asPlural: string = applyRules(plurals, this);
-        var asPluralAsSingular: string = applyRules(singulars, asPlural);
-        if ((asPlural !== this) && (this + "s" !== asPlural) && (asPluralAsSingular === this) && (result !== this))
-        {
-            return this;
-        }
-
-        return result || this;
-    };
+    String.prototype.singularize = Inflector.prototype.singularize;
 
     /**
      * Humanizes the input with Title casing

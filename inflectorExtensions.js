@@ -141,81 +141,60 @@
         return result;
     }
 
-    /**
-    * Pluralizes the provided input considering irregular words
-    * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Singular] Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
-    */
-    String.prototype.pluralize = function (plurality) {
-        /// <signature>
-        ///     <summary>
-        ///         Pluralizes the provided input considering irregular words
-        ///     </summary>
-        /// </signature>
-        /// <signature>
-        ///     <summary>
-        ///         Pluralizes the provided input considering irregular words
-        ///     </summary>
-        ///     <param name="plurality" type="Humanizer.Plurality">
-        ///         Normally you call Pluralize on singular words; but if you're unsure call it with Plurality.CouldBeEither
-        ///     </param>
-        /// </signature>
-        if (typeof plurality === "undefined") { plurality = 0 /* Singular */; }
-        if (plurality === 1 /* Plural */) {
-            return this;
+    var Inflector = (function () {
+        function Inflector() {
         }
+        Inflector.prototype.pluralize = function (x) {
+            if (typeof x === "undefined") { x = true; }
+            var $this = this;
 
-        var result = applyRules(plurals, this);
+            if (x === 1 /* Plural */) {
+                return $this;
+            }
 
-        if (plurality === 0 /* Singular */) {
+            var result = applyRules(plurals, $this);
+
+            if (x === 0 /* Singular */ || x === true) {
+                return result;
+            }
+
+            var asSingular = applyRules(singulars, $this);
+            var asSingularAsPlural = applyRules(plurals, asSingular);
+            if ((asSingular !== null) && (asSingular !== $this) && (asSingular + "s" !== $this) && (asSingularAsPlural !== $this) && (result !== $this)) {
+                return $this;
+            }
             return result;
-        }
+        };
 
-        var asSingular = applyRules(singulars, this);
-        var asSingularAsPlural = applyRules(plurals, asSingular);
-        if ((asSingular !== null) && (asSingular !== this) && (asSingular + "s" !== this) && (asSingularAsPlural !== this) && (result !== this)) {
-            return this;
-        }
-        return result;
-    };
+        Inflector.prototype.singularize = function (x) {
+            if (typeof x === "undefined") { x = true; }
+            var $this = this;
 
-    /**
-    * Singularizes the provided input considering irregular words.
-    * @param {Humanizer.Plurality} [plurality=Humanizer.Plurality.Plural] Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
-    */
-    String.prototype.singularize = function (plurality) {
-        /// <signature>
-        ///     <summary>
-        ///         Singularizes the provided input considering irregular words.
-        ///     </summary>
-        /// </signature>
-        /// <signature>
-        ///     <summary>
-        ///         Singularizes the provided input considering irregular words
-        ///     </summary>
-        ///     <param name="plurality" type="Humanizer.Plurality">
-        ///         Normally you call Singularize on plural words; but if you're unsure call it with Plurality.CouldBeEither
-        ///     </param>
-        /// </signature>
-        if (typeof plurality === "undefined") { plurality = 1 /* Plural */; }
-        if (plurality === 0 /* Singular */) {
-            return this;
-        }
+            if (x === 0 /* Singular */) {
+                return $this;
+            }
 
-        var result = applyRules(singulars, this);
+            var result = applyRules(singulars, $this);
 
-        if (plurality === 1 /* Plural */) {
-            return result;
-        }
+            if (x === 1 /* Plural */ || x === true) {
+                return result;
+            }
 
-        // the Plurality is unknown so we should check all possibilities
-        var asPlural = applyRules(plurals, this);
-        var asPluralAsSingular = applyRules(singulars, asPlural);
-        if ((asPlural !== this) && (this + "s" !== asPlural) && (asPluralAsSingular === this) && (result !== this)) {
-            return this;
-        }
+            // the Plurality is unknown so we should check all possibilities
+            var asPlural = applyRules(plurals, $this);
+            var asPluralAsSingular = applyRules(singulars, asPlural);
+            if ((asPlural !== $this) && ($this + "s" !== asPlural) && (asPluralAsSingular === $this) && (result !== $this)) {
+                return $this;
+            }
 
-        return result || this;
-    };
+            return result || $this;
+        };
+        return Inflector;
+    })();
+
+    String.prototype.pluralize = Inflector.prototype.pluralize;
+
+    String.prototype.singularize = Inflector.prototype.singularize;
 
     /**
     * Humanizes the input with Title casing
