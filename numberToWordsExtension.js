@@ -9,18 +9,21 @@
         /// <summary>
         ///     3501.ToWords() -> "three thousand five hundred and one"
         /// </summary>
-        if (arguments.length === 1) {
-            return Humanizer.Configuration.Configurator.getNumberToWordsConverter().convert(this, arguments[0]);
+        var gender = arguments.length >= 1 && typeof arguments[0] === "number" ? arguments[0] : null;
+        var converter = Humanizer.Configuration.Configurator.getNumberToWordsConverter(arguments.length > 0 && typeof arguments[arguments.length - 1] === "string" ? arguments[arguments.length - 1] : Humanizer.Resources.getCurrentCulture());
+        if (gender === null) {
+            return converter.convert(this);
         }
-
-        return Humanizer.Configuration.Configurator.getNumberToWordsConverter().convert(this);
+        return converter.convert(this, gender);
     };
 
     Number.prototype.toOrdinalWords = function () {
-        if (arguments.length === 1) {
-            return Humanizer.Configuration.Configurator.getNumberToWordsConverter().convertToOrdinal(this, arguments[0]);
+        var gender = arguments.length >= 1 && typeof arguments[0] === "number" ? arguments[0] : null;
+        var converter = Humanizer.Configuration.Configurator.getNumberToWordsConverter(arguments.length > 0 && typeof arguments[arguments.length - 1] === "string" ? arguments[arguments.length - 1] : Humanizer.Resources.getCurrentCulture());
+        if (gender === null) {
+            return converter.convertToOrdinal(this);
         }
-        return Humanizer.Configuration.Configurator.getNumberToWordsConverter().convertToOrdinal(this);
+        return converter.convertToOrdinal(this, gender);
     };
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=numberToWordsExtension.js.map

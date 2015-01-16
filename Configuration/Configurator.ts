@@ -22,9 +22,9 @@
         return collections.resolveForCulture(Resources.getCurrentCulture());
     }
 
-    export function getNumberToWordsConverter(): Localisation.NumberToWords.INumberToWordsConverter
+    export function getNumberToWordsConverter(culture: string): Localisation.NumberToWords.INumberToWordsConverter
     {
-        return numberToWords.resolveForCulture(Resources.getCurrentCulture());
+        return numberToWords.resolveForCulture(culture);
     }
 
     export var dateHumanizeStrategy: DateHumanizeStrategy.IDateHumanizeStrategy = new DateHumanizeStrategy.DefaultDateHumanizeStrategy();

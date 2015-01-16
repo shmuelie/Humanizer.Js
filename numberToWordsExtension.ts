@@ -1,9 +1,9 @@
 ﻿interface Number
 {
-    toWords(): string;
-    toWords(gender: Humanizer.GrammaticalGender): string;
-    toOrdinalWords(): string;
-    toOrdinalWords(gender: Humanizer.GrammaticalGender): string;
+    toWords(culture?: string): string;
+    toWords(gender: Humanizer.GrammaticalGender, culture?: string): string;
+    toOrdinalWords(culuture?: string): string;
+    toOrdinalWords(gender: Humanizer.GrammaticalGender, culture?: string): string;
 }
 
 module Humanizer
@@ -19,20 +19,23 @@ module Humanizer
         ///     3501.ToWords() -> "three thousand five hundred and one"
         /// </summary>
 
-        if (arguments.length === 1)
+        var gender: GrammaticalGender = arguments.length >= 1 && typeof arguments[0] === "number" ? arguments[0] : null;
+        var converter: Humanizer.Localisation.NumberToWords.INumberToWordsConverter = Configuration.Configurator.getNumberToWordsConverter(arguments.length > 0 && typeof arguments[arguments.length - 1] === "string" ? arguments[arguments.length - 1] : Resources.getCurrentCulture());
+        if (gender === null)
         {
-            return Configuration.Configurator.getNumberToWordsConverter().convert(this, arguments[0]);
+            return converter.convert(this);
         }
-
-        return Configuration.Configurator.getNumberToWordsConverter().convert(this);
+        return converter.convert(this, gender);
     };
 
     Number.prototype.toOrdinalWords = function (): string
     {
-        if (arguments.length === 1)
+        var gender: GrammaticalGender = arguments.length >= 1 && typeof arguments[0] === "number" ? arguments[0] : null;
+        var converter: Humanizer.Localisation.NumberToWords.INumberToWordsConverter = Configuration.Configurator.getNumberToWordsConverter(arguments.length > 0 && typeof arguments[arguments.length - 1] === "string" ? arguments[arguments.length - 1] : Resources.getCurrentCulture());
+        if (gender === null)
         {
-            return Configuration.Configurator.getNumberToWordsConverter().convertToOrdinal(this, arguments[0]);
+            return converter.convertToOrdinal(this);
         }
-        return Configuration.Configurator.getNumberToWordsConverter().convertToOrdinal(this);
+        return converter.convertToOrdinal(this, gender);
     };
 } 

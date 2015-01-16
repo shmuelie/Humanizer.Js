@@ -24,8 +24,8 @@
             }
             Configurator.getCollectionFormatters = getCollectionFormatters;
 
-            function getNumberToWordsConverter() {
-                return numberToWords.resolveForCulture(Humanizer.Resources.getCurrentCulture());
+            function getNumberToWordsConverter(culture) {
+                return numberToWords.resolveForCulture(culture);
             }
             Configurator.getNumberToWordsConverter = getNumberToWordsConverter;
 
