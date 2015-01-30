@@ -2,11 +2,11 @@
 {
     "use strict";
 
-    export class FormatterRegistry extends LocaliserRegistry<Humanizer.Localisation.Formatter.IFormatter>
+    export class FormatterRegistry extends LocaliserRegistry<Localisation.Formatter.IFormatter>
     {
         constructor()
         {
-            super(new Humanizer.Localisation.Formatter.DefaultFormatter("en-US"));
+            super(new Localisation.Formatter.DefaultFormatter("en-US"));
             this.registerDefaultFormatter("bg");
             this.registerDefaultFormatter("pt-Bthis.r");
             this.registerDefaultFormatter("sv");
@@ -36,7 +36,7 @@
 
         private registerDefaultFormatter(culture: string): void
         {
-            this.register(culture, new Humanizer.Localisation.Formatter.DefaultFormatter(culture));
+            this.register(culture, new Localisation.Formatter.DefaultFormatter(culture));
         }
     }
 } 
