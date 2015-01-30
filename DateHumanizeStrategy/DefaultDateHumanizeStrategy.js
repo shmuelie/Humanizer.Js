@@ -17,7 +17,7 @@
                 }
 
                 if (ts < (60).seconds()) {
-                    return formatter.DateHumanize(1 /* Second */, tense, ts * ts / ts.seconds());
+                    return formatter.DateHumanize(1 /* Second */, tense, ts.toSeconds());
                 }
 
                 if (ts < (120).seconds()) {
@@ -25,7 +25,7 @@
                 }
 
                 if (ts < (60).minutes()) {
-                    return formatter.DateHumanize(2 /* Minute */, tense, ts * ts / ts.minutes());
+                    return formatter.DateHumanize(2 /* Minute */, tense, ts.toMinutes());
                 }
 
                 if (ts < (90).minutes()) {
@@ -33,11 +33,11 @@
                 }
 
                 if (ts < (24).hours()) {
-                    return formatter.DateHumanize(3 /* Hour */, tense, ts * ts / ts.hours());
+                    return formatter.DateHumanize(3 /* Hour */, tense, ts.toHours());
                 }
 
                 if (ts < (28).days()) {
-                    return formatter.DateHumanize(4 /* Day */, tense, ts * ts / ts.days());
+                    return formatter.DateHumanize(4 /* Day */, tense, ts.toDays());
                 }
 
                 if (ts >= (28).days() && ts < (30).days()) {
@@ -46,15 +46,15 @@
                     if (compBase2.getTime() === input.atMidnight().getTime()) {
                         return formatter.DateHumanize(6 /* Month */, tense, 1);
                     }
-                    return formatter.DateHumanize(4 /* Day */, tense, ts * ts / ts.days());
+                    return formatter.DateHumanize(4 /* Day */, tense, ts.toDays());
                 }
 
                 if (ts < (645).days()) {
-                    var months = Math.floor(ts * ts / ts.days() / 29.5);
+                    var months = Math.floor(ts.toDays() / 29.5);
                     return formatter.DateHumanize(6 /* Month */, tense, months);
                 }
 
-                var years = Math.floor(ts * ts * ts.days() / 365);
+                var years = Math.floor(ts.toDays() / 365);
                 if (years === 0) {
                     years = 1;
                 }
