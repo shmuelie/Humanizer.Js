@@ -14,19 +14,19 @@
                 var displayUnit;
 
                 if (timeUnit === 1 /* Second */) {
-                    displayInterval = Number(1).seconds();
+                    displayInterval = (1).seconds();
                     displayUnit = "s";
                 } else if (timeUnit === 2 /* Minute */) {
-                    displayInterval = Number(1).minutes();
+                    displayInterval = (1).minutes();
                     displayUnit = "min";
                 } else if (timeUnit === 3 /* Hour */) {
-                    displayInterval = Number(1).hours();
+                    displayInterval = (1).hours();
                     displayUnit = "hour";
                 } else {
                     throw Error("timeUnit must be Second, Minute, or Hour");
                 }
 
-                return (new Bytes.ByteSize(this.size.bytes / this.interval.seconds() * displayInterval.seconds())).toString() + "/" + displayUnit;
+                return (new Bytes.ByteSize(this.size.bytes / this.interval.toSeconds() * displayInterval.toSeconds())).toString() + "/" + displayUnit;
             };
             return ByteRate;
         })();
