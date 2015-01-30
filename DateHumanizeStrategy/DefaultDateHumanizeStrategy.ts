@@ -18,7 +18,7 @@
 
             if (ts < (60).seconds())
             {
-                return formatter.DateHumanize(Localisation.TimeUnit.Second, tense, ts.toSeconds());
+                return formatter.DateHumanize(Localisation.TimeUnit.Second, tense, Math.floor(ts.toSeconds()));
             }
 
             if (ts < (120).seconds())
@@ -28,7 +28,7 @@
 
             if (ts < (60).minutes())
             {
-                return formatter.DateHumanize(Localisation.TimeUnit.Minute, tense, ts.toMinutes());
+                return formatter.DateHumanize(Localisation.TimeUnit.Minute, tense, Math.floor(ts.toMinutes()));
             }
 
             if (ts < (90).minutes())
@@ -38,12 +38,12 @@
 
             if (ts < (24).hours())
             {
-                return formatter.DateHumanize(Localisation.TimeUnit.Hour, tense, ts.toHours());
+                return formatter.DateHumanize(Localisation.TimeUnit.Hour, tense, Math.floor(ts.toHours()));
             }
 
             if (ts < (28).days())
             {
-                return formatter.DateHumanize(Localisation.TimeUnit.Day, tense, ts.toDays());
+                return formatter.DateHumanize(Localisation.TimeUnit.Day, tense, Math.floor(ts.toDays()));
             }
 
             if (ts >= (28).days() && ts < (30).days())
@@ -54,7 +54,7 @@
                 {
                     return formatter.DateHumanize(Localisation.TimeUnit.Month, tense, 1);
                 }
-                return formatter.DateHumanize(Localisation.TimeUnit.Day, tense, ts.toDays());
+                return formatter.DateHumanize(Localisation.TimeUnit.Day, tense, Math.floor(ts.toDays()));
             }
 
             if (ts < (645).days())
