@@ -15,72 +15,72 @@ module Humanizer
     /**
      * Considers input as bits
      */
-    Number.prototype.bits = function (): Humanizer.Bytes.ByteSize
+    Number.prototype.bits = function (): Bytes.ByteSize
     {
         /// <summary>
         ///     Considers input as bits
         /// </summary>
 
-        return Humanizer.Bytes.ByteSize.fromBits(this);
+        return Bytes.ByteSize.fromBits(this);
     };
 
     /**
      * Considers input as bytes
      */
-    Number.prototype.bytes = function (): Humanizer.Bytes.ByteSize
+    Number.prototype.bytes = function (): Bytes.ByteSize
     {
         /// <summary>
         ///     Considers input as bytes
         /// </summary>
 
-        return Humanizer.Bytes.ByteSize.fromBytes(this);
+        return Bytes.ByteSize.fromBytes(this);
     };
 
     /**
      * Considers input as kilobytes
      */
-    Number.prototype.kilobytes = function (): Humanizer.Bytes.ByteSize
+    Number.prototype.kilobytes = function (): Bytes.ByteSize
     {
         /// <summary>
         ///     Considers input as kilobytes
         /// </summary>
 
-        return Humanizer.Bytes.ByteSize.fromKilobytes(this);
+        return Bytes.ByteSize.fromKilobytes(this);
     };
 
     /**
      * Considers input as megabytes
      */
-    Number.prototype.megabytes = function (): Humanizer.Bytes.ByteSize
+    Number.prototype.megabytes = function (): Bytes.ByteSize
     {
         /// <summary>
         ///     Considers input as megabytes
         /// </summary>
 
-        return Humanizer.Bytes.ByteSize.fromMegabytes(this);
+        return Bytes.ByteSize.fromMegabytes(this);
     };
 
     /**
      * Considers input as gigabytes
      */
-    Number.prototype.gigabytes = function (): Humanizer.Bytes.ByteSize
+    Number.prototype.gigabytes = function (): Bytes.ByteSize
     {
         /// <summary>
         ///     Considers input as gigabytes
         /// </summary>
 
-        return Humanizer.Bytes.ByteSize.fromGigabytes(this);
+        return Bytes.ByteSize.fromGigabytes(this);
     };
 
     /**
      * Considers input as terabytes
      */
-    Number.prototype.terabytes = function (): Humanizer.Bytes.ByteSize
+    Number.prototype.terabytes = function (): Bytes.ByteSize
     {
         /// <summary>
         ///     Considers input as terabytes
         /// </summary>
 
-        return Humanizer.Bytes.ByteSize.fromTerabyte(this);
+        return Bytes.ByteSize.fromTerabyte(this);
     };
 }
