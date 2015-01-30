@@ -18,7 +18,7 @@ var Humanizer;
                 this.registerDefaultFormatter("sv");
                 this.registerDefaultFormatter("tr");
                 this.registerDefaultFormatter("vi");
-                this.registerDefaultFormatter("en-US");
+                this.registerDefaultFormatter("en");
                 this.registerDefaultFormatter("af");
                 this.registerDefaultFormatter("da");
                 this.registerDefaultFormatter("de");
