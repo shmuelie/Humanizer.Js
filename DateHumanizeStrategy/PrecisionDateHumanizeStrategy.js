@@ -41,9 +41,11 @@
                 if (days >= 30 * this.precision && days <= 30) {
                     months = 1;
                 }
+                var factor;
+                var maxMonths;
                 if (days > 31 && days < 365 * this.precision) {
-                    var factor = Math.floor(days / 30);
-                    var maxMonths = Math.ceil(days / 30);
+                    factor = Math.floor(days / 30);
+                    maxMonths = Math.ceil(days / 30);
                     months = (days >= 30 * (factor + this.precision)) ? maxMonths : maxMonths - 1;
                 }
 
@@ -51,8 +53,8 @@
                     years = 1;
                 }
                 if (days > 365) {
-                    var factor = Math.floor(days / 365);
-                    var maxMonths = Math.ceil(days / 365);
+                    factor = Math.floor(days / 365);
+                    maxMonths = Math.ceil(days / 365);
                     years = (days >= 365 * (factor + this.precision)) ? maxMonths : maxMonths - 1;
                 }
 
