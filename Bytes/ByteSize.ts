@@ -235,7 +235,7 @@ module Humanizer.Bytes
             return ByteSize.fromBits(this.bits - other.bits);
         }
 
-        per(internval: number): Humanizer.Bytes.ByteRate
+        per(internval: number): ByteRate
         {
             /// <summary>
             ///     Turns a quantity of bytes in a given interval into a rate that can be manipulated
@@ -244,7 +244,7 @@ module Humanizer.Bytes
             ///     Interval to create rate for
             /// </param>
 
-            return new Humanizer.Bytes.ByteRate(this, internval);
+            return new ByteRate(this, internval);
         }
 
         static parse(str: string): ByteSize

@@ -177,7 +177,7 @@ var Humanizer;
                 /// <param name="internval" type="number" integer="true">
                 ///     Interval to create rate for
                 /// </param>
-                return new Humanizer.Bytes.ByteRate(this, internval);
+                return new Bytes.ByteRate(this, internval);
             };
 
             ByteSize.parse = function (str) {
