@@ -6,6 +6,12 @@
     minutes(): number;
     seconds(): number;
     milliseconds(): number;
+    toDays(): number;
+    toWeeks(): number;
+    toHours(): number;
+    toMinutes(): number;
+    toSeconds(): number;
+    toMilliseconds(): number;
     time(percision?: number, countEmptyUnits?: boolean): string;
 }
 
@@ -47,6 +53,41 @@ module Humanizer
     {
         return this;
     };
+
+    Number.prototype.toDays = function (): number
+    {
+        return this / MILLIS_PER_DAY;
+    };
+
+    Number.prototype.toWeeks = function (): number
+    {
+        return (this / 7).toDays();
+    };
+
+    Number.prototype.toDays = function (): number
+    {
+        return this / MILLIS_PER_DAY;
+    };
+
+    Number.prototype.toHours = function (): number
+    {
+        return this / MILLIS_PER_HOUR;
+    };
+
+    Number.prototype.toMinutes = function (): number
+    {
+        return this / MILLIS_PER_MINUTE;
+    };
+
+    Number.prototype.toSeconds = function (): number
+    {
+        return this / MILLIS_PER_SECOND;
+    };
+
+    Number.prototype.toMilliseconds = function (): number
+    {
+        return this;
+    }
 
     Number.prototype.time = function (percision: number = 1, countEmptyUnits: boolean = false, culture: string = Resources.getCurrentCulture()): string
     {

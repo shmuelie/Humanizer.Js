@@ -31,6 +31,34 @@
         return this;
     };
 
+    Number.prototype.toDays = function () {
+        return this / MILLIS_PER_DAY;
+    };
+
+    Number.prototype.toWeeks = function () {
+        return (this / 7).toDays();
+    };
+
+    Number.prototype.toDays = function () {
+        return this / MILLIS_PER_DAY;
+    };
+
+    Number.prototype.toHours = function () {
+        return this / MILLIS_PER_HOUR;
+    };
+
+    Number.prototype.toMinutes = function () {
+        return this / MILLIS_PER_MINUTE;
+    };
+
+    Number.prototype.toSeconds = function () {
+        return this / MILLIS_PER_SECOND;
+    };
+
+    Number.prototype.toMilliseconds = function () {
+        return this;
+    };
+
     Number.prototype.time = function (percision, countEmptyUnits, culture) {
         if (typeof percision === "undefined") { percision = 1; }
         if (typeof countEmptyUnits === "undefined") { countEmptyUnits = false; }
