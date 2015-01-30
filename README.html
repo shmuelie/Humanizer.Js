@@ -13,10 +13,13 @@ issue. See below for big differences.</p>
 start with lower case now, so instead of 
 <code>"Sentence casing".Transform(To.LowerCase)</code> you use 
 <code>"Sentence casing".transform(Humanizer.To.LowerCase)</code>.</li>
-<li>There isn't a TimeSpan equivalent in JavaScript so all action from or to 
+<li><p>There isn't a TimeSpan equivalent in JavaScript so all action from or to 
 TimeSpans now use Numbers in milliseconds instead. So instead of 
 <code>TimeSpan.FromDays(16).Humanize()</code> you use <code>(16).days().time()</code>. Both will 
-return "2 weeks".</li>
+return "2 weeks".</p>
+
+<p>Also to deal with the lack of TimeSpan extra to* methods have been added 
+to Numbers to make conversions simpler.</p></li>
 <li>I am sadly behind the changes to Humanizer so at times what I have will be 
 the old way of doing something so you might have to look at older version of 
 the documentation to understand things.</li>

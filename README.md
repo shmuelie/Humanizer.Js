@@ -18,6 +18,9 @@ issue. See below for big differences.
    TimeSpans now use Numbers in milliseconds instead. So instead of 
    `TimeSpan.FromDays(16).Humanize()` you use `(16).days().time()`. Both will 
    return "2 weeks".
+
+   Also to deal with the lack of TimeSpan extra to* methods have been added 
+   to Numbers to make conversions simpler.
 3. I am sadly behind the changes to Humanizer so at times what I have will be 
    the old way of doing something so you might have to look at older version of 
    the documentation to understand things.
