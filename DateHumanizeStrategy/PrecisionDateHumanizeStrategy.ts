@@ -2,11 +2,6 @@
 {
     "use strict";
 
-    var MILLIS_PER_SECOND: number = 1000;
-    var MILLIS_PER_MINUTE: number = MILLIS_PER_SECOND * 60;
-    var MILLIS_PER_HOUR: number = MILLIS_PER_MINUTE * 60;
-    var MILLIS_PER_DAY: number = MILLIS_PER_HOUR * 24;
-
     export class PrecisionDateHumanizeStrategy implements IDateHumanizeStrategy
     {
         private precision: number;
@@ -21,16 +16,16 @@
             var tense: Localisation.Tense = input > comparisonBase ? Localisation.Tense.Future : Localisation.Tense.Past;
             var ts: number = Math.abs(comparisonBase.getTime() - input.getTime());
 
-            var days: number = ts / MILLIS_PER_DAY;
+            var days: number = ts.toDays();
             var weeks: number = Math.floor(days / 7);
             var daysInWeek: number = days % 7;
-            ts = ts - ((weeks * 7 + daysInWeek) * MILLIS_PER_DAY);
-            var hours: number = Math.floor(ts / MILLIS_PER_HOUR);
-            ts = ts - (hours * MILLIS_PER_HOUR);
-            var minutes: number = Math.floor(ts / MILLIS_PER_MINUTE);
-            ts = ts - (minutes * MILLIS_PER_MINUTE);
-            var seconds: number = Math.floor(ts / MILLIS_PER_SECOND);
-            var milliseconds: number = ts - (seconds * MILLIS_PER_SECOND);
+            ts = ts - (weeks * 7 + daysInWeek).milliseconds();
+            var hours: number = Math.floor(ts.toHours());
+            ts = ts - hours.toMilliseconds();
+            var minutes: number = Math.floor(ts.toMinutes());
+            ts = ts - minutes.milliseconds();
+            var seconds: number = Math.floor(ts.toSeconds());
+            var milliseconds: number = ts - seconds.milliseconds();
             var years: number = 0;
             var months: number = 0;
 

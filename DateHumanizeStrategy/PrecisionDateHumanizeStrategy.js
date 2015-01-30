@@ -3,11 +3,6 @@
     (function (DateHumanizeStrategy) {
         "use strict";
 
-        var MILLIS_PER_SECOND = 1000;
-        var MILLIS_PER_MINUTE = MILLIS_PER_SECOND * 60;
-        var MILLIS_PER_HOUR = MILLIS_PER_MINUTE * 60;
-        var MILLIS_PER_DAY = MILLIS_PER_HOUR * 24;
-
         var PrecisionDateHumanizeStrategy = (function () {
             function PrecisionDateHumanizeStrategy(precision) {
                 if (typeof precision === "undefined") { precision = 0.75; }
@@ -17,16 +12,16 @@
                 var tense = input > comparisonBase ? 0 /* Future */ : 1 /* Past */;
                 var ts = Math.abs(comparisonBase.getTime() - input.getTime());
 
-                var days = ts / MILLIS_PER_DAY;
+                var days = ts.toDays();
                 var weeks = Math.floor(days / 7);
                 var daysInWeek = days % 7;
-                ts = ts - ((weeks * 7 + daysInWeek) * MILLIS_PER_DAY);
-                var hours = Math.floor(ts / MILLIS_PER_HOUR);
-                ts = ts - (hours * MILLIS_PER_HOUR);
-                var minutes = Math.floor(ts / MILLIS_PER_MINUTE);
-                ts = ts - (minutes * MILLIS_PER_MINUTE);
-                var seconds = Math.floor(ts / MILLIS_PER_SECOND);
-                var milliseconds = ts - (seconds * MILLIS_PER_SECOND);
+                ts = ts - (weeks * 7 + daysInWeek).milliseconds();
+                var hours = Math.floor(ts.toHours());
+                ts = ts - hours.toMilliseconds();
+                var minutes = Math.floor(ts.toMinutes());
+                ts = ts - minutes.milliseconds();
+                var seconds = Math.floor(ts.toSeconds());
+                var milliseconds = ts - seconds.milliseconds();
                 var years = 0;
                 var months = 0;
 
