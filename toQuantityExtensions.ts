@@ -16,7 +16,7 @@ module Humanizer
 
     String.prototype.toQuantity = function (quantity: number, showQuantityAs: ShowQuantityAs = ShowQuantityAs.None): string
     {
-        var transformedInput: string = quantity === 1 ? this.singularize(Humanizer.Plurality.CouldBeEither) : this.pluralize(Humanizer.Plurality.CouldBeEither);
+        var transformedInput: string = quantity === 1 ? this.singularize(false) : this.pluralize(false);
 
         if (showQuantityAs === ShowQuantityAs.None)
         {

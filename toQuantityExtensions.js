@@ -11,7 +11,7 @@
 
     String.prototype.toQuantity = function (quantity, showQuantityAs) {
         if (typeof showQuantityAs === "undefined") { showQuantityAs = 0 /* None */; }
-        var transformedInput = quantity === 1 ? this.singularize(2 /* CouldBeEither */) : this.pluralize(2 /* CouldBeEither */);
+        var transformedInput = quantity === 1 ? this.singularize(false) : this.pluralize(false);
 
         if (showQuantityAs === 0 /* None */) {
             return transformedInput;
