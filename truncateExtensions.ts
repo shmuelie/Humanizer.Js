@@ -23,50 +23,39 @@ module Humanizer
         Right
     }
 
-    class Trunc
+    String.prototype.truncate = function (): string
     {
-        truncate(length: number, truncationString: string, truncator: Humanizer.ITruncator, from?: Humanizer.TruncateFrom): string
-        truncate(length: number, truncationString: string, from?: Humanizer.TruncateFrom): string
-        truncate(length: number, truncator: Humanizer.ITruncator, from?: Humanizer.TruncateFrom): string
-        truncate(length: number): string
-        truncate(): string
+        var length: number = arguments[0];
+        var truncationString: string = "…";
+        var from: TruncateFrom = TruncateFrom.Right;
+        var truncator: ITruncator = Truncator.FixedLength;
+        if (arguments.length > 1)
         {
-            var length: number = arguments[0];
-            var truncationString: string = "…";
-            var from: TruncateFrom = TruncateFrom.Right;
-            var truncator: ITruncator = Truncator.FixedLength;
-            if (arguments.length > 1)
+            if (typeof arguments[1] === "string")
             {
-                if (typeof arguments[1] === "string")
-                {
-                    truncationString = arguments[1];
-                }
-                else
-                {
-                    truncator = arguments[1];
-                }
+                truncationString = arguments[1];
             }
-            if (arguments.length > 2)
+            else
             {
-                if (typeof arguments[2] === "number")
-                {
-                    from = arguments[2];
-                }
-                else
-                {
-                    truncator = arguments[2];
-                }
+                truncator = arguments[1];
             }
-            if (arguments.length > 3)
-            {
-                from = arguments[3];
-            }
-
-            var $this: string = <string>this;
-
-            return truncator.truncate($this, length, truncationString, from);
         }
-    }
+        if (arguments.length > 2)
+        {
+            if (typeof arguments[2] === "number")
+            {
+                from = arguments[2];
+            }
+            else
+            {
+                truncator = arguments[2];
+            }
+        }
+        if (arguments.length > 3)
+        {
+            from = arguments[3];
+        }
 
-    String.prototype.truncate = Trunc.prototype.truncate;
+        return truncator.truncate(this, length, truncationString, from);
+    };
 } 
