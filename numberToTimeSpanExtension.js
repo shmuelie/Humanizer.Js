@@ -59,11 +59,12 @@
         return this;
     };
 
-    Number.prototype.time = function (percision, countEmptyUnits, culture) {
+    Number.prototype.time = function (percision, countEmptyUnits, culture, maxUnit) {
         if (typeof percision === "undefined") { percision = 1; }
         if (typeof countEmptyUnits === "undefined") { countEmptyUnits = false; }
         if (typeof culture === "undefined") { culture = Humanizer.Resources.getCurrentCulture(); }
-        var timeParts = parts(this, culture);
+        if (typeof maxUnit === "undefined") { maxUnit = 5 /* Week */; }
+        var timeParts = parts(this, culture, maxUnit);
         var i = 0;
         if (!countEmptyUnits) {
             while (i < timeParts.length) {
@@ -90,24 +91,30 @@
         return timeParts.join(", ");
     };
 
-    function parts(timespan, culture) {
+    function parts(timespan, culture, maxUnit) {
         var days = timespan / MILLIS_PER_DAY;
         var weeks = Math.floor(days / 7);
-        var daysInWeek = days % 7;
-        timespan = timespan - ((weeks * 7 + daysInWeek) * MILLIS_PER_DAY);
+        var daysInWeek = maxUnit > 4 /* Day */ ? days % 7 : Math.floor(days);
+        if (maxUnit > 3 /* Hour */) {
+            timespan = timespan - ((weeks * 7 + daysInWeek) * MILLIS_PER_DAY);
+        }
         var hours = Math.floor(timespan / MILLIS_PER_HOUR);
-        timespan = timespan - (hours * MILLIS_PER_HOUR);
+        if (maxUnit > 2 /* Minute */) {
+            timespan = timespan - (hours * MILLIS_PER_HOUR);
+        }
         var minutes = Math.floor(timespan / MILLIS_PER_MINUTE);
-        timespan = timespan - (minutes * MILLIS_PER_MINUTE);
+        if (maxUnit > 1 /* Second */) {
+            timespan = timespan - (minutes * MILLIS_PER_MINUTE);
+        }
         var seconds = Math.floor(timespan / MILLIS_PER_SECOND);
-        var milliseconds = timespan - (seconds * MILLIS_PER_SECOND);
+        var milliseconds = maxUnit === 0 /* Millisecond */ ? timespan : timespan - (seconds * MILLIS_PER_SECOND);
 
-        var outputWeeks = weeks > 0;
-        var outputDays = outputWeeks || daysInWeek > 0;
-        var outputHours = outputDays || hours > 0;
-        var outputMinutes = outputHours || minutes > 0;
-        var outputSeconds = outputMinutes || seconds > 0;
-        var outputMilliseconds = outputSeconds || milliseconds > 0;
+        var outputWeeks = weeks > 0 && maxUnit === 5 /* Week */;
+        var outputDays = (outputWeeks || daysInWeek > 0) && maxUnit >= 4 /* Day */;
+        var outputHours = (outputDays || hours > 0) && maxUnit >= 3 /* Hour */;
+        var outputMinutes = (outputHours || minutes > 0) && maxUnit >= 2 /* Minute */;
+        var outputSeconds = (outputMinutes || seconds > 0) && maxUnit >= 1 /* Second */;
+        var outputMilliseconds = (outputSeconds || milliseconds > 0) && maxUnit >= 0 /* Millisecond */;
 
         var result;
         var formatter = Humanizer.Configuration.Configurator.getFormatter(culture);

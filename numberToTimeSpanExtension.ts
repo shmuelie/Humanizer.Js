@@ -89,9 +89,9 @@ module Humanizer
         return this;
     }
 
-    Number.prototype.time = function (percision: number = 1, countEmptyUnits: boolean = false, culture: string = Resources.getCurrentCulture()): string
+    Number.prototype.time = function (percision: number = 1, countEmptyUnits: boolean = false, culture: string = Resources.getCurrentCulture(), maxUnit: Localisation.TimeUnit = Localisation.TimeUnit.Week): string
     {
-        var timeParts: string[] = parts(this, culture);
+        var timeParts: string[] = parts(this, culture, maxUnit);
         var i = 0;
         if (!countEmptyUnits)
         {
@@ -129,25 +129,34 @@ module Humanizer
         return timeParts.join(", ");
     };
 
-    function parts(timespan: number, culture: string): string[]
+    function parts(timespan: number, culture: string, maxUnit: Localisation.TimeUnit): string[]
     {
         var days: number = timespan / MILLIS_PER_DAY;
         var weeks: number = Math.floor(days / 7);
-        var daysInWeek: number = days % 7;
-        timespan = timespan - ((weeks * 7 + daysInWeek) * MILLIS_PER_DAY);
+        var daysInWeek: number = maxUnit > Localisation.TimeUnit.Day ? days % 7 : Math.floor(days);
+        if (maxUnit > Localisation.TimeUnit.Hour)
+        {
+            timespan = timespan - ((weeks * 7 + daysInWeek) * MILLIS_PER_DAY);
+        }
         var hours: number = Math.floor(timespan / MILLIS_PER_HOUR);
-        timespan = timespan - (hours * MILLIS_PER_HOUR);
+        if (maxUnit > Localisation.TimeUnit.Minute)
+        {
+            timespan = timespan - (hours * MILLIS_PER_HOUR);
+        }
         var minutes: number = Math.floor(timespan / MILLIS_PER_MINUTE);
-        timespan = timespan - (minutes * MILLIS_PER_MINUTE);
+        if (maxUnit > Localisation.TimeUnit.Second)
+        {
+            timespan = timespan - (minutes * MILLIS_PER_MINUTE);
+        }
         var seconds: number = Math.floor(timespan / MILLIS_PER_SECOND);
-        var milliseconds: number = timespan - (seconds * MILLIS_PER_SECOND);
+        var milliseconds: number = maxUnit === Localisation.TimeUnit.Millisecond ? timespan : timespan - (seconds * MILLIS_PER_SECOND);
 
-        var outputWeeks: boolean = weeks > 0;
-        var outputDays: boolean = outputWeeks || daysInWeek > 0;
-        var outputHours: boolean = outputDays || hours > 0;
-        var outputMinutes: boolean = outputHours || minutes > 0;
-        var outputSeconds: boolean = outputMinutes || seconds > 0;
-        var outputMilliseconds: boolean = outputSeconds || milliseconds > 0;
+        var outputWeeks: boolean = weeks > 0 && maxUnit === Localisation.TimeUnit.Week;
+        var outputDays: boolean = (outputWeeks || daysInWeek > 0) && maxUnit >= Localisation.TimeUnit.Day;
+        var outputHours: boolean = (outputDays || hours > 0) && maxUnit >= Localisation.TimeUnit.Hour;
+        var outputMinutes: boolean = (outputHours || minutes > 0) && maxUnit >= Localisation.TimeUnit.Minute;
+        var outputSeconds: boolean = (outputMinutes || seconds > 0) && maxUnit >= Localisation.TimeUnit.Second;
+        var outputMilliseconds: boolean = (outputSeconds || milliseconds > 0) && maxUnit >= Localisation.TimeUnit.Millisecond;
 
         var result: string[];
         var formatter: Localisation.Formatter.IFormatter = Configuration.Configurator.getFormatter(culture);
