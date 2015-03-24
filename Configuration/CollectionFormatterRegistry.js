@@ -11,7 +11,7 @@ var Humanizer;
             __extends(CollectionFormatterRegistry, _super);
             function CollectionFormatterRegistry() {
                 _super.call(this, new Humanizer.Localisation.CollectionFormatters.DefaultCollectionFormatter());
-                this.register("en", new Humanizer.Localisation.CollectionFormatters.EnglishCollectionFormatter());
+                this.register("en", new Humanizer.Localisation.CollectionFormatters.OxfordStyleCollectionFormatter());
             }
             return CollectionFormatterRegistry;
         })(Configuration.LocaliserRegistry);

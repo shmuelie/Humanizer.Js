@@ -5,7 +5,7 @@
         constructor()
         {
             super(new Localisation.CollectionFormatters.DefaultCollectionFormatter());
-            this.register("en", new Localisation.CollectionFormatters.EnglishCollectionFormatter());
+            this.register("en", new Localisation.CollectionFormatters.OxfordStyleCollectionFormatter());
         }
     }
 } 

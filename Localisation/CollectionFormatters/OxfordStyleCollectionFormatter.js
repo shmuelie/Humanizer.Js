@@ -10,13 +10,14 @@ var Humanizer;
         (function (CollectionFormatters) {
             "use strict";
 
-            var EnglishCollectionFormatter = (function (_super) {
-                __extends(EnglishCollectionFormatter, _super);
-                function EnglishCollectionFormatter() {
+            var OxfordStyleCollectionFormatter = (function (_super) {
+                __extends(OxfordStyleCollectionFormatter, _super);
+                function OxfordStyleCollectionFormatter(defaultSeparator) {
+                    if (typeof defaultSeparator === "undefined") { defaultSeparator = "and"; }
                     _super.call(this);
-                    this.defaultSeparator = "and";
+                    this.defaultSeparator = defaultSeparator;
                 }
-                EnglishCollectionFormatter.prototype.humanizer_collection_objectFormatter_separator = function (collection, objectFormatter, separator) {
+                OxfordStyleCollectionFormatter.prototype.humanizer_collection_objectFormatter_separator = function (collection, objectFormatter, separator) {
                     if (collection === null) {
                         throw new Error("Collection null");
                     }
@@ -38,12 +39,12 @@ var Humanizer;
                     }
                     return most.join(", ") + " " + separator + " " + objectFormatter(collection[length - 1]);
                 };
-                return EnglishCollectionFormatter;
+                return OxfordStyleCollectionFormatter;
             })(CollectionFormatters.DefaultCollectionFormatter);
-            CollectionFormatters.EnglishCollectionFormatter = EnglishCollectionFormatter;
+            CollectionFormatters.OxfordStyleCollectionFormatter = OxfordStyleCollectionFormatter;
         })(Localisation.CollectionFormatters || (Localisation.CollectionFormatters = {}));
         var CollectionFormatters = Localisation.CollectionFormatters;
     })(Humanizer.Localisation || (Humanizer.Localisation = {}));
     var Localisation = Humanizer.Localisation;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=EnglishCollectionFormatter.js.map
+//# sourceMappingURL=OxfordStyleCollectionFormatter.js.map

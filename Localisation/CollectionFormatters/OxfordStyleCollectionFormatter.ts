@@ -2,12 +2,12 @@
 {
     "use strict";
 
-    export class EnglishCollectionFormatter extends DefaultCollectionFormatter
+    export class OxfordStyleCollectionFormatter extends DefaultCollectionFormatter
     {
-        constructor()
+        constructor(defaultSeparator: string = "and")
         {
             super();
-            this.defaultSeparator = "and";
+            this.defaultSeparator = defaultSeparator;
         }
 
         humanizer_collection_objectFormatter_separator<T>(collection: T[], objectFormatter: (item: T) => string, separator: string): string
