@@ -13,30 +13,12 @@ module Humanizer.Localisation.NumberToWords
         "veinte", "veintiuno", "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve"];
     var tensMap = ["cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
     var hundredsMap = ["cero", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
-    var exceptions: ExceptionsDictionary = {
-        1: "first",
-        2: "second",
-        3: "third",
-        4: "fourth",
-        5: "fifth",
-        8: "eighth",
-        9: "ninth",
-        12: "twelfth"
-    };
 
     function getUnitValue(num: number, isOrdinal: boolean): string
     {
         if (isOrdinal)
         {
-            var exception: string = exceptions[num];
-            if (exception)
-            {
-                return exception;
-            }
-            else
-            {
-                return unitsMap[num] + "th";
-            }
+            throw 'ordinal numbers for Spanish are not implemented';
         }
         else
         {
