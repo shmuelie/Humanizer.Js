@@ -1,9 +1,7 @@
-module Humanizer.Localisation.NumberToWords
-{
+module Humanizer.Localisation.NumberToWords {
     "use strict";
 
-    interface ExceptionsDictionary
-    {
+    interface ExceptionsDictionary {
         [num: number]: string;
     }
 
@@ -14,35 +12,29 @@ module Humanizer.Localisation.NumberToWords
     var tensMap = ["cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
     var hundredsMap = ["cero", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
 
-    function getUnitValue(num: number, isOrdinal: boolean): string
-    {
-        if (isOrdinal)
-        {
+    function getUnitValue(num: number, isOrdinal: boolean): string {
+        if (isOrdinal) {
             throw 'ordinal numbers for Spanish are not implemented';
         }
-        else
-        {
+        else {
             return unitsMap[num];
         }
     }
 
-    function removeOnePrefix(toWords: string): string
-    {
-        if (toWords.indexOf("one") === 0)
-        {
+    function removeOnePrefix(toWords: string): string {
+        if (toWords.indexOf("one") === 0) {
             return toWords.substr(4);
         }
         return toWords;
     }
 
-    function convert(num: number, isOrdinal: boolean): string
-    {
-         if (num === 0) {
+    function convert(num: number, isOrdinal: boolean): string {
+        if (num === 0) {
             return "cero";
         }
 
         if (num < 0) {
-            return "menos " + convert(Math.abs(num));
+            return "menos " + convert(Math.abs(num), false);
         }
 
         var parts: string[] = [];
@@ -50,7 +42,7 @@ module Humanizer.Localisation.NumberToWords
         if (Math.floor(num / 1000000000) > 0) {
             parts.push(Math.floor(num / 1000000000) === 1
                 ? "mil millones"
-                : convert(Math.floor(num / 1000000000)) + "mil millones");
+                : convert(Math.floor(num / 1000000000), false) + "mil millones");
 
             num %= 1000000000;
         }
@@ -58,7 +50,7 @@ module Humanizer.Localisation.NumberToWords
         if (Math.floor(num / 1000000) > 0) {
             parts.push(Math.floor(num / 1000000) === 1
                 ? "un millón"
-                : convert(Math.floor(num / 1000000)) + " millones");
+                : convert(Math.floor(num / 1000000), false) + " millones");
 
             num %= 1000000;
         }
@@ -66,7 +58,7 @@ module Humanizer.Localisation.NumberToWords
         if (Math.floor(num / 1000) > 0) {
             parts.push(Math.floor(num / 1000) === 1
                 ? "mil"
-                : convert(Math.floor(num / 1000)) + " mil");
+                : convert(Math.floor(num / 1000), false) + " mil");
 
             num %= 1000;
         }
@@ -102,15 +94,12 @@ module Humanizer.Localisation.NumberToWords
         return result;
     }
 
-    export class SpanishNumberToWordsConverter extends GenderlessNumberToWordsConverter
-    {
-        convert_number(num: number): string
-        {
+    export class SpanishNumberToWordsConverter extends GenderlessNumberToWordsConverter {
+        convert_number(num: number): string {
             return convert(num, false);
         }
 
-        convertToOrdinal_number(num: number): string
-        {
+        convertToOrdinal_number(num: number): string {
             return convert(num, true);
         }
     }
