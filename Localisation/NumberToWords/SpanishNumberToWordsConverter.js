@@ -45,21 +45,10 @@ var Humanizer;
             ];
             var tensMap = ["cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
             var hundredsMap = ["cero", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
-            function getUnitValue(num, isOrdinal) {
-                if (isOrdinal) {
+            function convert(num, isOrdinal) {
+                if (isOrdinal === true) {
                     throw 'ordinal numbers for Spanish are not implemented';
                 }
-                else {
-                    return unitsMap[num];
-                }
-            }
-            function removeOnePrefix(toWords) {
-                if (toWords.indexOf("one") === 0) {
-                    return toWords.substr(4);
-                }
-                return toWords;
-            }
-            function convert(num, isOrdinal) {
                 if (num === 0) {
                     return "cero";
                 }
@@ -100,7 +89,9 @@ var Humanizer;
                     }
                 }
                 var result = parts.shift();
-                parts.forEach(function (p) { return result += ' ' + p; });
+                for (var i = 1; i < parts.length; i++) {
+                    result += ' ' + parts[i];
+                }
                 return result;
             }
             var SpanishNumberToWordsConverter = (function (_super) {

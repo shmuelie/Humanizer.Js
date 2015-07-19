@@ -8,23 +8,12 @@ module Humanizer.Localisation.NumberToWords {
     var tensMap = ["cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
     var hundredsMap = ["cero", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
 
-    function getUnitValue(num: number, isOrdinal: boolean): string {
-        if (isOrdinal) {
+    function convert(num: number, isOrdinal: boolean): string {
+
+        if (isOrdinal === true) {
             throw 'ordinal numbers for Spanish are not implemented';
         }
-        else {
-            return unitsMap[num];
-        }
-    }
 
-    function removeOnePrefix(toWords: string): string {
-        if (toWords.indexOf("one") === 0) {
-            return toWords.substr(4);
-        }
-        return toWords;
-    }
-
-    function convert(num: number, isOrdinal: boolean): string {
         if (num === 0) {
             return "cero";
         }
