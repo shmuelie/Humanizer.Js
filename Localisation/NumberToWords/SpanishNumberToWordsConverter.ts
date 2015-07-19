@@ -1,10 +1,6 @@
 module Humanizer.Localisation.NumberToWords {
     "use strict";
 
-    interface ExceptionsDictionary {
-        [num: number]: string;
-    }
-
     var unitsMap = [
         "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve",
         "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve",
@@ -89,7 +85,9 @@ module Humanizer.Localisation.NumberToWords {
 
         var result = parts.shift();
 
-        parts.forEach(p => result += ' ' + p);
+        for (var i = 1; i < parts.length; i++) {
+            result += ' ' + parts[i];
+        }
 
         return result;
     }
