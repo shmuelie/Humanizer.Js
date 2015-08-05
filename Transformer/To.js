@@ -28,4 +28,4 @@ var Humanizer;
     })();
     Humanizer.To = To;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=to.js.map
+//# sourceMappingURL=To.js.map
