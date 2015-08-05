@@ -23,16 +23,16 @@ module Humanizer
      */
     export enum Plurality
     {
-        /** 
-         * The word is singular 
+        /**
+         * The word is singular
          */
         Singular,
-        /** 
-         * The word is plural 
+        /**
+         * The word is plural
          */
         Plural,
-        /** 
-         * I am unsure of the plurality 
+        /**
+         * I am unsure of the plurality
          */
         CouldBeEither
     }
@@ -99,6 +99,8 @@ module Humanizer
     addPlural("([m|l])ouse$", "\\1ice");
     addPlural("^(ox)$", "\\1en");
     addPlural("(quiz)$", "\\1zes");
+    addPlural("(campus)$", "$1es");
+    addPlural("^is$", "are");
 
     addSingular("s$", "");
     addSingular("(n)ews$", "\\1ews");
@@ -124,6 +126,8 @@ module Humanizer
     addSingular("(vert|ind)ices$", "\\1ex");
     addSingular("(matr)ices$", "\\1ix");
     addSingular("(quiz)zes$", "\\1");
+    addSingular("(campus)es$", "$1");
+    addSingular("^are$", "is");
 
     addIrregluar("person", "people");
     addIrregluar("man", "men");
@@ -178,7 +182,7 @@ module Humanizer
 
             if (x === Humanizer.Plurality.Plural)
             {
-                return $this;    
+                return $this;
             }
 
             var result: string = applyRules(plurals, $this);
@@ -312,4 +316,4 @@ module Humanizer
 
         return this.dasherize();
     };
-} 
+}
