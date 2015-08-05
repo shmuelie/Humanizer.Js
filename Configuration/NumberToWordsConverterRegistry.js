@@ -14,6 +14,7 @@ var Humanizer;
                 _super.call(this, new Humanizer.Localisation.NumberToWords.DefaultNumberToWordsConverter());
                 this.register("en", new Humanizer.Localisation.NumberToWords.EnglishNumberToWordsConverter());
                 this.register("ar", new Humanizer.Localisation.NumberToWords.ArabicNumberToWordsConverter());
+                this.register("es", new Humanizer.Localisation.NumberToWords.SpanishNumberToWordsConverter());
             }
             return NumberToWordsConverterRegistry;
         })(Configuration.LocaliserRegistry);
