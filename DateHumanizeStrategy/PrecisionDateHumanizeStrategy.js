@@ -1,17 +1,16 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    var DateHumanizeStrategy;
     (function (DateHumanizeStrategy) {
         "use strict";
-
         var PrecisionDateHumanizeStrategy = (function () {
             function PrecisionDateHumanizeStrategy(precision) {
-                if (typeof precision === "undefined") { precision = 0.75; }
+                if (precision === void 0) { precision = 0.75; }
                 this.precision = precision;
             }
             PrecisionDateHumanizeStrategy.prototype.humanize = function (input, comparisonBase, culture) {
                 var tense = input > comparisonBase ? 0 /* Future */ : 1 /* Past */;
                 var ts = Math.abs(comparisonBase.getTime() - input.getTime());
-
                 var days = ts.toDays();
                 var weeks = Math.floor(days / 7);
                 var daysInWeek = days % 7;
@@ -24,7 +23,6 @@
                 var milliseconds = ts - seconds.milliseconds();
                 var years = 0;
                 var months = 0;
-
                 if (milliseconds >= 999 * this.precision) {
                     seconds++;
                 }
@@ -37,7 +35,6 @@
                 if (hours >= 23 * this.precision) {
                     days++;
                 }
-
                 if (days >= 30 * this.precision && days <= 30) {
                     months = 1;
                 }
@@ -48,7 +45,6 @@
                     maxMonths = Math.ceil(days / 30);
                     months = (days >= 30 * (factor + this.precision)) ? maxMonths : maxMonths - 1;
                 }
-
                 if (days >= 365 * this.precision && days <= 366) {
                     years = 1;
                 }
@@ -57,32 +53,30 @@
                     maxMonths = Math.ceil(days / 365);
                     years = (days >= 365 * (factor + this.precision)) ? maxMonths : maxMonths - 1;
                 }
-
                 var formatter = Humanizer.Configuration.Configurator.getFormatter(culture);
                 if (years > 0) {
-                    return formatter.DateHumanize(7 /* Year */, tense, years);
+                    return formatter.DateHumanize(Humanizer.Localisation.TimeUnit.Year, tense, years);
                 }
                 if (months > 0) {
-                    return formatter.DateHumanize(6 /* Month */, tense, months);
+                    return formatter.DateHumanize(Humanizer.Localisation.TimeUnit.Month, tense, months);
                 }
                 if (days > 0) {
-                    return formatter.DateHumanize(4 /* Day */, tense, days);
+                    return formatter.DateHumanize(Humanizer.Localisation.TimeUnit.Day, tense, days);
                 }
                 if (hours > 0) {
-                    return formatter.DateHumanize(3 /* Hour */, tense, hours);
+                    return formatter.DateHumanize(Humanizer.Localisation.TimeUnit.Hour, tense, hours);
                 }
                 if (minutes > 0) {
-                    return formatter.DateHumanize(2 /* Minute */, tense, minutes);
+                    return formatter.DateHumanize(Humanizer.Localisation.TimeUnit.Minute, tense, minutes);
                 }
                 if (seconds > 0) {
-                    return formatter.DateHumanize(1 /* Second */, tense, seconds);
+                    return formatter.DateHumanize(Humanizer.Localisation.TimeUnit.Second, tense, seconds);
                 }
-                return formatter.DateHumanize(0 /* Millisecond */, tense, 0);
+                return formatter.DateHumanize(Humanizer.Localisation.TimeUnit.Millisecond, tense, 0);
             };
             return PrecisionDateHumanizeStrategy;
         })();
         DateHumanizeStrategy.PrecisionDateHumanizeStrategy = PrecisionDateHumanizeStrategy;
-    })(Humanizer.DateHumanizeStrategy || (Humanizer.DateHumanizeStrategy = {}));
-    var DateHumanizeStrategy = Humanizer.DateHumanizeStrategy;
+    })(DateHumanizeStrategy = Humanizer.DateHumanizeStrategy || (Humanizer.DateHumanizeStrategy = {}));
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=PrecisionDateHumanizeStrategy.js.map

@@ -1,7 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     Array.prototype.humanize = function () {
         switch (arguments.length) {
             case 0:
@@ -9,7 +8,8 @@
             case 1:
                 if (typeof arguments[0] === "string") {
                     return Humanizer.Configuration.Configurator.getCollectionFormatters().humanize(this, arguments[0]);
-                } else {
+                }
+                else {
                     var df = arguments[0];
                     return Humanizer.Configuration.Configurator.getCollectionFormatters().humanize(this, df);
                 }

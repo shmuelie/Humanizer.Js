@@ -6,7 +6,7 @@
      * @enum
      * @readonly
      */
-    export enum LetterCasing
+    export const enum LetterCasing
     {
         /** SomeString -> Some String */
         Title,
@@ -17,4 +17,4 @@
         /** SomeString -> Some string */
         Sentence
     }
-} 
+}

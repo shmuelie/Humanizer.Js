@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -12,37 +12,9 @@ var Humanizer;
         (function (NumberToWords) {
             "use strict";
             var unitsMap = [
-                "cero",
-                "uno",
-                "dos",
-                "tres",
-                "cuatro",
-                "cinco",
-                "seis",
-                "siete",
-                "ocho",
-                "nueve",
-                "diez",
-                "once",
-                "doce",
-                "trece",
-                "catorce",
-                "quince",
-                "dieciséis",
-                "diecisiete",
-                "dieciocho",
-                "diecinueve",
-                "veinte",
-                "veintiuno",
-                "veintidós",
-                "veintitrés",
-                "veinticuatro",
-                "veinticinco",
-                "veintiséis",
-                "veintisiete",
-                "veintiocho",
-                "veintinueve"
-            ];
+                "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve",
+                "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve",
+                "veinte", "veintiuno", "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve"];
             var tensMap = ["cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
             var hundredsMap = ["cero", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
             function convert(num, isOrdinal) {
@@ -57,15 +29,21 @@ var Humanizer;
                 }
                 var parts = [];
                 if (Math.floor(num / 1000000000) > 0) {
-                    parts.push(Math.floor(num / 1000000000) === 1 ? "mil millones" : convert(Math.floor(num / 1000000000), false) + "mil millones");
+                    parts.push(Math.floor(num / 1000000000) === 1
+                        ? "mil millones"
+                        : convert(Math.floor(num / 1000000000), false) + "mil millones");
                     num %= 1000000000;
                 }
                 if (Math.floor(num / 1000000) > 0) {
-                    parts.push(Math.floor(num / 1000000) === 1 ? "un millón" : convert(Math.floor(num / 1000000), false) + " millones");
+                    parts.push(Math.floor(num / 1000000) === 1
+                        ? "un millón"
+                        : convert(Math.floor(num / 1000000), false) + " millones");
                     num %= 1000000;
                 }
                 if (Math.floor(num / 1000) > 0) {
-                    parts.push(Math.floor(num / 1000) === 1 ? "mil" : convert(Math.floor(num / 1000), false) + " mil");
+                    parts.push(Math.floor(num / 1000) === 1
+                        ? "mil"
+                        : convert(Math.floor(num / 1000), false) + " mil");
                     num %= 1000;
                 }
                 if (Math.floor(num / 100) > 0) {

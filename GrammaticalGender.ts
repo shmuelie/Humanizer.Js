@@ -6,7 +6,7 @@
      * Options for specifying the desired grammatical gender for the output words
      * @enum
      */
-    export enum GrammaticalGender
+    export const enum GrammaticalGender
     {
         /**
          * Indicates masculine grammatical gender
@@ -21,4 +21,4 @@
          */
         Neuter
     }
-} 
+}

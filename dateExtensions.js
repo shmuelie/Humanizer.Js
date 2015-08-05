@@ -1,8 +1,8 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     Date.prototype.humanize = function (dateToCompareAgainst, culture) {
-        if (typeof dateToCompareAgainst === "undefined") { dateToCompareAgainst = new Date(); }
-        if (typeof culture === "undefined") { culture = Humanizer.Resources.getCurrentCulture(); }
+        if (dateToCompareAgainst === void 0) { dateToCompareAgainst = new Date(); }
+        if (culture === void 0) { culture = Humanizer.Resources.getCurrentCulture(); }
         return Humanizer.Configuration.Configurator.dateHumanizeStrategy.humanize(this, dateToCompareAgainst, culture);
     };
 })(Humanizer || (Humanizer = {}));

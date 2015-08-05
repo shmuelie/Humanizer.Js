@@ -2,9 +2,9 @@
 {
     "use strict";
 
-    export enum Tense
+    export const enum Tense
     {
         Future,
         Past
     }
-} 
+}

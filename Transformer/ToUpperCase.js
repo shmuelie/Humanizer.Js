@@ -1,7 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     var ToUpperCase = (function () {
         function ToUpperCase() {
         }
@@ -12,4 +11,4 @@
     })();
     Humanizer.ToUpperCase = ToUpperCase;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=ToUpperCase.js.map
+//# sourceMappingURL=toUpperCase.js.map

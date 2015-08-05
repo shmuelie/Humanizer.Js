@@ -9,4 +9,4 @@
             this.register("ar", new Localisation.NumberToWords.ArabicNumberToWordsConverter());
         }
     }
-} 
+}

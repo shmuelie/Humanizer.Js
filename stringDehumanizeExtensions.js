@@ -1,10 +1,9 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     /**
-    * Dehumanizes a string; e.g. 'some string', 'Some String', 'Some string' -> 'SomeString'
-    */
+     * Dehumanizes a string; e.g. 'some string', 'Some String', 'Some string' -> 'SomeString'
+     */
     String.prototype.dehumanize = function () {
         /// <summary>
         ///     Dehumanizes a string; e.g. 'some string', 'Some String', 'Some string' -> 'SomeString'

@@ -1,7 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     var ToLowerCase = (function () {
         function ToLowerCase() {
         }
@@ -12,4 +11,4 @@
     })();
     Humanizer.ToLowerCase = ToLowerCase;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=ToLowerCase.js.map
+//# sourceMappingURL=toLowerCase.js.map

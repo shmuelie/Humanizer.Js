@@ -1,33 +1,27 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     var charRegex = /[A-Za-z0-9]/;
     var FixedNumberOfCharactersTruncator = (function () {
         function FixedNumberOfCharactersTruncator() {
         }
         FixedNumberOfCharactersTruncator.prototype.truncate = function (value, length, truncationString, truncateFrom) {
-            if (typeof truncateFrom === "undefined") { truncateFrom = 1 /* Right */; }
+            if (truncateFrom === void 0) { truncateFrom = Humanizer.TruncateFrom.Right; }
             if (!value) {
                 return null;
             }
-
             if (value.length === 0) {
                 return value;
             }
-
             if (truncationString === null || truncationString.length > length) {
-                return truncateFrom === 1 /* Right */ ? value.substr(0, length) : value.substr(value.length - length);
+                return truncateFrom === Humanizer.TruncateFrom.Right ? value.substr(0, length) : value.substr(value.length - length);
             }
-
             var alphaNumericalCharatersProcessed = 0;
-
             if (value.match(charRegex).length <= length) {
                 return value;
             }
-
             var i;
-            if (truncateFrom = 0 /* Left */) {
+            if (truncateFrom = Humanizer.TruncateFrom.Left) {
                 for (i = value.length - 1; i > 0; i--) {
                     if (charRegex.test(value.charAt(i))) {
                         alphaNumericalCharatersProcessed++;
@@ -37,7 +31,6 @@
                     }
                 }
             }
-
             for (i = 0; i < value.length - truncationString.length; i++) {
                 if (charRegex.test(value.charAt(i))) {
                     alphaNumericalCharatersProcessed++;
@@ -46,11 +39,10 @@
                     return value.substr(0, i + 1) + truncationString;
                 }
             }
-
             return value;
         };
         return FixedNumberOfCharactersTruncator;
     })();
     Humanizer.FixedNumberOfCharactersTruncator = FixedNumberOfCharactersTruncator;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=FixedNumberOfCharactersTruncator.js.map
+//# sourceMappingURL=fixedNumberOfCharactersTruncator.js.map

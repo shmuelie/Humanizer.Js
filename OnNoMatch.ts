@@ -7,7 +7,7 @@
      * @readononly
      * @enum
      */
-    export enum OnNoMatch
+    export const enum OnNoMatch
     {
         //** This is the default behavior which throws a NoMatchFoundException */
         ThrowsException,

@@ -1,4 +1,4 @@
-﻿//#region ArrayFixes
+//#region ArrayFixes
 if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (item) {
         var length = this.length;
@@ -10,7 +10,6 @@ if (!Array.prototype.indexOf) {
         return -1;
     };
 }
-
 //#endregion
 //#region StringFixes
 if (!String.prototype.trim) {
@@ -18,5 +17,5 @@ if (!String.prototype.trim) {
         return this.replace(/^\s+|\s+$/g, "");
     };
 }
-//#endregion
+//#endregion 
 //# sourceMappingURL=fixes.js.map

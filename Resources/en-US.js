@@ -1,8 +1,8 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
+    var Resources;
     (function (Resources) {
         "use strict";
-
         Resources._cultures["en-US"] = {
             DateHumanize_MultipleDaysAgo: "{0} days ago",
             DateHumanize_MultipleDaysFromNow: "{0} days from now",
@@ -43,7 +43,6 @@
             TimeHumanize_SingleWeek: "1 week",
             TimeHumanize_Zero: "no time"
         };
-    })(Humanizer.Resources || (Humanizer.Resources = {}));
-    var Resources = Humanizer.Resources;
+    })(Resources = Humanizer.Resources || (Humanizer.Resources = {}));
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=en-US.js.map

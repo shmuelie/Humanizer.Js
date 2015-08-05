@@ -1,4 +1,4 @@
-﻿var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -6,9 +6,9 @@
 };
 var Humanizer;
 (function (Humanizer) {
+    var Configuration;
     (function (Configuration) {
         "use strict";
-
         var FormatterRegistry = (function (_super) {
             __extends(FormatterRegistry, _super);
             function FormatterRegistry() {
@@ -45,7 +45,6 @@ var Humanizer;
             return FormatterRegistry;
         })(Configuration.LocaliserRegistry);
         Configuration.FormatterRegistry = FormatterRegistry;
-    })(Humanizer.Configuration || (Humanizer.Configuration = {}));
-    var Configuration = Humanizer.Configuration;
+    })(Configuration = Humanizer.Configuration || (Humanizer.Configuration = {}));
 })(Humanizer || (Humanizer = {}));
 //# sourceMappingURL=FormatterRegistry.js.map

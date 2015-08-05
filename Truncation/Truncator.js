@@ -1,7 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     var Truncator = (function () {
         function Truncator() {
         }
@@ -12,4 +11,4 @@
     })();
     Humanizer.Truncator = Truncator;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=Truncator.js.map
+//# sourceMappingURL=truncator.js.map

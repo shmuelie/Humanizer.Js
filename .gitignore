@@ -176,3 +176,4 @@ FakesAssemblies/
 Properties/
 *.csproj
 *.sln
+.vs/

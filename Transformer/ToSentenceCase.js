@@ -1,7 +1,6 @@
-﻿var Humanizer;
+var Humanizer;
 (function (Humanizer) {
     "use strict";
-
     var ToSentenceCase = (function () {
         function ToSentenceCase() {
         }
@@ -15,4 +14,4 @@
     })();
     Humanizer.ToSentenceCase = ToSentenceCase;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=ToSentenceCase.js.map
+//# sourceMappingURL=toSentenceCase.js.map
