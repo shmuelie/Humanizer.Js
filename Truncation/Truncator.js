@@ -11,4 +11,4 @@ var Humanizer;
     })();
     Humanizer.Truncator = Truncator;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=truncator.js.map
+//# sourceMappingURL=Truncator.js.map

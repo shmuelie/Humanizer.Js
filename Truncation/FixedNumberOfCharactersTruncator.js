@@ -45,4 +45,4 @@ var Humanizer;
     })();
     Humanizer.FixedNumberOfCharactersTruncator = FixedNumberOfCharactersTruncator;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=fixedNumberOfCharactersTruncator.js.map
+//# sourceMappingURL=FixedNumberOfCharactersTruncator.js.map

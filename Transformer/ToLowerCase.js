@@ -11,4 +11,4 @@ var Humanizer;
     })();
     Humanizer.ToLowerCase = ToLowerCase;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=toLowerCase.js.map
+//# sourceMappingURL=ToLowerCase.js.map

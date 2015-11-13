@@ -68,4 +68,4 @@ var Humanizer;
     })();
     Humanizer.FixedNumberOfWordsTruncator = FixedNumberOfWordsTruncator;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=fixedNumebrOfWordsTruncator.js.map
+//# sourceMappingURL=FixedNumebrOfWordsTruncator.js.map

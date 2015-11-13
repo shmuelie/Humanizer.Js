@@ -11,4 +11,4 @@ var Humanizer;
     })();
     Humanizer.ToUpperCase = ToUpperCase;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=toUpperCase.js.map
+//# sourceMappingURL=ToUpperCase.js.map

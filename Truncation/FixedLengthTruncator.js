@@ -24,4 +24,4 @@ var Humanizer;
     })();
     Humanizer.FixedLengthTruncator = FixedLengthTruncator;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=fixedLengthTruncator.js.map
+//# sourceMappingURL=FixedLengthTruncator.js.map

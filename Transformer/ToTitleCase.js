@@ -26,4 +26,4 @@ var Humanizer;
     })();
     Humanizer.ToTitleCase = ToTitleCase;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=toTitleCase.js.map
+//# sourceMappingURL=ToTitleCase.js.map

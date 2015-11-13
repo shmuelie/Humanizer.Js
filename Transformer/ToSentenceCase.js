@@ -14,4 +14,4 @@ var Humanizer;
     })();
     Humanizer.ToSentenceCase = ToSentenceCase;
 })(Humanizer || (Humanizer = {}));
-//# sourceMappingURL=toSentenceCase.js.map
+//# sourceMappingURL=ToSentenceCase.js.map
