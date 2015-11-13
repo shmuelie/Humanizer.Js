@@ -10,7 +10,7 @@ var Humanizer;
             function DateTimeHumanizeAlgorithms() {
             }
             /**
-             * Returns localized &amp; humanized distance of time between two dates; given a specific precision.
+             * Returns localized & humanized distance of time between two dates; given a specific precision.
              */
             DateTimeHumanizeAlgorithms.precisionHumanize = function (input, comparisonBase, precision, culture) {
                 var tense = input > comparisonBase ? 0 /* Future */ : 1 /* Past */;

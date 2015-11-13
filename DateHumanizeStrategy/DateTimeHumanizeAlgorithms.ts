@@ -7,7 +7,7 @@
     export class DateTimeHumanizeAlgorithms
     {
         /**
-         * Returns localized &amp; humanized distance of time between two dates; given a specific precision.
+         * Returns localized & humanized distance of time between two dates; given a specific precision.
          */
         static precisionHumanize(input: Date, comparisonBase: Date, precision: number, culture: string): string
         {
