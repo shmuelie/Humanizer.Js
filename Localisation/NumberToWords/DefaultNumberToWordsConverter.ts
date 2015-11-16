@@ -1,4 +1,6 @@
-﻿module Humanizer.Localisation.NumberToWords
+﻿/// <reference path="GenderlessNumberToWordsConverter.ts" />
+
+module Humanizer.Localisation.NumberToWords
 {
     "use strict";
 
@@ -14,4 +16,4 @@
             return num.toString();
         }
     }
-} 
+}

@@ -1,4 +1,8 @@
-﻿module Humanizer.Configuration
+﻿/// <reference path="LocaliserRegistry.ts" />
+/// <reference path="../Localisation/CollectionFormatters/DefaultCollectionFormatter.ts" />
+/// <reference path="../Localisation/CollectionFormatters/OxfordStyleCollectionFormatter.ts" />
+
+module Humanizer.Configuration
 {
     export class CollectionFormatterRegistry extends LocaliserRegistry<Localisation.CollectionFormatters.ICollectionFormatter>
     {
@@ -8,4 +12,4 @@
             this.register("en", new Localisation.CollectionFormatters.OxfordStyleCollectionFormatter());
         }
     }
-} 
+}

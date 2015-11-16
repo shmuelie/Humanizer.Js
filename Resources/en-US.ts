@@ -1,4 +1,6 @@
-﻿module Humanizer.Resources
+﻿/// <reference path="resource.ts" />
+
+module Humanizer.Resources
 {
     "use strict";
 

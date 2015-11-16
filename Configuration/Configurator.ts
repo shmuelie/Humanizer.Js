@@ -1,4 +1,10 @@
-﻿module Humanizer.Configuration.Configurator
+﻿/// <reference path="FormatterRegistry.ts" />
+/// <reference path="OrdinalizerRegistry.ts" />
+/// <reference path="CollectionFormatterRegistry.ts" />
+/// <reference path="NumberToWordsConverterRegistry.ts" />
+/// <reference path="../DateHumanizeStrategy/DefaultDateHumanizeStrategy.ts" />
+
+module Humanizer.Configuration.Configurator
 {
     "use strict";
 
@@ -28,4 +34,4 @@
     }
 
     export var dateHumanizeStrategy: DateHumanizeStrategy.IDateHumanizeStrategy = new DateHumanizeStrategy.DefaultDateHumanizeStrategy();
-} 
+}

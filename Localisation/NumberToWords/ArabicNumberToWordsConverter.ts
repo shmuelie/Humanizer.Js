@@ -1,4 +1,6 @@
-﻿module Humanizer.Localisation.NumberToWords
+﻿/// <reference path="GenderedNumberToWordsConverter.ts" />
+
+module Humanizer.Localisation.NumberToWords
 {
     var arabicGroup: string[] = ["مئة", "ألف", "مليون", "مليار", "تريليون", "كوادريليون", "كوينتليون", "سكستيليون"];
     var arabicAppendedGroup: string[] = ["", "ألفاً", "مليوناً", "ملياراً", "تريليوناً", "كوادريليوناً", "كوينتليوناً", "سكستيليوناً"];

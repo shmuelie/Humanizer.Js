@@ -1,4 +1,9 @@
-﻿interface String
+﻿/// <reference path="ToTitleCase.ts" />
+/// <reference path="ToUpperCase.ts" />
+/// <reference path="ToLowerCase.ts" />
+/// <reference path="ToSentenceCase.ts" />
+
+interface String
 {
     transform(...transformers: Humanizer.IStringTransformer[]): string;
 }

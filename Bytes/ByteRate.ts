@@ -41,4 +41,4 @@
             return (new ByteSize(this.size.bytes / this.interval.toSeconds() * displayInterval.toSeconds())).toString() + "/" + displayUnit;
         }
     }
-} 
+}

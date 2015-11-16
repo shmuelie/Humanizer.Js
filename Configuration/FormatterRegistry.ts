@@ -1,4 +1,7 @@
-﻿module Humanizer.Configuration
+﻿/// <reference path="LocaliserRegistry.ts" />
+/// <reference path="../Localisation/Formatters/DefaultFormatter.ts" />
+
+module Humanizer.Configuration
 {
     "use strict";
 
@@ -39,4 +42,4 @@
             this.register(culture, new Localisation.Formatter.DefaultFormatter(culture));
         }
     }
-} 
+}

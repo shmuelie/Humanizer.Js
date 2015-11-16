@@ -1,3 +1,5 @@
+/// <reference path="GenderlessNumberToWordsConverter.ts" />
+
 module Humanizer.Localisation.NumberToWords {
     "use strict";
 

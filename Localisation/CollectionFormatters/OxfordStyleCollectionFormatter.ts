@@ -1,4 +1,6 @@
-﻿module Humanizer.Localisation.CollectionFormatters
+﻿/// <reference path="DefaultCollectionFormatter.ts" />
+
+module Humanizer.Localisation.CollectionFormatters
 {
     "use strict";
 
@@ -37,4 +39,4 @@
             return most.join(", ") + " " + separator + " " + objectFormatter(collection[length - 1]);
         }
     }
-} 
+}
