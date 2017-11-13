@@ -7,8 +7,7 @@ strings, dates, times, numbers and quantities. This is a port of the popular
 most part you can just follow the documentation for Humanizer with little to no 
 issue. See below for big differences.
 
-
-##Differences From Humanizer
+## Differences From Humanizer
 
 1. Name casing has been changed for JavaScript so all functions and properties 
    start with lower case now, so instead of 
@@ -25,7 +24,7 @@ issue. See below for big differences.
    the old way of doing something so you might have to look at older version of 
    the documentation to understand things.
 
-##Road Map
+## Road Map
 
 I have two primary tasks currently with Humanizer.Js
 
