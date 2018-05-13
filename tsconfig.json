@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "none",
+        "noImplicitAny": true,
+        "strict": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "humanizer.js",
+        "sourceMap": true
+    },
+    "include": [
+        "**/*.ts"
+    ],
+    "exclude": []
+}

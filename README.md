@@ -7,7 +7,6 @@ strings, dates, times, numbers and quantities. This is a port of the popular
 most part you can just follow the documentation for Humanizer with little to no 
 issue. See below for big differences.
 
-
 ## Differences From Humanizer
 
 1. Name casing has been changed for JavaScript so all functions and properties 

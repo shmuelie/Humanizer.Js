@@ -177,3 +177,6 @@ Properties/
 *.csproj
 *.sln
 .vs/
+
+*.js.map
+*.js
