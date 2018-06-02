@@ -19,7 +19,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {},
-  "devDependencies": {
-    "typescript": "^1.6.0"
+  "dependencies": {
+    "typescript": "1.6.2"
   }
 }
