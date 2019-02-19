@@ -1,15 +1,28 @@
 {
+    "compileOnSave": true,
     "compilerOptions": {
-        "module": "none",
-        "noImplicitAny": true,
-        "strict": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "outFile": "humanizer.js",
-        "sourceMap": true
+      "allowJs": false,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false,
+      "alwaysStrict": true,
+      "declaration": true,
+      "declarationDir": "bin",
+      "declarationMap": true,
+      "downlevelIteration": true,
+      "module": "umd",
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "outDir": "bin",
+      "resolveJsonModule": true,
+      "sourceMap": true,
+      "strict": true,
+      "stripInternal": true,
+      "target": "es5"
     },
-    "include": [
-        "**/*.ts"
-    ],
-    "exclude": []
+    "files": ["src"],
+    "exclude": ["OLD"]
 }

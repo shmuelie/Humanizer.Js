@@ -1,0 +1,33 @@
+{
+  "author": {
+    "name": "Shmueli Englard",
+    "email": "shmueli.yosef@englard.net"
+  },
+  "keywords": ["humanizer", "typescript", "javascript", "timespan", "quanities"],
+  "description": "Humanizer meets all your JavaScript needs for manipulating and displaying strings, dates, times, numbers and quantities.",
+  "devDependencies": {
+    "typescript": "3.3.3",
+    "tslint": "5.12.1"
+  },
+  "files": [
+    "src",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE",
+    "README.md",
+    "tsconfig.json",
+    "tslint.json"
+  ],
+  "license": "MIT",
+  "name": "humanizer.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SamuelEnglard/Humanizer.Js"
+  },
+  "scripts": {
+    "lint": "tslint \"src/**/*.ts\" -p . -t stylish",
+    "compile": "tsc",
+    "build": "npm run lint && npm run compile",
+    "prepublish": "npm run build"
+  },
+  "version": "2.0.0"
+}
