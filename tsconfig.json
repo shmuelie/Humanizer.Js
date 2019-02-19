@@ -17,12 +17,11 @@
       "noUnusedLocals": true,
       "noUnusedParameters": true,
       "outDir": "bin",
-      "resolveJsonModule": true,
       "sourceMap": true,
       "strict": true,
       "stripInternal": true,
       "target": "es5"
     },
-    "files": ["src"],
+    "include": ["src/*.ts"],
     "exclude": ["OLD"]
 }
