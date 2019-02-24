@@ -1,4 +1,4 @@
-import * as Resources from 'Resources'
+import * as Resources from './resources'
 
 Resources._cultures["en-US"] = {
     DateHumanize_MultipleDaysAgo: "{0} days ago",

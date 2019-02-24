@@ -1,6 +1,6 @@
 import * as resources from '../resources/resources';
 import { TimeUnit, Tense } from '../common';
-import { IFormatter } from 'localization';
+import { IFormatter } from './localization';
 
 function format(resourceKey: string, culture: string, num?: number): string {
     const str: string = resources.getResource(culture)[resourceKey];
@@ -11,12 +11,12 @@ function format(resourceKey: string, culture: string, num?: number): string {
 }
 
 function getResourceForDate(unit: TimeUnit, timeUnitTense: Tense, count: number, culture: string): string {
-    var resourceKey: string = ResourceKeys.DateHumanize.GetResourceKey(unit, timeUnitTense, count);
+    var resourceKey: string = resources.getDateResourceKey(unit, timeUnitTense, count);
     return count === 1 ? format(resourceKey, culture) : format(resourceKey, culture, count);
 }
 
 function getResourceForTime(unit: TimeUnit, count: number, culture: string): string {
-    var resourceKey: string = ResourceKeys.TimeHumanize.GetResourceKey(unit, count);
+    var resourceKey: string = resources.getTimeResourceKey(unit, count);
     return count === 1 ? format(resourceKey, culture) : format(resourceKey, culture, count);
 }
 

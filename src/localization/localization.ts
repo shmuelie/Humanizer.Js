@@ -1,5 +1,5 @@
 import * as Resources from '../resources/resources';
-import { GrammaticalGender, TimeUnit, Tense } from "../common";
+import { GrammaticalGender, TimeUnit, Tense } from '../common';
 
 interface LocalizerDictionary<T> {
     [key: string]: (culture: string) => T;

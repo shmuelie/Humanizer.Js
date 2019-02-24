@@ -1,4 +1,4 @@
-import { ICollectionFormatter } from 'localization';
+import { ICollectionFormatter } from './localization';
 
 export class DefaultCollectionFormatter implements ICollectionFormatter {
     defaultSeparator: string = "";

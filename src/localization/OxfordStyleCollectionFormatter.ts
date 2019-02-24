@@ -1,4 +1,4 @@
-import { DefaultCollectionFormatter } from 'DefaultCollectionFormatter';
+import { DefaultCollectionFormatter } from './DefaultCollectionFormatter';
 
 export class OxfordStyleCollectionFormatter extends DefaultCollectionFormatter {
     constructor(defaultSeparator: string = "and") {

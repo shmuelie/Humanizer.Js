@@ -37,3 +37,44 @@ export const enum GrammaticalGender {
      */
     Neuter
 }
+
+/**
+ * Provides hint for Humanizer as to whether a word is singular, plural or with unknown plurality
+ * @enum
+ * @readonly
+ */
+export enum Plurality {
+    /**
+     * The word is singular
+     */
+    Singular,
+    /**
+     * The word is plural
+     */
+    Plural,
+    /**
+     * I am unsure of the plurality
+     */
+    CouldBeEither
+}
+
+export enum ShowQuantityAs {
+    None,
+    Numeric,
+    Words
+}
+
+/**
+ * @enum
+ * @readonly
+ */
+export const enum LetterCasing {
+    /** SomeString -> Some String */
+    Title,
+    /** SomeString -> SOME STRING */
+    AllCaps,
+    /** SomeString -> some string */
+    LowerCase,
+    /** SomeString -> Some string */
+    Sentence
+}

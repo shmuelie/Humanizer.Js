@@ -1,3 +1,7 @@
+import { GrammaticalGender } from './common';
+import * as resources from './resources/resources';
+import * as configuration from './configuration';
+
 export interface ExtraNumber {
     toWords(): string;
     toWords(culture: string): string;
@@ -9,37 +13,26 @@ export interface ExtraNumber {
 
 export type ExtendedNumber = ExtraNumber & number;
 
-/**
- * Options for specifying the desired grammatical gender for the output words
- * @enum
- */
-export const enum GrammaticalGender {
-    /**
-     * Indicates masculine grammatical gender
-     */
-    Masculine,
-    /**
-     * Indicates feminine grammatical gender
-     */
-    Feminine,
-    /**
-     * Indicates neuter grammatical gender
-     */
-    Neuter
-}
-
 export function toWords($this: number): string;
 export function toWords($this: number, culture: string): string;
 export function toWords($this: number, culture: string, gender: GrammaticalGender): string;
 export function toWords($this: number, culture?: string, gender?: GrammaticalGender): string {
-
+    const converter = configuration.getNumberToWordsConverter(culture || resources.getCurrentCulture());
+    if (gender) {
+        return converter.convert($this, gender);
+    }
+    return converter.convert($this);
 }
 
 export function toOrdinalWords($this: number): string;
 export function toOrdinalWords($this: number, culture: string): string;
 export function toOrdinalWords($this: number, culture: string, gender: GrammaticalGender): string;
 export function toOrdinalWords($this: number, culture?: string, gender?: GrammaticalGender): string {
-
+    const converter = configuration.getNumberToWordsConverter(culture || resources.getCurrentCulture());
+    if (gender) {
+        return converter.convertToOrdinal($this, gender);
+    }
+    return converter.convertToOrdinal($this);
 }
 
 export function extend(): void;
