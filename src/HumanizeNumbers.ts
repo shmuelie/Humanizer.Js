@@ -56,7 +56,8 @@ export function extend($this?: number): ExtendedNumber | void {
         toOrdinalWords: toOrdinalWords
     };
     if ($this) {
-        return extender(members, $this);
+        extender(members, $this);
+        return <ExtendedNumber>$this;
     }
-    return extender(members, Number.prototype);
+    extender(members, Number.prototype);
 }
