@@ -1,11 +1,12 @@
 import { GenderlessNumberToWordsConverter } from './GenderlessNumberToWordsConverter';
 
+/** @internal */
 export class DefaultNumberToWordsConverter extends GenderlessNumberToWordsConverter {
-    convert_number(num: number): string {
+    protected convert_number(num: number): string {
         return num.toString();
     }
 
-    convertToOrdinal_number(num: number): string {
+    protected convertToOrdinal_number(num: number): string {
         return num.toString();
     }
 }

@@ -26,19 +26,19 @@ export class GenderedNumberToWordsConverter implements INumberToWordsConverter {
         return this.convertToOrdinal_number(num);
     }
 
-    convert_number(num: number): string {
+    protected convert_number(num: number): string {
         return this.convert_number_grammaticalGender(num, this.defaultGender);
     }
 
-    convert_number_grammaticalGender(_num: number, _gender: GrammaticalGender): string {
+    protected convert_number_grammaticalGender(_num: number, _gender: GrammaticalGender): string {
         throw new Error("Abstract");
     }
 
-    convertToOrdinal_number(num: number): string {
+    protected convertToOrdinal_number(num: number): string {
         return this.convertToOrdinal_number_grammaticalGender(num, this.defaultGender);
     }
 
-    convertToOrdinal_number_grammaticalGender(_num: number, _gender: GrammaticalGender): string {
+    protected convertToOrdinal_number_grammaticalGender(_num: number, _gender: GrammaticalGender): string {
         throw new Error("Abstract");
     }
 }

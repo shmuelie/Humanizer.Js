@@ -9,8 +9,9 @@ const hundredsGroup: string[] = ["", "مئة", "مئتان", "ثلاث مئة", 
 const arabicAppendedTwos: string[] = ["مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونلن"];
 const arabicTwos: string[] = ["مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونان"];
 
+/** @internal */
 export class ArabicNumberToWordsConverter extends GenderedNumberToWordsConverter {
-    convert_number(num: number): string {
+    protected convert_number(num: number): string {
         if (num === 0) {
             return "صفر";
         }
@@ -108,7 +109,7 @@ export class ArabicNumberToWordsConverter extends GenderedNumberToWordsConverter
         return result.trim();
     }
 
-    convertToOrdinal_number(_num: number): string {
+    protected convertToOrdinal_number(_num: number): string {
         throw new Error("Not Implemented");
     }
 }

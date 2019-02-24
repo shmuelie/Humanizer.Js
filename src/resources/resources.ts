@@ -53,10 +53,41 @@ const Zero: string = "TimeHumanize_Zero";
 const Single: string = "Single";
 const Multiple: string = "Multiple";
 
+/**
+ *
+ * @param timeUnit
+ * @internal
+ */
 export function getDateResourceKey(timeUnit: TimeUnit): string;
+/**
+ *
+ * @param timeUnit
+ * @param tense
+ * @internal
+ */
 export function getDateResourceKey(timeUnit: TimeUnit, tense: Tense): string;
+/**
+ *
+ * @param timeUnit
+ * @param count
+ * @internal
+ */
 export function getDateResourceKey(timeUnit: TimeUnit, count: number): string;
+/**
+ *
+ * @param timeUnit
+ * @param tense
+ * @param count
+ * @internal
+ */
 export function getDateResourceKey(timeUnit: TimeUnit, tense: Tense, count: number): string;
+/**
+ *
+ * @param timeUnit
+ * @param tenseOrCount
+ * @param count
+ * @internal
+ */
 export function getDateResourceKey(timeUnit: TimeUnit, tenseOrCount?: Tense | number, count?: number): string {
     if (typeof tenseOrCount === "number") {
         count = tenseOrCount;
@@ -76,8 +107,25 @@ export function getDateResourceKey(timeUnit: TimeUnit, tenseOrCount?: Tense | nu
     return format(DateTimeFormat, count === 1 ? Single : Multiple, toQuantity(timeUnit.toString(), count, ShowQuantityAs.None), tenseOrCount === Tense.Future ? FromNow : Ago);
 }
 
+/**
+ *
+ * @param timeUnit
+ * @internal
+ */
 export function getTimeResourceKey(timeUnit: TimeUnit): string;
+/**
+ *
+ * @param timeUnit
+ * @param count
+ * @internal
+ */
 export function getTimeResourceKey(timeUnit: TimeUnit, count: number): string;
+/**
+ *
+ * @param timeUnit
+ * @param count
+ * @internal
+ */
 export function getTimeResourceKey(timeUnit: TimeUnit, count: number = 1): string {
     if (count < 0) {
         throw new RangeError();

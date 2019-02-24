@@ -1,4 +1,4 @@
-import { GrammaticalGender } from './common';
+import { GrammaticalGender, extender } from './common';
 import * as resources from './resources/resources';
 import * as configuration from './configuration';
 
@@ -9,6 +9,19 @@ export interface ExtraNumber {
     toOrdinalWords(): string;
     toOrdinalWords(culture: string): string;
     toOrdinalWords(culture: string, gender: GrammaticalGender): string;
+    days(): number;
+    weeks(): number;
+    hours(): number;
+    minutes(): number;
+    seconds(): number;
+    milliseconds(): number;
+    toDays(): number;
+    toWeeks(): number;
+    toHours(): number;
+    toMinutes(): number;
+    toSeconds(): number;
+    toMilliseconds(): number;
+    time(percision?: number, countEmptyUnits?: boolean): string;
 }
 
 export type ExtendedNumber = ExtraNumber & number;
@@ -38,35 +51,12 @@ export function toOrdinalWords($this: number, culture?: string, gender?: Grammat
 export function extend(): void;
 export function extend($this: number): ExtendedNumber
 export function extend($this?: number): ExtendedNumber | void {
+    const members = {
+        toWords: toWords,
+        toOrdinalWords: toOrdinalWords
+    };
     if ($this) {
-        Object.defineProperties($this, {
-            toWords: {
-                configurable: false,
-                enumerable: true,
-                value: toWords,
-                writable: false
-            },
-            toOrdinalWords: {
-                configurable: false,
-                enumerable: true,
-                value: toOrdinalWords,
-                writable: false
-            }
-        });
-        return <ExtendedNumber>$this;
+        return extender(members, $this);
     }
-    Object.defineProperties(Number.prototype, {
-        toWords: {
-            configurable: false,
-            enumerable: true,
-            value: function (this: ExtendedNumber, culture: string, gender: GrammaticalGender): string { return toWords(this, culture, gender); },
-            writable: false
-        },
-        toOrdinalWords: {
-            configurable: false,
-            enumerable: true,
-            value: function (this: ExtendedNumber, culture: string, gender: GrammaticalGender): string { return toOrdinalWords(this, culture, gender); },
-            writable: false
-        }
-    });
+    return extender(members, Number.prototype);
 }

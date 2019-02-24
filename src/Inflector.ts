@@ -14,8 +14,11 @@ class InflectorExtensionsRule {
     }
 }
 
+/** @internal */
 export const plurals: InflectorExtensionsRule[] = [];
+/** @internal */
 export const singulars: InflectorExtensionsRule[] = [];
+/** @internal */
 export const uncountables: string[] = [];
 
 function addUncountable(word: string): void {
@@ -101,6 +104,12 @@ addUncountable("sheep");
 addUncountable("deer");
 addUncountable("aircraft");
 
+/**
+ *
+ * @param rules
+ * @param word
+ * @internal
+ */
 export function applyRules(rules: Array<InflectorExtensionsRule>, word: string | null): string | null {
     if (word === null) {
         return null;

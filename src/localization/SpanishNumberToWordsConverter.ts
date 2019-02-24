@@ -80,12 +80,13 @@ function convert(num: number, isOrdinal: boolean): string {
     return result;
 }
 
+/** @internal */
 export class SpanishNumberToWordsConverter extends GenderlessNumberToWordsConverter {
-    convert_number(num: number): string {
+    protected convert_number(num: number): string {
         return convert(num, false);
     }
 
-    convertToOrdinal_number(num: number): string {
+    protected convertToOrdinal_number(num: number): string {
         return convert(num, true);
     }
 }

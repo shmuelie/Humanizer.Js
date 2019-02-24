@@ -1,12 +1,13 @@
 import { DefaultCollectionFormatter } from './DefaultCollectionFormatter';
 
+/** @internal */
 export class OxfordStyleCollectionFormatter extends DefaultCollectionFormatter {
     constructor(defaultSeparator: string = "and") {
         super();
         this.defaultSeparator = defaultSeparator;
     }
 
-    humanizer_collection_objectFormatter_separator<T>(collection: T[], objectFormatter: (item: T) => string, separator: string): string {
+    protected humanizer_collection_objectFormatter_separator<T>(collection: T[], objectFormatter: (item: T) => string, separator: string): string {
         if (collection === null) {
             throw new Error("Collection null");
         }

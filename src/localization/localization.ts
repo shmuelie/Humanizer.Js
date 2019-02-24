@@ -72,6 +72,7 @@ export interface ICollectionFormatter {
     humanize<T>(collection: T[], objectFormatter: (item: T) => string, separator: string): string;
 }
 
+/** @internal */
 export type CollectionFormatterRegistry = LocaliserRegistry<ICollectionFormatter>;
 
 export interface IFormatter {
@@ -81,6 +82,7 @@ export interface IFormatter {
     TimeHumanize(timeunit: TimeUnit, unit: number): string;
 }
 
+/** @internal */
 export type FormatterRegistry = LocaliserRegistry<IFormatter>;
 
 /**
@@ -105,6 +107,7 @@ export interface INumberToWordsConverter {
     convertToOrdinal(num: number, gender: GrammaticalGender): string;
 }
 
+/** @internal */
 export type NumberToWordsRegistry = LocaliserRegistry<INumberToWordsConverter>;
 
 /**
@@ -121,4 +124,5 @@ export interface IOrdinalizer {
     convert(num: number, numberString: string, gender: GrammaticalGender): string;
 }
 
+/** @internal */
 export type OrdinalizerRegistry = LocaliserRegistry<IOrdinalizer>;

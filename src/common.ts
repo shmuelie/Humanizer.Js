@@ -78,3 +78,20 @@ export const enum LetterCasing {
     /** SomeString -> Some string */
     Sentence
 }
+
+/**
+ *
+ * @param members
+ * @param $this
+ * @internal
+ */
+export function extender(members: { [name: string]: Function }, $this: any): void {
+    for (const name in members) {
+        Object.defineProperty($this, name, {
+            configurable: false,
+            enumerable: true,
+            value: function (this: any) { return (<Function>members[name].bind(undefined, this)).apply(undefined, arguments); },
+            writable: false
+        });
+    }
+}
