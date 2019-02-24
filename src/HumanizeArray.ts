@@ -1,4 +1,5 @@
 import { getCollectionFormatter } from './configuration';
+import { extender } from './common';
 
 export interface ExtraArray<T> {
     /**
@@ -36,4 +37,17 @@ export function humanize<T>($this: T[], displayFormatterOrSeparator?: ((item: T)
         return getCollectionFormatter().humanize<T>($this, displayFormatterOrSeparator);
     }
     return getCollectionFormatter().humanize<T>($this);
+}
+
+export function extend(): void;
+export function extend<T>($this: T[]): ExtendedArray<T>;
+export function extend<T>($this?: T[]): void | ExtendedArray<T> {
+    const members = {
+        humanize: humanize
+    };
+    if ($this) {
+        extender(members, $this);
+        return <ExtendedArray<T>>$this;
+    }
+    extender(members, Array.prototype);
 }
