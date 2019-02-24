@@ -1,4 +1,4 @@
-import { ShowQuantityAs, Plurality, LetterCasing } from './common';
+import { ShowQuantityAs, Plurality, LetterCasing, extender } from './common';
 import { toWords } from './HumanizeNumbers';
 import { applyRules, plurals, singulars } from './Inflector';
 import { IStringTransformer, To } from './transformers';
@@ -171,4 +171,28 @@ export function dasherize($this: string): string {
 
 export function hyphenate($this: string): string {
     return dasherize($this);
+}
+
+export function extend(): void;
+export function extend($this: string): ExtendedString;
+export function extend($this?: string): void | ExtendedString {
+    const members = {
+        pluralize: pluralize,
+        singularize: singularize,
+        titleize: titleize,
+        pascalize: pascalize,
+        camelize: camelize,
+        underscore: underscore,
+        dasherize: dasherize,
+        hyphenate: hyphenate,
+        toQuantity: toQuantity,
+        humanize: humanize,
+        applyCasing: applyCasing,
+        transform: transform
+    };
+    if ($this) {
+        extender(members, $this);
+        return <ExtendedString>$this;
+    }
+    extender(members, String.prototype);
 }
