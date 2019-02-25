@@ -2,6 +2,7 @@ import { GrammaticalGender, extender, TimeUnit, romanNumberals } from './common'
 import * as resources from './resources/resources';
 import * as configuration from './configuration';
 import { IFormatter } from './localization/localization';
+import ByteSize from './ByteSize';
 
 export interface ExtraNumber {
     toWords(): string;
@@ -26,6 +27,12 @@ export interface ExtraNumber {
     ordinalize(gender: GrammaticalGender): string;
     ordinalize(): string;
     toRoman(): string;
+    bits(): ByteSize;
+    bytes(): ByteSize;
+    kilobytes(): ByteSize;
+    megabytes(): ByteSize;
+    gigabytes(): ByteSize;
+    terabytes(): ByteSize;
 }
 
 export type ExtendedNumber = ExtraNumber & number;
@@ -34,6 +41,30 @@ const MILLIS_PER_SECOND: number = 1000;
 const MILLIS_PER_MINUTE: number = MILLIS_PER_SECOND * 60;
 const MILLIS_PER_HOUR: number = MILLIS_PER_MINUTE * 60;
 const MILLIS_PER_DAY: number = MILLIS_PER_HOUR * 24;
+
+export function bits($this: number): ByteSize {
+    return ByteSize.fromBits($this);
+}
+
+export function bytes($this: number): ByteSize {
+    return ByteSize.fromBytes($this);
+}
+
+export function kilobytes($this: number): ByteSize {
+    return ByteSize.fromKilobytes($this);
+}
+
+export function megabytes($this: number): ByteSize {
+    return ByteSize.fromMegabytes($this);
+}
+
+export function gigabytes($this: number): ByteSize {
+    return ByteSize.fromGigabytes($this);
+}
+
+export function terabytes($this: number): ByteSize {
+    return ByteSize.fromTerabyte($this);
+}
 
 export function toRoman($this: number): string {
     const minValue: number = 1;
@@ -243,7 +274,13 @@ export function extend($this?: number): ExtendedNumber | void {
         toMilliseconds: toMilliseconds,
         time: time,
         ordinalize: ordinalize,
-        toRoman: toRoman
+        toRoman: toRoman,
+        bits: bits,
+        bytes: bytes,
+        kilobytes: kilobytes,
+        megabytes: megabytes,
+        gigabytes: gigabytes,
+        terabytes: terabytes
     };
     if ($this) {
         extender(members, $this);
