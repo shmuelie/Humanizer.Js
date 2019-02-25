@@ -1,7 +1,8 @@
-import { ShowQuantityAs, Plurality, LetterCasing, extender } from './common';
+import { ShowQuantityAs, Plurality, LetterCasing, extender, GrammaticalGender } from './common';
 import { toWords } from './HumanizeNumbers';
 import { applyRules, plurals, singulars } from './Inflector';
 import { IStringTransformer, To } from './transformers';
+import * as configuration from './configuration';
 
 export interface ExtraString {
     pluralize(plurality: Plurality): string | null;
@@ -19,6 +20,8 @@ export interface ExtraString {
     humanize(casing: LetterCasing): string;
     applyCasing(casing: LetterCasing): string;
     transform(...transformers: IStringTransformer[]): string;
+    ordinalize(gender: GrammaticalGender): string;
+    ordinalize(): string;
 }
 
 export type ExtendedString = string & ExtraString;
@@ -50,6 +53,15 @@ function _humanize(input: string): string {
     }
 
     return fromPascalCase(input);
+}
+
+export function ordinalize($this: string): string;
+export function ordinalize($this: string, gender: GrammaticalGender): string;
+export function ordinalize($this: string, gender?: GrammaticalGender): string {
+    if (gender) {
+        return configuration.getOrdinalizer().convert(parseInt($this, 10), $this, gender);
+    }
+    return configuration.getOrdinalizer().convert(parseInt($this, 10), $this);
 }
 
 export function transform($this: string, ...transformers: IStringTransformer[]): string {
@@ -188,7 +200,8 @@ export function extend($this?: string): void | ExtendedString {
         toQuantity: toQuantity,
         humanize: humanize,
         applyCasing: applyCasing,
-        transform: transform
+        transform: transform,
+        ordinalize: ordinalize
     };
     if ($this) {
         extender(members, $this);

@@ -23,6 +23,8 @@ export interface ExtraNumber {
     toSeconds(): number;
     toMilliseconds(): number;
     time(percision?: number, countEmptyUnits?: boolean, culture?: string, maxUnit?: TimeUnit): string;
+    ordinalize(gender: GrammaticalGender): string;
+    ordinalize(): string;
 }
 
 export type ExtendedNumber = ExtraNumber & number;
@@ -31,6 +33,15 @@ const MILLIS_PER_SECOND: number = 1000;
 const MILLIS_PER_MINUTE: number = MILLIS_PER_SECOND * 60;
 const MILLIS_PER_HOUR: number = MILLIS_PER_MINUTE * 60;
 const MILLIS_PER_DAY: number = MILLIS_PER_HOUR * 24;
+
+export function ordinalize($this: number): string;
+export function ordinalize($this: number, gender: GrammaticalGender): string;
+export function ordinalize($this: number, gender?: GrammaticalGender): string {
+    if (gender) {
+        configuration.getOrdinalizer().convert($this, $this.toString(), gender);
+    }
+    return configuration.getOrdinalizer().convert($this, $this.toString());
+}
 
 export function days($this: number): number {
     return $this * MILLIS_PER_DAY;
@@ -205,7 +216,8 @@ export function extend($this?: number): ExtendedNumber | void {
         toMinutes: toMinutes,
         toSeconds: toSeconds,
         toMilliseconds: toMilliseconds,
-        time: time
+        time: time,
+        ordinalize: ordinalize
     };
     if ($this) {
         extender(members, $this);
