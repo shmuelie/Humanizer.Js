@@ -1,4 +1,4 @@
-import { ShowQuantityAs, Plurality, LetterCasing, extender, GrammaticalGender } from './common';
+import { ShowQuantityAs, Plurality, LetterCasing, extender, GrammaticalGender, romanNumberals } from './common';
 import { toWords } from './HumanizeNumbers';
 import { applyRules, plurals, singulars } from './Inflector';
 import { IStringTransformer, To } from './transformers';
@@ -22,9 +22,12 @@ export interface ExtraString {
     transform(...transformers: IStringTransformer[]): string;
     ordinalize(gender: GrammaticalGender): string;
     ordinalize(): string;
+    fromRoman(): number;
 }
 
 export type ExtendedString = string & ExtraString;
+
+const validRomanNumerals: RegExp = /^(?:(?=[MDCLXVI])((M{0,3})((C[DM])|(D?C{0,3}))?((X[LC])|(L?XX{0,2})|L)?((I[VX])|(V?(II{0,2}))|V)?))$/;
 
 function fromUnderscoreDashSeparatedWords(input: string): string {
     return input.split(/[_-]/g, Number.MAX_VALUE).join(" ");
@@ -53,6 +56,34 @@ function _humanize(input: string): string {
     }
 
     return fromPascalCase(input);
+}
+
+export function fromRoman($this: string): number {
+    const input: string = $this.toUpperCase().trim();
+    const length: number = input.length;
+
+    if ((length === 0) || !validRomanNumerals.test(input)) {
+        throw new Error("Empty or invalid Roman numeral string.");
+    }
+
+    let total: number = 0;
+    let i: number = length;
+
+    while (i > 0) {
+        let digit = romanNumberals[input.charAt(--i)];
+
+        if (i > 0) {
+            const previousDigit: number = romanNumberals[input.charAt(i - 1)];
+
+            if (previousDigit < digit) {
+                digit -= previousDigit;
+                i--;
+            }
+        }
+        total += digit;
+    }
+
+    return total;
 }
 
 export function ordinalize($this: string): string;
@@ -201,7 +232,8 @@ export function extend($this?: string): void | ExtendedString {
         humanize: humanize,
         applyCasing: applyCasing,
         transform: transform,
-        ordinalize: ordinalize
+        ordinalize: ordinalize,
+        fromRoman: fromRoman
     };
     if ($this) {
         extender(members, $this);

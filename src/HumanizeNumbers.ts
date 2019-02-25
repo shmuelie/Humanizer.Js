@@ -1,4 +1,4 @@
-import { GrammaticalGender, extender, TimeUnit } from './common';
+import { GrammaticalGender, extender, TimeUnit, romanNumberals } from './common';
 import * as resources from './resources/resources';
 import * as configuration from './configuration';
 import { IFormatter } from './localization/localization';
@@ -25,6 +25,7 @@ export interface ExtraNumber {
     time(percision?: number, countEmptyUnits?: boolean, culture?: string, maxUnit?: TimeUnit): string;
     ordinalize(gender: GrammaticalGender): string;
     ordinalize(): string;
+    toRoman(): string;
 }
 
 export type ExtendedNumber = ExtraNumber & number;
@@ -33,6 +34,30 @@ const MILLIS_PER_SECOND: number = 1000;
 const MILLIS_PER_MINUTE: number = MILLIS_PER_SECOND * 60;
 const MILLIS_PER_HOUR: number = MILLIS_PER_MINUTE * 60;
 const MILLIS_PER_DAY: number = MILLIS_PER_HOUR * 24;
+
+export function toRoman($this: number): string {
+    const minValue: number = 1;
+    const maxValue: number = 3999;
+
+    if (($this < minValue) || ($this > maxValue)) {
+        throw new Error("Out of range");
+    }
+
+    const sb: string[] = [];
+    let input: number = $this;
+
+    for (const key in romanNumberals) {
+        if (Object.prototype.hasOwnProperty.call(romanNumberals, key)) {
+            const value: number = romanNumberals[key];
+            while (input / value > 0) {
+                sb.push(key);
+                input -= value;
+            }
+        }
+    }
+
+    return sb.join("");
+}
 
 export function ordinalize($this: number): string;
 export function ordinalize($this: number, gender: GrammaticalGender): string;
@@ -217,7 +242,8 @@ export function extend($this?: number): ExtendedNumber | void {
         toSeconds: toSeconds,
         toMilliseconds: toMilliseconds,
         time: time,
-        ordinalize: ordinalize
+        ordinalize: ordinalize,
+        toRoman: toRoman
     };
     if ($this) {
         extender(members, $this);
