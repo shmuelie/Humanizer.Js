@@ -1,8 +1,9 @@
-import { ShowQuantityAs, Plurality, LetterCasing, extender, GrammaticalGender, romanNumberals } from './common';
+import { ShowQuantityAs, Plurality, LetterCasing, extender, GrammaticalGender, romanNumberals, TruncateFrom } from './common';
 import { toWords } from './HumanizeNumbers';
 import { applyRules, plurals, singulars } from './Inflector';
 import { IStringTransformer, To } from './transformers';
 import * as configuration from './configuration';
+import { ITruncator, Truncators } from './truncators';
 
 export interface ExtraString {
     pluralize(plurality: Plurality): string | null;
@@ -23,6 +24,11 @@ export interface ExtraString {
     ordinalize(gender: GrammaticalGender): string;
     ordinalize(): string;
     fromRoman(): number;
+    dehumanize(): string;
+    truncate(length: number): string;
+    truncate(length: number, truncator: ITruncator, from?: TruncateFrom): string;
+    truncate(length: number, truncationString: string, from?: TruncateFrom): string;
+    truncate(length: number, truncationString: string, truncator: ITruncator, from?: TruncateFrom): string;
 }
 
 export type ExtendedString = string & ExtraString;
@@ -56,6 +62,44 @@ function _humanize(input: string): string {
     }
 
     return fromPascalCase(input);
+}
+
+export function truncate($this: string, length: number): string;
+export function truncate($this: string, length: number, truncator: ITruncator,    from?: TruncateFrom): string;
+export function truncate($this: string, length: number, truncationString: string, from?: TruncateFrom): string;
+export function truncate($this: string, length: number, truncationString: string, truncator: ITruncator, from?: TruncateFrom): string;
+export function truncate($this: string, length: number, truncatorOrTruncationString?: ITruncator | string, fromOrTruncator?: TruncateFrom | ITruncator, from?: TruncateFrom): string {
+    let truncationString: string = "…";
+    let truncator: ITruncator = Truncators.FixedLength;
+    if (truncatorOrTruncationString) {
+        if (typeof truncatorOrTruncationString === "string") {
+            truncationString = truncatorOrTruncationString;
+        }
+        else {
+            truncator = truncatorOrTruncationString;
+        }
+    }
+    if (fromOrTruncator) {
+        if (typeof fromOrTruncator === "number") {
+            from = fromOrTruncator;
+        }
+        else {
+            truncator = fromOrTruncator;
+        }
+    }
+    if (!from) {
+        from = TruncateFrom.Right;
+    }
+    return truncator.truncate($this, length, truncationString, from);
+}
+
+export function dehumanize($this: string): string {
+    const titlizedWords: string[] = $this.split(" ");
+    const length: number = titlizedWords.length;
+    for (let i: number = 0; i < length; i++) {
+        titlizedWords[i] = humanize(titlizedWords[i], LetterCasing.Title);
+    }
+    return titlizedWords.join("").replace(" ", "");
 }
 
 export function fromRoman($this: string): number {
@@ -233,7 +277,9 @@ export function extend($this?: string): void | ExtendedString {
         applyCasing: applyCasing,
         transform: transform,
         ordinalize: ordinalize,
-        fromRoman: fromRoman
+        fromRoman: fromRoman,
+        dehumanize: dehumanize,
+        truncate: truncate
     };
     if ($this) {
         extender(members, $this);
