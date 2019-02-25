@@ -126,3 +126,7 @@ export interface IOrdinalizer {
 
 /** @internal */
 export type OrdinalizerRegistry = LocaliserRegistry<IOrdinalizer>;
+
+export interface IDateHumanizeStrategy {
+    humanize(input: Date, comparisonBase: Date, culture: string): string;
+}

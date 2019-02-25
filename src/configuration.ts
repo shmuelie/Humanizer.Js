@@ -9,6 +9,7 @@ import { EnglishNumberToWordsConverter } from './localization/EnglishNumberToWor
 import { SpanishNumberToWordsConverter } from './localization/SpanishNumberToWordsConverter';
 import { DefaultOrdinalizer } from './localization/DefaultOrdinalizer';
 import { EnglishOrdinalizer } from './localization/EnglishOrdinalizer';
+import { DefaultDateHumanizeStrategy } from './localization/DefaultDateHumanizeStrategy';
 
 const collectionRegistry: localization.CollectionFormatterRegistry = new localization.LocaliserRegistry(new DefaultCollectionFormatter());
 collectionRegistry.register("en", new OxfordStyleCollectionFormatter());
@@ -22,6 +23,8 @@ numberToWordsRegistry.register("es", new SpanishNumberToWordsConverter());
 
 const ordinalizerRegistry: localization.OrdinalizerRegistry = new localization.LocaliserRegistry(new DefaultOrdinalizer());
 ordinalizerRegistry.register("en", new EnglishOrdinalizer());
+
+export let dateStrategy: localization.IDateHumanizeStrategy = new DefaultDateHumanizeStrategy();
 
 /** @internal */
 export function getCollectionFormatter(): localization.ICollectionFormatter {
