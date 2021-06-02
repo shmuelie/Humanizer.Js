@@ -9,18 +9,18 @@
       "declarationDir": "bin",
       "declarationMap": true,
       "downlevelIteration": true,
-      "module": "umd",
+      "module": "es6",
       "noFallthroughCasesInSwitch": true,
       "noImplicitAny": true,
       "noImplicitReturns": true,
       "noImplicitThis": true,
       "noUnusedLocals": true,
       "noUnusedParameters": true,
-      "outDir": "bin",
+      "outDir": "bin/es2018",
       "sourceMap": true,
       "strict": true,
       "stripInternal": true,
-      "target": "es5"
+      "target": "es2018"
     },
     "include": ["src/**/*.ts"],
     "exclude": ["OLD"]
